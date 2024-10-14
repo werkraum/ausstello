@@ -1,0 +1,27 @@
+{
+	"name": "vite-starter",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "rollup -c --watch --bundleConfigAsCjs",
+		"build": "NODE_ENV=production rollup -c --bundleConfigAsCjs"
+	},
+	"dependencies": {
+		"@fontsource/archivo": "^5.1.0",
+		"air-datepicker": "^3.5.3",
+		"swiper": "^11.1.15",
+		"tom-select": "^2.4.0"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.26.0",
+		"@babel/preset-env": "^7.26.0",
+		"@rollup/plugin-babel": "^6.0.4",
+		"@rollup/plugin-commonjs": "^28.0.1",
+		"@rollup/plugin-node-resolve": "^15.3.0",
+		"rollup": "^4",
+		"rollup-plugin-livereload": "^2.0.5",
+		"rollup-plugin-scss": "^3.0.0",
+		"sass": "^1.80.6"
+	}
+}

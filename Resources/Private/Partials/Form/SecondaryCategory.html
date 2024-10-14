@@ -1,0 +1,16 @@
+<div class="ausstello-form-secondary-category">
+    <label for="ausstello-form-secondary-category-label">
+        <i class="bi bi-tags-fill"></i> <f:if condition="{meta.settings.publish.customSecondaryCategoryName}">
+        <f:then>{meta.settings.publish.customSecondaryCategoryName}</f:then>
+        <f:else>Sekundär Kategorie</f:else>
+    </f:if>
+    </label>
+    <f:form.select id="ausstello-form-secondary-category-label"
+                   property="secondaryCategories"
+                   multiple="true"
+                   options="{meta.secondary_categories}"
+                   class=""
+                   optionValueField="id"
+                   optionLabelField="name"
+    prependOptionLabel="auswählen..."/>
+</div>

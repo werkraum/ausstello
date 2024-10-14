@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:ausstello="http://typo3.org/ns/Werkraum/Ausstello/ViewHelper"
+      data-namespace-typo3-fluid="true"
+>
+<div title="{location.name -> f:format.stripTags()}" class="ausstello-detail-location-section">
+    <div class="ausstello-detail-location-infos" >
+        <div class="ausstello-detail-location-name-wrapper">
+            <span class="ausstello-detail-location-number">{location.locationNumber}</span>
+            <span class="ausstello-detail-location-name">{location.name -> f:format.htmlentitiesDecode()}</span>
+            <f:if condition="{location.link.url}">
+                <span class="ausstello-detail-location-area"> <a href="{location.link.url}" target="{location.link.target}">{location.link.label} <f:image src="EXT:ausstello/Resources/Public/Icons/pin_black.svg" width="12" height="17"/> </a></span>
+            </f:if>
+            <span class="ausstello-detail-location-opener"><f:image src="EXT:ausstello/Resources/Public/Icons/chevron_blue.svg" additionalAttributes="{width: 13, height: 21}"/></span>
+        </div>
+        <div class="ausstello-detail-location-description">
+            <div>{location.description -> f:format.htmlentitiesDecode()}</div>
+        </div>
+        <f:if condition="{location.images.0.file.publicUrl}">
+            <div class="ausstello-detail-location-image">
+                <ausstello:remote.image
+                    alt="{location.images.0.alternative}"
+                    loading="lazy"
+                    width="176"
+                    src="{location.images.0.file.publicUrl}"
+                />
+            </div>
+        </f:if>
+        <div class="ausstello-detail-location-options">
+            <f:if condition="{location.noBarrier}">
+                <div><f:image src="EXT:ausstello/Resources/Public/Icons/checkmark.svg" width="14" height="12"/> Barrierefrei</div>
+            </f:if>
+            <f:if condition="{location.toiletsNearBy}">
+                <div><f:image src="EXT:ausstello/Resources/Public/Icons/checkmark.svg" width="14" height="12"/> WC in der Nähe </div>
+            </f:if>
+            <f:if condition="{location.noBarrierToiletsNearBy}">
+                <div><f:image src="EXT:ausstello/Resources/Public/Icons/checkmark.svg" width="14" height="12"/> Barrierefreie Toilette</div>
+            </f:if>
+        </div>
+    </div>
+
+</div>
+</html>

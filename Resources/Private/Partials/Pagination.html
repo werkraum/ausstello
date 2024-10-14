@@ -1,0 +1,95 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:ausstello="http://typo3.org/ns/Werkraum/Ausstello/ViewHelper"
+      data-namespace-typo3-fluid="true"
+>
+
+<ul class="ausstello-pagination">
+    <f:if condition="{pagination.has_previous_page}">
+        <f:then>
+            <li class="ausstello-pagination-active ausstello-pagination-previous">
+                <f:link.action action="list" arguments="{search: {
+                 page: '{pagination.current_page - 1}',
+                 query: search.query,
+                 sortBy: search.sortBy,
+                 sortDirection: search.sortDirection,
+                 startDate: search.startDate,
+                 locations: search.locations,
+                 primaryCategories: search.primaryCategories,
+                 secondaryCategories: search.secondaryCategories,
+                 tags: search.tags,
+                 }}" >
+                    <f:image src="EXT:ausstello/Resources/Public/Icons/chevron_left.svg" width="9" height="17"/>
+                </f:link.action>
+            </li>
+        </f:then>
+        <f:else>
+            <li class="ausstello-pagination-inactive ausstello-pagination-previous">
+                <span><f:image src="EXT:ausstello/Resources/Public/Icons/chevron_left.svg" width="9" height="17"/></span>
+            </li>
+        </f:else>
+    </f:if>
+    <f:for as="page" each="{pagination.total_pages}" iteration="iter">
+        <f:if condition="{iter.cycle} == {search.page}">
+            <f:then>
+                <li class="ausstello-pagination-current">
+                    <f:link.action class="active" action="list" arguments="{search: {
+                     page: search.page,
+                     query: search.query,
+                     sortBy: search.sortBy,
+                     sortDirection: search.sortDirection,
+                     startDate: search.startDate,
+                     locations: search.locations,
+                     primaryCategories: search.primaryCategories,
+                     secondaryCategories: search.secondaryCategories,
+                     tags: search.tags,
+                     }}" >
+                        {iter.cycle}
+                    </f:link.action>
+                </li>
+            </f:then>
+            <f:else>
+                <li class="ausstello-pagination-siblings">
+                    <f:link.action action="list" arguments="{search: {
+                     page: iter.cycle,
+                     query: search.query,
+                     sortBy: search.sortBy,
+                     sortDirection: search.sortDirection,
+                     startDate: search.startDate,
+                     locations: search.locations,
+                     primaryCategories: search.primaryCategories,
+                     secondaryCategories: search.secondaryCategories,
+                     tags: search.tags,
+                     }}" >
+                        {iter.cycle}
+                    </f:link.action>
+                </li>
+            </f:else>
+        </f:if>
+    </f:for>
+    <f:if condition="{pagination.has_next_page }">
+        <f:then>
+            <li class="ausstello-pagination-active ausstello-pagination-next">
+                <f:link.action action="list" arguments="{search: {
+                 page: '{pagination.current_page + 1}',
+                 query: search.query,
+                 sortBy: search.sortBy,
+                 sortDirection: search.sortDirection,
+                 startDate: search.startDate,
+                 locations: search.locations,
+                 primaryCategories: search.primaryCategories,
+                 secondaryCategories: search.secondaryCategories,
+                 tags: search.tags,
+                 }}" >
+                    <f:image src="EXT:ausstello/Resources/Public/Icons/chevron_right.svg" width="9" height="17"/>
+                </f:link.action>
+            </li>
+        </f:then>
+        <f:else>
+            <li class="ausstello-pagination-inactive ausstello-pagination-next">
+                <span><f:image src="EXT:ausstello/Resources/Public/Icons/chevron_right.svg" width="9" height="17"/></span>
+            </li>
+        </f:else>
+    </f:if>
+</ul>
+</html>

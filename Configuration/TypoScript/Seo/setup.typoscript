@@ -1,0 +1,23 @@
+plugin.tx_seo {
+  config {
+    xmlSitemap {
+      sitemaps {
+        ausstello {
+          provider = Werkraum\Ausstello\Seo\EventsXmlSitemapDataProvider
+          config {
+            url {
+              pageId = {$plugin.tx_ausstello.settings.detailPid}
+              fieldToParameterMap {
+                id = tx_ausstello_event[event]
+              }
+              additionalGetParameters {
+                tx_ausstello_event.controller = Event
+                tx_ausstello_event.action = detail
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

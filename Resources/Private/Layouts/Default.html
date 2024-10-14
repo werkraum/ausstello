@@ -1,0 +1,29 @@
+<f:asset.script identifier="ausstello" src="EXT:ausstello/Resources/Public/JavaScript/ausstello.js" type="module"/>
+<f:asset.css identifier="ausstello" href="EXT:ausstello/Resources/Public/Css/ausstello.css"/>
+<f:asset.css identifier="ausstello-backend">
+.ausstello {
+    --ausstello-text-color: {meta.settings.style.color.textColor};
+    --austello-event-titel-color: {meta.settings.style.color.titleColor};
+    --ausstello-date-color: {meta.settings.style.color.dateColor};
+    --ausstello-location-color: {meta.settings.style.color.locationColor};
+    --ausstello-category-1-color: {meta.settings.style.color.primaryCategoryColor};
+    --ausstello-category-2-color: {meta.settings.style.color.secondaryCategoryColor};
+    --ausstello-highlight-color: {meta.settings.style.color.highlightColor};
+    --ausstello-bg-color-light: {meta.settings.style.color.bgColorLight};
+    --ausstello-bg-color-filter: {meta.settings.style.color.bgFilterColor};
+    --ausstello-bg-color-speaker: {meta.settings.style.color.bgSpeakerColor};
+    --austello-bg-color-sponsor: {meta.settings.style.color.bgSponsorColor};
+    --austello-bg-color-partner: {meta.settings.style.color.bgPartnerColor};
+    --ausstello-notification-color: {meta.settings.style.color.notificationColor};
+    --ausstello-font-size-base: {meta.settings.style.font.fontSize}{meta.settings.style.font.fontUnit};
+    --ausstello-font-size-event-titel-list: {meta.settings.style.font.fontSizeTitleList}{meta.settings.style.font.fontUnit};
+    --ausstello-font-size-event-titel-detail: {meta.settings.style.font.fontSizeTitleDetail}{meta.settings.style.font.fontUnit};
+    --ausstello-border-radius-btn-filter: {meta.settings.style.other.borderRadiusButton};
+    --ausstello-border-radius-teaser-box: {meta.settings.style.other.borderRadiusBoxes};
+    --ausstello-border-radius-image: {meta.settings.style.other.borderRadiusImages};
+    }
+</f:asset.css>
+<div class="ausstello">
+    <f:render section="Main"/>
+</div>
+

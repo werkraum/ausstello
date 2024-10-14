@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:ausstello="http://typo3.org/ns/Werkraum/Ausstello/ViewHelper"
+      data-namespace-typo3-fluid="true"
+>
+<div class="ausstello-form-primary-category">
+    <label for="ausstello-form-primary-category-label">
+        <f:if condition="{meta.settings.publish.customPrimaryCategoryIcon}">
+            <f:then><ausstello:remote.icon icon="{meta.settings.publish.customPrimaryCategoryIcon}" width="25" height="25"/></f:then>
+            <f:else>
+                <f:image src="EXT:ausstello/Resources/Public/Icons/category.svg" width="25" height="25"/>
+            </f:else>
+        </f:if>
+        <f:if condition="{meta.settings.publish.customPrimaryCategoryName}">
+        <f:then>{meta.settings.publish.customPrimaryCategoryName}</f:then>
+        <f:else>Primär Kategorie</f:else>
+    </f:if>
+    </label>
+    <f:form.select id="ausstello-form-primary-category-label" property="primaryCategories" multiple="true" options="{meta.primary_categories}" class="" optionValueField="id" optionLabelField="name" prependOptionLabel="auswählen..."/>
+</div>
+</html>

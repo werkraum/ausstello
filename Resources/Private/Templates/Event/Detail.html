@@ -1,0 +1,186 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:ausstello="http://typo3.org/ns/Werkraum/Ausstello/ViewHelper"
+      data-namespace-typo3-fluid="true"
+>
+<f:layout name="Default"/>
+<f:section name="Main">
+    <div class="ausstello-detail-container d-flex flex-row">
+        <div class="ausstello-detail-column">
+            <a class="ausstello-back" href="{f:uri.action(action: 'list', absolute: '1')}" onclick="window.history.back(); return false;" target="_top">
+                <f:image src="EXT:ausstello/Resources/Public/Icons/arrow_left.svg" width="15" height="15"/> zurück
+            </a>
+        </div>
+        <div class="ausstello-detail-column" style="display: flex;">
+            <a class="ausstello-share"
+               data-title="{event.title -> f:format.htmlentitiesDecode()}"
+               data-text="{event.subTitle -> f:format.htmlentitiesDecode()}"
+               href="{f:uri.page(absolute: '1', addQueryString: '1')}"
+               onclick="window.navigator.share({title: this.dataset.title, text: this.dataset.text, url: this.href}); return false;" target="_top">
+                <f:image src="EXT:ausstello/Resources/Public/Icons/share.svg" width="18" height="23"/>
+            </a>
+        </div>
+    </div>
+    <div class="ausstello-detail-container d-flex flex-column flex-lg-row" style="margin-bottom: 15px;">
+        <div class="ausstello-detail-column">
+            <div class="ausstello-detail-date">
+                <f:format.date format="%d. %B %Y">{event.startDate}</f:format.date>
+            </div>
+            <f:if condition="{event.allDay} == false">
+                <div class="ausstello-detail-time"><f:render partial="Event/Time" arguments="{startTime: event.startTime, endTime: event.endTime, format: 'H:i'}"/></div>
+            </f:if>
+        </div>
+        <div class="ausstello-detail-column d-none d-lg-flex">
+            <div class="ausstello-detail-primary-category">
+                <f:if condition="{event.primaryCategory.0}">
+                    <f:render partial="Event/CategoryIcon"
+                              arguments="{category: '{meta.categories.{event.primaryCategory.0}}'}"/>
+                    <span style="color: {meta.categories.{event.primaryCategory.0}.color}">{meta.categories.{event.primaryCategory.0}.name}</span>
+                </f:if>
+            </div>
+        </div>
+    </div>
+    <div class="ausstello-detail-container d-flex flex-column flex-lg-row">
+        <div class="ausstello-detail-column">
+            <div class="ausstello-detail-title">
+                {event.title -> f:format.htmlentitiesDecode()}
+            </div>
+            <div class="ausstello-detail-subtitle">
+                {event.subTitle -> f:format.htmlentitiesDecode()}
+            </div>
+
+            <div class="ausstello-detail-info-desktop">
+                <div class="ausstello-detail-event-links">
+                    <f:if condition="{event.bookingLink.url}">
+                        <a href="{event.bookingLink.url}" target="{event.bookingLink.target}">
+                            <f:image src="EXT:ausstello/Resources/Public/Icons/ticket.svg" width="18" height="12"/>
+                            Tickets buchen</a>
+                    </f:if>
+                    <f:if condition="{event.externalLink.url}">
+                        <a href="{event.externalLink.url}" target="{event.externalLink.target}">
+                            <f:image src="EXT:ausstello/Resources/Public/Icons/external_link.svg" width="15" height="15"/>
+                            Weitere Informationen</a>
+                    </f:if>
+                </div>
+                <f:if condition="{event.location -> f:count()} > 0">
+                    <div class="ausstello-detail-location-header">Veranstaltungsort:</div>
+                    <div class="ausstello-detail-location-item">
+                        <f:for each="{event.location}" as="l">
+                            <f:render partial="Event/Location" arguments="{location: '{meta.locations.{l}}'}"/>
+                        </f:for>
+                    </div>
+                </f:if>
+            </div>
+        </div>
+        <div class="ausstello-detail-column d-flex d-lg-none">
+            <div class="ausstello-detail-primary-category">
+                <f:if condition="{event.primaryCategory.0}">
+                    <f:render partial="Event/CategoryIcon"
+                              arguments="{category: '{meta.categories.{event.primaryCategory.0}}'}"/>
+                    <span style="color: {meta.categories.{event.primaryCategory.0}.color}">{meta.categories.{event.primaryCategory.0}.name}</span>
+                </f:if>
+            </div>
+        </div>
+        <div class="ausstello-detail-column">
+            <f:if condition="{event.images}">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <f:for as="image" each="{event.images}">
+                            <div class="swiper-slide">
+                                <div class="ausstello-slide-image">
+                                    <ausstello:remote.image
+                                        alt="{image.alternative}"
+                                        loading="lazy"
+                                        width="880"
+                                        src="{image.file.publicUrl}"
+                                    />
+                                </div>
+                                <div class="ausstello-slide-caption">
+                                    {image.description}
+                                </div>
+                            </div>
+                        </f:for>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </f:if>
+        </div>
+        <div class="ausstello-detail-info-mobile">
+            <div class="ausstello-detail-event-links">
+                <f:if condition="{event.bookingLink.url}">
+                    <a href="{event.bookingLink.url}" target="{event.bookingLink.target}">
+                        <f:image src="EXT:ausstello/Resources/Public/Icons/ticket.svg" width="18" height="12"/>
+                        Tickets buchen</a>
+                </f:if>
+                <f:if condition="{event.externalLink.url}">
+                    <a href="{event.externalLink.url}" target="{event.externalLink.target}">
+                        <f:image src="EXT:ausstello/Resources/Public/Icons/external_link.svg" width="15" height="15"/>
+                        Weitere Informationen</a>
+                </f:if>
+            </div>
+            <f:if condition="{event.location}">
+                <div class="ausstello-detail-location-header">Veranstaltungsort:</div>
+                <f:for each="{event.location}" as="l">
+                    <div class="ausstello-detail-location-item">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <f:render partial="Event/Location"
+                                  arguments="{location: '{meta.locations.{l}}'}"/>
+                    </div>
+                </f:for>
+            </f:if>
+        </div>
+    </div>
+    <div class="ausstello-detail-categories">
+        <f:if condition="{event.tags}">
+            <f:for each="{event.tags}" as="t">
+                <f:variable name="tag" value="{meta.tags.{t}}"/>
+                <f:if condition="{tag.displayOnWebsite} !== false"><span
+                    class="ausstello-list-category-item" style="text-decoration: underline">#{tag.name}</span>
+                </f:if>
+            </f:for>
+        </f:if>
+    </div>
+    <div class="ausstello-detail-description">
+        <div>{event.description ->
+            f:format.htmlentitiesDecode()}
+        </div>
+    </div>
+
+    <div class="ausstello-detail-partner-sponsor">
+        <f:if condition="{event.partner} || {event.speaker}">
+            <div class="ausstello-detail-partner">
+                <div class="ausstello-detail-subheader">In Zusammenarbeit mit:</div>
+                <f:for each="{event.partner}" as="p">
+                    <f:render partial="Event/Box" arguments="{item: '{meta.partners.{p}}'}"/>
+                </f:for>
+            </div>
+        </f:if>
+        <f:if condition="{event.sponsor}">
+            <div class="ausstello-detail-sponsor">
+                <div class="ausstello-detail-subheader">Unterstützt durch:</div>
+                <f:for each="{event.sponsor}" as="s">
+                    <f:render partial="Event/Box" arguments="{item: '{meta.sponsors.{s}}'}"/>
+                </f:for>
+            </div>
+        </f:if>
+    </div>
+
+    <div class="ausstello-detail-container d-flex flex-row">
+        <div class="ausstello-detail-column">
+            <a class="ausstello-back" href="{f:uri.action(action: 'list', absolute: '1')}" onclick="window.history.back(); return false;" target="_top">
+                <f:image src="EXT:ausstello/Resources/Public/Icons/arrow_left.svg" width="15" height="15"/> zurück
+            </a>
+        </div>
+        <div class="ausstello-detail-column" style="display: flex;">
+            <a class="ausstello-share"
+               data-title="{event.title -> f:format.htmlentitiesDecode()}"
+               data-text="{event.subTitle -> f:format.htmlentitiesDecode()}"
+               href="{f:uri.page(absolute: '1', addQueryString: '1')}"
+               onclick="window.navigator.share({title: this.dataset.title, text: this.dataset.text, url: this.href}); return false;" target="_top">
+                <f:image src="EXT:ausstello/Resources/Public/Icons/share.svg" width="18" height="23"/>
+            </a>
+        </div>
+    </div>
+</f:section>
+</html>

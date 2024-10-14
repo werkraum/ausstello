@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:ausstello="http://typo3.org/ns/Werkraum/Ausstello/ViewHelper"
+      data-namespace-typo3-fluid="true"
+>
+<f:if condition="{format} == ''"><f:variable name="format">%d.%m.%Y</f:variable></f:if>
+<f:if condition="{startDate}">
+    <f:if condition="{endDate}">
+        <f:then>
+            <f:if condition="{startDate -> f:format.date(format:'dmY')}!={endDate -> f:format.date(format:'dmY')}">
+                <f:then>
+                    <f:if condition="{startDate -> f:format.date(format:'Y')}!={endDate -> f:format.date(format:'Y')}">
+                        <f:then>
+                            <f:format.date format="{format}">{startDate}</f:format.date>-<f:format.date format="{format}">{endDate}</f:format.date>
+                        </f:then>
+                        <f:else if="{startDate -> f:format.date(format:'m')}!={endDate -> f:format.date(format:'m')}">
+                            <f:format.date format="%d.%m">{startDate}</f:format.date>-<f:format.date format="{format}">{endDate}</f:format.date>
+                        </f:else>
+                        <f:else>
+                            <f:format.date format="%d.">{startDate}</f:format.date>-<f:format.date format="{format}">{endDate}</f:format.date>
+                        </f:else>
+                    </f:if>
+                </f:then>
+                <f:else>
+                    <f:format.date format="{format}">{startDate}</f:format.date>
+                </f:else>
+            </f:if>
+        </f:then>
+        <f:else>
+            <f:format.date format="{format}">{startDate}</f:format.date>
+        </f:else>
+    </f:if>
+</f:if>
+
+</html>

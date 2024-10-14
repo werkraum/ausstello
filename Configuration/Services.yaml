@@ -1,0 +1,29 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Werkraum\Ausstello\:
+    resource: '../Classes/*'
+    exclude: '../Classes/Domain/Model/*'
+
+  cache.ausstello_event:
+    class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
+    factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
+    arguments: ['ausstello_event']
+
+  Werkraum\Ausstello\Domain\Service\AusstelloClientInterface: '@Werkraum\Ausstello\Domain\Service\AusstelloClient'
+
+  Werkraum\Ausstello\Domain\Service\AusstelloClient: ~
+
+  Werkraum\Ausstello\Domain\Service\CachedAusstelloClient:
+    decorates: Werkraum\Ausstello\Domain\Service\AusstelloClient
+    arguments:
+      $cache: '@cache.ausstello_event'
+
+  Werkraum\Ausstello\Domain\Repository\EventRepository:
+    public: true
+
+  Werkraum\Ausstello\TCA\EventFilterValueProvider:
+    public: true

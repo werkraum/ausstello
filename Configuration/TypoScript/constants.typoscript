@@ -1,0 +1,17 @@
+plugin.tx_ausstello {
+  settings {
+    # cat=plugin.tx_ausstello; type=int; label=Default Detail Pid
+    detailPid =
+    # cat=plugin.tx_ausstello; type=int; label=Default List Pid
+    listPid =
+  }
+
+  view {
+    # cat=plugin.tx_ausstello; type=string; label=Path to template root (FE)
+    templateRootPath = EXT:ausstello/Resources/Private/Templates/
+    # cat=plugin.tx_ausstello; type=string; label=Path to template partials (FE)
+    partialRootPath = EXT:ausstello/Resources/Private/Partials/
+    # cat=plugin.tx_ausstello; type=string; label=Path to template layouts (FE)
+    layoutRootPath = EXT:ausstello/Resources/Private/Layouts/
+  }
+}

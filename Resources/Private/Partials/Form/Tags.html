@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:ausstello="http://typo3.org/ns/Werkraum/Ausstello/ViewHelper"
+      data-namespace-typo3-fluid="true"
+>
+<div class="ausstello-form-tags">
+    <f:form.select property="tags"
+                   multiple="true"
+                   options="{meta.tags}"
+                   style="display: none"
+                   optionValueField="id"
+                   optionLabelField="name"/>
+    <label for="ausstello-form-tags-label">
+        <span class="ausstello-form-tags-icon">
+            <f:image src="EXT:ausstello/Resources/Public/Icons/tags.svg" width="25" height="25"/></span>
+        Weitere Filter
+    </label>
+    <div id="ausstello-form-tags-label" class="ausstello-form-tags-items">
+        <f:for each="{meta.tags}" as="tag">
+            <f:if condition="{tag.displayOnWebsite} == TRUE">
+                <div class="ausstello-form-tags-item-name" data-id="{tag.id}" data-selected="{ausstello:tagSelected(tag: tag.id, tags: search.tags, then: 1, else: 0)}"> {tag.name}</div>
+            </f:if>
+        </f:for>
+    </div>
+</div>
+</html>

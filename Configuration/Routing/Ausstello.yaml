@@ -1,0 +1,18 @@
+routeEnhancers:
+  Ausstello:
+    type: Extbase
+    extension: Ausstello
+    plugin: Event
+    routes:
+      -
+        routePath: '/suche/'
+        _controller: 'Event::list'
+      -
+        routePath: '/{event_name}'
+        _controller: 'Event::detail'
+        _arguments:
+          event_name: event
+    defaultController: 'Event:list'
+    aspects:
+      event_name:
+        type: StaticEventMapper

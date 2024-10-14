@@ -1,0 +1,39 @@
+<div class="ausstello-form-location">
+    <label for="ausstello-form-location-label">
+        <f:image src="EXT:ausstello/Resources/Public/Icons/location.svg" width="25" height="25"/> Veranstaltungsort
+    </label>
+    <f:form.select property="locations"
+                   id="ausstello-form-location-label"
+                   multiple="true"
+                   class="ausstello-form-location-icon"
+                   prependOptionLabel="Ort wählen..."
+    >
+        <f:groupedFor as="items" groupKey="gk" groupBy="locationArea" each="{meta.locations}">
+
+            <f:for each="{items}" as="location">
+                <f:if condition="{location.locationType} == 'main'">
+                    <f:then></f:then>
+                    <f:else>
+                        <f:variable name="parent">{meta.locations.{gk}}</f:variable>
+                        <f:if condition="{parent.locationType} == 'main'">
+                            <f:form.select.option value="{parent.id}">
+                                <f:if condition="{parent.locationNumber}">
+                                    <f:then>{parent.locationNumber} | {parent.name}</f:then>
+                                    <f:else>{parent.name}</f:else>
+                                </f:if>
+                            </f:form.select.option>
+                        </f:if>
+                        <f:form.select.option value="{location.id}"
+                                              additionalAttributes="{data-area-id: gk, data-area-name: '{meta.locations.{gk}.name}'}">
+                            <f:if condition="{location.locationNumber}">
+                                <f:then>{location.locationNumber} | {location.name}</f:then>
+                                <f:else>{location.name}</f:else>
+                            </f:if>
+                        </f:form.select.option>
+                    </f:else>
+                </f:if>
+
+            </f:for>
+        </f:groupedFor>
+    </f:form.select>
+</div>

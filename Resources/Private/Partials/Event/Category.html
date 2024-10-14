@@ -1,0 +1,11 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:ausstello="http://typo3.org/ns/Werkraum/Ausstello/ViewHelper"
+      data-namespace-typo3-fluid="true"
+>
+<div class="ausstello-category-item" title="{category.description -> f:format.stripTags()}">
+    <span style="color:{category.color}; margin-right: 8px; font-weight: bold">
+    <span>{category.name -> f:format.htmlentitiesDecode()}</span>
+    </span>
+</div>
+</html>

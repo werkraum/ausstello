@@ -1,0 +1,40 @@
+plugin.tx_ausstello {
+  mvc.callDefaultActionIfActionCantBeResolved = 1
+
+  view {
+    templateRootPaths {
+      0 = EXT:ausstello/Resources/Private/Templates/
+      1 = {$plugin.tx_ausstello.view.templateRootPath}
+    }
+
+    partialRootPaths {
+      0 = EXT:ausstello/Resources/Private/Partials/
+      1 = {$plugin.tx_ausstello.view.partialRootPath}
+    }
+
+    layoutRootPaths {
+      0 = EXT:ausstello/Resources/Private/Layouts/
+      1 = {$plugin.tx_ausstello.view.layoutRootPath}
+    }
+  }
+
+  settings {
+    detailPid = {$plugin.tx_ausstello.settings.detailPid}
+    listPid = {$plugin.tx_ausstello.settings.listPid}
+
+    pagination {
+      itemsPerPage = 10
+    }
+  }
+
+}
+
+config.pageTitleProviders {
+  news {
+    provider = Werkraum\Ausstello\Seo\EventTitleProvider
+    before = altPageTitle,record,seo
+  }
+}
+
+page.includeCSS.ausstello = EXT:ausstello/Resources/Public/Css/ausstello.css
+page.includeJSFooter.ausstello = EXT:ausstello/Resources/Public/JavaScript/ausstello.js

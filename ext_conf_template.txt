@@ -1,0 +1,5 @@
+# cat=Auth; type=string; label=Your mein.ausstello.de Backend
+backendUrl =
+
+# cat=Auth; type=string; label=API token
+apiToken =

@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:ausstello="http://typo3.org/ns/Werkraum/Ausstello/ViewHelper"
+      data-namespace-typo3-fluid="true"
+>
+<ausstello:form method="GET" addQueryString="1" action="list" object="{search}" name="search" extensionName="Ausstello" controller="Event" pluginName="Event">
+    <f:if condition="{meta.settings.publish.noQueryFilter} !== true">
+        <div class="ausstello-list-search-input">
+          <span class="ausstello-list-search-input-icon" id="search-icon">
+            <f:image src="EXT:ausstello/Resources/Public/Icons/search.svg" width="16" height="16"/>
+          </span>
+            <f:form.textfield
+                property="query"
+                placeholder="Suche..."
+                class="ausstello-list-search-input-form"
+                aria="{label: 'Search', describedby: 'search-icon'}"
+            />
+            <button class="ausstello-list-search-input-btn" type="submit"><f:image src="EXT:ausstello/Resources/Public/Icons/chevron_right.svg" width="9" height="16"/></button>
+        </div>
+    </f:if>
+    <f:if condition="{displayType} == 'list'">
+        <div class="ausstello-list-row">
+            <f:if condition="{meta.settings.publish.hideDateFiler} !== true">
+                <div class="ausstello-list-col">
+                    <f:render partial="Form/Date" arguments="{_all}"/>
+                </div>
+            </f:if>
+
+            <f:if condition="{meta.settings.publish.noPrimaryCategoryFilter} !== true">
+                <div class="ausstello-list-col">
+                    <f:render partial="Form/PrimaryCategory" arguments="{_all}"/>
+                </div>
+            </f:if>
+            <f:if condition="{meta.settings.publish.noSecondaryCategoryFilter} !== true">
+                <div class="ausstello-list-col">
+                    <f:render partial="Form/SecondaryCategory" arguments="{_all}"/>
+                </div>
+            </f:if>
+            <f:if condition="{meta.settings.publish.noLocationFilter} !== true">
+                <div class="ausstello-list-col">
+                    <f:render partial="Form/Location" arguments="{_all}"/>
+                </div>
+            </f:if>
+        </div>
+        <f:if condition="{meta.settings.publish.noTagsFilter} !== true">
+            <div>
+                <f:render partial="Form/Tags" arguments="{_all}"/>
+            </div>
+        </f:if>
+    </f:if>
+</ausstello:form>
+</html>

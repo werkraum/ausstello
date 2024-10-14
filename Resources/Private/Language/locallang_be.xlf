@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2024-01-01T00:00:00Z" product-name="ausstello">
+		<header/>
+		<body>
+			<trans-unit id="plugin.event.title" xml:space="preserve">
+				<source>ausstello.de - All in one</source>
+			</trans-unit>
+			<trans-unit id="plugin.list.title" xml:space="preserve">
+				<source>ausstello.de - Only List</source>
+			</trans-unit>
+			<trans-unit id="plugin.detail.title" xml:space="preserve">
+				<source>ausstello.de - Only Detail</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

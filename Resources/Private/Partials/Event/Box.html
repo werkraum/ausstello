@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:ausstello="http://typo3.org/ns/Werkraum/Ausstello/ViewHelper"
+      data-namespace-typo3-fluid="true"
+>
+<div class="ausstello-detail-box" title="{item.name -> f:format.stripTags()}">
+    <div class="ausstello-detail-box-content">
+        <div class="ausstello-detail-box-title">
+            {item.name -> f:format.htmlentitiesDecode()}
+        </div>
+        <div class="ausstello-detail-box-links">
+            <f:if condition="{item.link.url}">
+                <a href="{item.link.url}" target="{item.link.target}" class="ausstello-detail-box-link">
+                    <f:image src="EXT:ausstello/Resources/Public/Icons/external_link.svg" width="15" height="15"/> Website
+                </a>
+            </f:if>
+            <f:if condition="{item.facebook}">
+                <a href="{item.facebook}" target="_blank">
+                    <f:image src="EXT:ausstello/Resources/Public/Icons/facebook.svg" width="23" height="22"/>
+                </a>
+            </f:if>
+            <f:if condition="{item.instagram}">
+                <a href="{item.instagram}" target="_blank">
+                    <f:image src="EXT:ausstello/Resources/Public/Icons/instagram.svg" width="23" height="22"/>
+                </a>
+            </f:if>
+            <f:if condition="{item.linkedin}">
+                <a href="{item.linkedin}" target="_blank">
+                    <f:image src="EXT:ausstello/Resources/Public/Icons/linkedin.svg" width="23" height="22"/>
+                </a>
+            </f:if>
+        </div>
+    </div>
+    <f:if condition="{item.images.0.file.publicUrl}">
+        <div class="ausstello-detail-box-image">
+            <ausstello:remote.image
+                alt="{item.images.0.alternative}"
+                loading="lazy"
+                width="142"
+                src="{item.images.0.file.publicUrl}"
+            />
+        </div>
+
+    </f:if>
+
+</div>
+
+</html>
