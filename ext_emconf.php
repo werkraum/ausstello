@@ -9,9 +9,16 @@
  *  of the License, or any later version.
  */
 
+/** @noinspection PhpUndefinedVariableInspection */
 $EM_CONF[$_EXTKEY] = [
     'title' => 'ausstello',
-    'description' => 'TODO',
+    'description' => 'Events managen und kommunizieren, Marketing automatisieren. Einfach, ausstello.',
+    'category' => 'plugin',
+    'version' => '1.0.0',
+    'author' => 'Lukas Niestroj',
+    'author_email' => 'lukas.niestroj@werkraum.net',
+    'author_company' => 'werkraum Digitalmanufaktur GmbH',
+    'state' => 'stable',
     'constraints' => [
         'depends' => [
             'typo3' => '12.4.0-13.4.99',
