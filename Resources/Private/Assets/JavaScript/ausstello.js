@@ -1,19 +1,22 @@
+import Swiper from "swiper";
+import {Pagination} from "swiper/modules";
+import AirDatepicker from "air-datepicker";
+import localeDe from "air-datepicker/locale/de";
+import TomSelect from 'tom-select';
+
 import 'air-datepicker/air-datepicker.css';
 import "tom-select/dist/css/tom-select.bootstrap5.css";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import "../Scss/ausstello.scss"
+import "../Scss/ausstello.scss";
 
-const setupSwiper = async () => {
-  const {default: Swiper} = await import('swiper');
-  const {Pagination} = await import('swiper/modules');
+const setupSwiper = () => {
 
   const swiper = new Swiper('.swiper', {
     modules: [Pagination],
     loop: true,
-
     pagination: {
       el: '.swiper-pagination'
     }
@@ -33,10 +36,7 @@ const setupSwiper = async () => {
   });
 }
 
-const setupDatePicker = async () => {
-  const {default: AirDatepicker} = await import('air-datepicker');
-  const {default: localeDe} = await import('air-datepicker/locale/de');
-
+const setupDatePicker = () => {
   const dateInput = document.querySelector('input[name="tx_ausstello_event[search][startDate]"]');
   if (!dateInput) {
     return;
@@ -61,8 +61,7 @@ const setupDatePicker = async () => {
   });
 }
 
-const setupTomSelect = async () => {
-  const {default: TomSelect} = await import('tom-select');
+const setupTomSelect = () => {
   const location = document.querySelector('select[name="tx_ausstello_event[search][locations][]"]');
   const primaryCategory = document.querySelector('select[name="tx_ausstello_event[search][primaryCategories][]"]');
   const secondaryCategory = document.querySelector('select[name="tx_ausstello_event[search][secondaryCategories][]"]');
@@ -95,7 +94,7 @@ const setupTomSelect = async () => {
 
 }
 
-const setupTags = async () => {
+const setupTags = () => {
   const tagElement = document.querySelector('select[name="tx_ausstello_event[search][tags][]"]');
   const tags = document.querySelectorAll('.ausstello-form-tags-item-name');
   tags.forEach(tag => {
@@ -114,11 +113,11 @@ const setupTags = async () => {
   });
 }
 
-(async () => {
-  await setupDatePicker();
-  await setupTomSelect();
-  await setupTags();
-  await setupSwiper();
+(() => {
+  setupDatePicker();
+  setupTomSelect();
+  setupTags();
+  setupSwiper();
 
   document.querySelectorAll('.ausstello-detail-location-opener')?.forEach(btn => {
     btn.addEventListener('click', (event) => {
