@@ -57,5 +57,8 @@ jobs:
       - name: Install EXT:tailor
         run: composer global require typo3/tailor --prefer-dist --no-progress --no-suggest
 
+      - name: Display Contents
+        run: ls -la ${{ github.workspace }}
+
       - name: Upload EXT:${{ env.EXTENSION_KEY }} as ${{ steps.get_version.outputs.VERSION }} to TER
         run: php ~/.composer/vendor/bin/tailor ter:publish --path="${{ github.workspace }}" --comment="New release of version ${{ steps.get_version.outputs.VERSION }} - see details, changelog and documentation on ${{ env.REPOSITORY_URL }}" ${{ steps.get_version.outputs.VERSION }}
