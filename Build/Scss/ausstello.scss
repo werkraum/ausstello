@@ -522,15 +522,20 @@
                 }
             }
 
-            &-location {
+            &-locations {
                 display: flex;
-                align-items: center;
-                gap: 10px;
+                flex-wrap: wrap;
+                gap: 6px 10px;
+                padding-top: 16px;
                 padding-bottom: 25px;
                 color: var(--ausstello-location-color);
                 font-weight: bold;
                 line-height: 1;
-                padding-top: 16px;
+            }
+            &-location {
+                display: flex;
+                flex-wrap: nowrap;
+                gap: 10px;
             }
 
             &-info {
@@ -929,7 +934,7 @@
         }
 
         &-column {
-            flex: 0 0 50%;
+            flex: 1 0 50%;
             overflow: hidden;
 
             .swiper {

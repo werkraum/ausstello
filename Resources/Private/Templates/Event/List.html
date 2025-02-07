@@ -47,15 +47,15 @@
                         <div class="ausstello-list-teaser-info-text">
                             <div class="ausstello-list-teaser-title">{event.title -> f:format.htmlentitiesDecode()}</div>
                             <div class="ausstello-list-teaser-subtitle">{event.subTitle -> f:format.htmlentitiesDecode()}</div>
-                            <div class="ausstello-list-teaser-location">
-                                <f:for each="{event.location}" as="location">
-                                    <f:image src="EXT:ausstello/Resources/Public/Icons/pin.svg" width="10" height="14"/>
-                                    <f:for each="{event.location}" as="l">
+                            <div class="ausstello-list-teaser-locations">
+                                <f:for each="{event.location}" as="l">
+                                    <div class="ausstello-list-teaser-location">
+                                        <f:image src="EXT:ausstello/Resources/Public/Icons/pin.svg" width="10" height="14"/>
                                         <f:variable name="locationData" value="{meta.locations.{l}}" />
                                         <div title="{locationData.name -> f:format.stripTags()}">
                                             <span>{locationData.name -> f:format.htmlentitiesDecode()}</span>
                                         </div>
-                                    </f:for>
+                                    </div>
                                 </f:for>
                             </div>
                         </div>

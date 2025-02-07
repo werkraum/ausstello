@@ -81,8 +81,8 @@
                 </f:if>
             </div>
         </div>
-        <div class="ausstello-detail-column">
-            <f:if condition="{event.images}">
+        <f:if condition="{event.images.0}">
+            <div class="ausstello-detail-column">
                 <div class="swiper">
                     <div class="swiper-wrapper">
                         <f:for as="image" each="{event.images}">
@@ -103,9 +103,8 @@
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
-
-            </f:if>
-        </div>
+            </div>
+        </f:if>
         <div class="ausstello-detail-info-mobile">
             <div class="ausstello-detail-event-links">
                 <f:if condition="{event.bookingLink.url}">
@@ -131,16 +130,18 @@
             </f:if>
         </div>
     </div>
-    <div class="ausstello-detail-categories">
-        <f:if condition="{event.tags}">
+
+    <f:if condition="{event.tags}">
+        <div class="ausstello-detail-categories">
             <f:for each="{event.tags}" as="t">
                 <f:variable name="tag" value="{meta.tags.{t}}"/>
                 <f:if condition="{tag.displayOnWebsite} !== false"><span
                     class="ausstello-list-category-item" style="text-decoration: underline">#{tag.name}</span>
                 </f:if>
             </f:for>
-        </f:if>
-    </div>
+        </div>
+    </f:if>
+
     <div class="ausstello-detail-description">
         <div>{event.description ->
             f:format.htmlentitiesDecode()}
