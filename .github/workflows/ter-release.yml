@@ -15,11 +15,11 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: 'Resources/Private/Assets/package-lock.json'
+          cache-dependency-path: 'Build/package-lock.json'
       - run: npm install
-        working-directory: Resources/Private/Assets
+        working-directory: Build
       - run: npm run build
-        working-directory: Resources/Private/Assets
+        working-directory: Build
       - name: Upload assets
         uses: actions/upload-artifact@v4
         with:
@@ -46,15 +46,16 @@ jobs:
           name: assets
           path: Resources/Public
 
-      - name: Get the version
-        id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      - name: Get version
+        id: get-version
+        run: echo "version=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
-          extensions: intl, mbstring, xml, soap, zip, curl
+          php-version: 7.4
+          extensions: intl, mbstring, json, zip, curl
+          tools: composer:v2
 
       - name: Install EXT:tailor
         run: composer global require typo3/tailor --prefer-dist --no-progress --no-suggest
@@ -62,5 +63,5 @@ jobs:
       - name: Display Contents
         run: ls -la ${{ github.workspace }}
 
-      - name: Upload EXT:${{ env.EXTENSION_KEY }} as ${{ steps.get_version.outputs.VERSION }} to TER
-        run: php ~/.composer/vendor/bin/tailor ter:publish --path="${{ github.workspace }}" --comment="New release of version ${{ steps.get_version.outputs.VERSION }} - see details, changelog and documentation on ${{ env.REPOSITORY_URL }}" ${{ steps.get_version.outputs.VERSION }}
+      - name: Upload EXT:${{ env.EXTENSION_KEY }} as ${{ env.version }} to TER
+        run: php ~/.composer/vendor/bin/tailor ter:publish --path="${{ github.workspace }}" --comment="New release of version ${{ env.version }} - see details, changelog and documentation on ${{ env.REPOSITORY_URL }}" ${{ env.version }}

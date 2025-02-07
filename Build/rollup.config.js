@@ -20,19 +20,19 @@ export default defineConfig([
       sourcemap: true,
       compact: true,
       format: 'es',
-      dir: path.resolve(__dirname, '../../Public/JavaScript'),
+      dir: path.resolve(__dirname, '../Resources/Public/JavaScript'),
     },
     plugins: [
       resolve(),
       commonjs(),
       babel({ babelHelpers: 'bundled' }),
       scss({
-        output: path.resolve(__dirname, '../../Public/Css/ausstello.css'),
+        output: path.resolve(__dirname, '../Resources/Public/Css/ausstello.css'),
         sourceMap: true,
       }),
       !isProduction && livereload({
         clientUrl: 'http://localhost:35729/livereload.js?snipver=1',
-        watch: '../../Public/**/*',
+        watch: '../Resources/Public/**/*',
       })
     ]
   }
