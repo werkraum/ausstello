@@ -114,8 +114,8 @@ const setupTags = () => {
 }
 
 (() => {
-  setupDatePicker();
   setupTomSelect();
+  setupDatePicker();
   setupTags();
   setupSwiper();
 

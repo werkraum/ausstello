@@ -62,7 +62,13 @@
         margin-left: auto;
     }
 
-    form .ts-wrapper.multi .ts-control {
+    form select {
+        height: 44px;
+        max-width: 100%;
+        width: 100%;
+    }
+    form select,
+    form .ts-wrapper.multi .ts-control, {
         line-height: 1;
         border: 2px solid black;
         padding: 12px 40px 11px 15px!important;
