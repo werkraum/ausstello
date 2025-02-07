@@ -151,6 +151,8 @@ class ImageViewHelper extends AbstractTagBasedViewHelper
         } catch (\InvalidArgumentException $e) {
             // thrown if file storage does not exist
             throw new Exception($this->getExceptionMessage($e->getMessage()), 1509741914, $e);
+        } catch (DownloadFailedException $exception) {
+            return "<!-- download failed $src -->";
         }
         return $this->tag->render();
     }
@@ -178,10 +180,14 @@ class ImageViewHelper extends AbstractTagBasedViewHelper
         $temporaryFileName = $this->getTempFolderPath() . $hashName;
         if (!file_exists($temporaryFileName)) {
             $previewImage = GeneralUtility::getUrl($src);
-            if ($previewImage !== false) {
-                file_put_contents($temporaryFileName, $previewImage);
-                GeneralUtility::fixPermissions($temporaryFileName);
+            if ($previewImage === false) {
+                throw new DownloadFailedException('Could not read url', 1738915099578);
             }
+            $success = file_put_contents($temporaryFileName, $previewImage);
+            if ($success === false) {
+                throw new DownloadFailedException('Could not save image', 1738915129835);
+            }
+            GeneralUtility::fixPermissions($temporaryFileName);
         }
         return $temporaryFileName;
     }
