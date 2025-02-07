@@ -42,7 +42,7 @@ const setupDatePicker = () => {
     return;
   }
 
-  const currentDate = dateInput?.value != "" ? dateInput.value : Date.now();
+  const currentDate = dateInput?.value != "" ? dateInput.value : dateInput.dataset.min ? dateInput.dataset.min : Date.now();
 
   dateInput.parentElement.style.position = 'relative';
 
