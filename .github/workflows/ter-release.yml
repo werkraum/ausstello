@@ -6,25 +6,25 @@ on:
       - '*'
 
 jobs:
-  assets:
-    name: build node dependencies
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: 'Build/package-lock.json'
-      - run: npm install
-        working-directory: Build
-      - run: npm run build
-        working-directory: Build
-      - name: Upload assets
-        uses: actions/upload-artifact@v4
-        with:
-          name: assets
-          path: Resources/Public
+#  assets:
+#    name: build node dependencies
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v4
+#      - uses: actions/setup-node@v4
+#        with:
+#          node-version: '20'
+#          cache: 'npm'
+#          cache-dependency-path: 'Build/package-lock.json'
+#      - run: npm install
+#        working-directory: Build
+#      - run: npm run build
+#        working-directory: Build
+#      - name: Upload assets
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: assets
+#          path: Resources/Public
 
   ter-release:
     name: TER release
@@ -40,11 +40,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download built assets
-        uses: actions/download-artifact@v4
-        with:
-          name: assets
-          path: Resources/Public
+#      - name: Download built assets
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: assets
+#          path: Resources/Public
 
       - name: Get version
         id: get-version
