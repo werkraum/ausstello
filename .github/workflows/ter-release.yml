@@ -28,7 +28,7 @@ jobs:
 
   ter-release:
     name: TER release
-    needs: assets
+#    needs: assets
     runs-on: ubuntu-latest
     env:
       TYPO3_EXTENSION_KEY: 'ausstello'
