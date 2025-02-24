@@ -557,6 +557,14 @@
                     padding: 25px;
                 }
 
+                &.highlight {
+                    border-left: 8px solid var(--ausstello-category-2-color);
+                    padding-left: 11px;
+                    @media screen and (min-width: 992px) {
+                        padding-left: 17px;
+                    }
+                }
+
                 &-date {
                     color: var(--ausstello-date-color);
                     font-size: var(--ausstello-font-size-text-base);

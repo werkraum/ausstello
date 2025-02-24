@@ -30,7 +30,7 @@
                 <f:variable name="prevDate">{date}</f:variable>
                 <f:variable name="eventUrl"><f:uri.action action="detail" controller="Event" extensionName="Ausstello" absolute="1" arguments="{event: event.id}"/></f:variable>
                 <div class="ausstello-list-teaser">
-                    <div class="ausstello-list-teaser-info">
+                    <div class="ausstello-list-teaser-info{f:if(condition: event.isHighlight, then: ' highlight', else: '')}">
                         <f:if condition="{event.primaryCategory.0}">
                             <f:render partial="Event/CategoryIcon" arguments="{category: '{meta.categories.{event.primaryCategory.0}}'}"/>
                         </f:if>
