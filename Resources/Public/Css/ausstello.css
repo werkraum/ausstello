@@ -444,6 +444,7 @@
   flex-direction: column-reverse;
   position: relative;
   z-index: 1;
+  background-color: var(--ausstello-bg-color-light);
 }
 @media screen and (min-width: 992px) {
   .ausstello-list-teaser {
@@ -513,7 +514,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: var(--ausstello-bg-color-light);
   padding: 22px 15px 19px 15px;
 }
 @media screen and (min-width: 992px) {

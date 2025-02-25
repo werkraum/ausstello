@@ -56,7 +56,7 @@ const setupTomSelect = () => {
         },
         render: {
           option: function (data, escape) {
-            console.log(data)
+            // console.log(data)
             if (data.$option.dataset.areaId) {
               return '<div class="option-indent">' + escape(data.text) + '</div>';
             }

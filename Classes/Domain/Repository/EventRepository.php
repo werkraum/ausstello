@@ -47,6 +47,9 @@ class EventRepository
             }
         }
         unset($meta);
+        if (isset($temp['settings']['publish']['placeholderImages'])) {
+            $temp['settings']['publish']['placeholderImages'] = array_values($temp['settings']['publish']['placeholderImages']);
+        }
         return $temp;
     }
 
