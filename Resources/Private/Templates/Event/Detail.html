@@ -157,12 +157,6 @@
         </div>
     </div>
 
-    <f:if condition="{meta.settings.publish.inlineTextDetail}">
-        <div class="ausstello-detail-inline-text">
-            <f:format.html>{meta.settings.publish.inlineTextDetail}</f:format.html>
-        </div>
-    </f:if>
-
     <div class="ausstello-detail-partner-sponsor">
         <f:if condition="{event.partner}">
             <div class="ausstello-detail-partner">
@@ -181,6 +175,12 @@
             </div>
         </f:if>
     </div>
+
+    <f:if condition="{meta.settings.publish.inlineTextDetail}">
+        <div class="ausstello-detail-inline-text">
+            <f:format.html>{meta.settings.publish.inlineTextDetail}</f:format.html>
+        </div>
+    </f:if>
 
     <div class="ausstello-detail-container d-flex flex-row">
         <div class="ausstello-detail-column">
