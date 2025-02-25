@@ -626,6 +626,7 @@
   justify-content: center;
   height: 33px;
   border-radius: 50%;
+  overflow: hidden;
 }
 .ausstello-detail-container:first-of-type {
   margin-bottom: 38px;
@@ -1046,6 +1047,13 @@ input:focus-visible {
   margin: 24px 0;
   font-size: var(--ausstello-font-size-text-large);
   line-height: 24px;
+}
+
+.ausstello-category-image-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .d-flex {

@@ -6,7 +6,17 @@
 <div class="ausstello-category-item" title="{category.description -> f:format.stripTags()}">
     <span style="background-color:{category.color};" class="ausstello-category-item-circle">
         <f:if condition="{category.icon.image}">
-            <ausstello:remote.icon icon="{category.icon}" width="1rem" height="1rem"/>
+            <f:then>
+                <ausstello:remote.icon icon="{category.icon}" width="1rem" height="1rem"/>
+            </f:then>
+            <f:else if="{category.images.0}">
+                <ausstello:remote.image
+                    class="ausstello-category-image-icon"
+                    src="{category.images.0.file.publicUrl}"
+                    alt="{category.images.0.alternative}"
+                    title="{category.images.0.title}"
+                />
+            </f:else>
         </f:if>
     </span>
 
