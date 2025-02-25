@@ -11,6 +11,7 @@
 		"@fontsource/archivo": "^5.1.0",
 		"air-datepicker": "^3.5.3",
 		"photoswipe": "^5.4.4",
+		"photoswipe-dynamic-caption-plugin": "^1.2.7",
 		"swiper": "^11.1.15",
 		"tom-select": "^2.4.0"
 	},

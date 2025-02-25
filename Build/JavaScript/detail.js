@@ -5,9 +5,11 @@ import Swiper from "swiper";
 import {Pagination} from "swiper/modules";
 
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin';
 
 import 'photoswipe/style.css';
 import 'photoswipe/photoswipe.css';
+import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css';
 
 import "../Scss/ausstello.scss";
 
@@ -62,6 +64,11 @@ const setupSwiper = () => {
   };
 
   const lightbox = new PhotoSwipeLightbox(photo_swipe_options);
+
+  const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+    // Plugins options, for example:
+    type: 'below',
+  });
 
   lightbox.init();
 

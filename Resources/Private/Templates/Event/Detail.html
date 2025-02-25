@@ -88,13 +88,14 @@
                     <div class="swiper-wrapper" itemscope itemtype="http://schema.org/ImageGallery">
                         <f:for as="image" each="{event.images}">
                             <div class="swiper-slide" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                                <div class="ausstello-slide-image">
-                                    <a href="{ausstello:remote.uri.image(src: image.file.publicUrl)}"
-                                       data-pswp-width="{image.file.width}"
-                                       data-pswp-height="{image.file.height}"
-                                       itemprop="contentUrl"
-                                       target="_blank"
-                                    >
+                                <a href="{ausstello:remote.uri.image(src: image.file.publicUrl)}"
+                                   data-pswp-width="{image.file.width}"
+                                   data-pswp-height="{image.file.height}"
+                                   itemprop="contentUrl"
+                                   target="_blank"
+                                   style="display: block; text-decoration: none;"
+                                >
+                                    <div class="ausstello-slide-image">
                                         <ausstello:remote.image
                                             alt="{image.alternative}"
                                             loading="lazy"
@@ -102,11 +103,18 @@
                                             src="{image.file.publicUrl}"
                                             additionalAttributes="{itemprop: 'thumbnail'}"
                                         />
-                                    </a>
-                                </div>
-                                <div class="ausstello-slide-caption">
-                                    {image.description}
-                                </div>
+                                        <f:if condition="{image.copyright}">
+                                            <span class="image-copyright">© {image.copyright}</span>
+                                        </f:if>
+                                    </div>
+                                    <div class="ausstello-slide-caption pswp-caption-content">
+                                        {image.description}
+
+                                        <f:if condition="{image.copyright}">
+                                            <span class="image-copyright">© {image.copyright}</span>
+                                        </f:if>
+                                    </div>
+                                </a>
                             </div>
                         </f:for>
                     </div>

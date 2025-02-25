@@ -922,7 +922,9 @@
   object-fit: contain;
 }
 .ausstello-detail-column .swiper .ausstello-slide-caption {
+  margin-top: 7px;
   font-size: var(--ausstello-font-size-text-mini);
+  line-height: 1;
 }
 .ausstello-detail-column .swiper .swiper-pagination {
   bottom: unset;
@@ -1056,6 +1058,47 @@ input:focus-visible {
 .ausstello-list-inline-text,
 .ausstello-detail-inline-text {
   margin: 24px 0;
+}
+
+.ausstello .image-copyright {
+  background-color: rgba(0, 0, 0, 0.14);
+  color: #fafafa;
+  font-size: 12px;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  line-height: 1;
+  padding: 4px 6px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.pswp .image-copyright {
+  position: relative;
+  display: block;
+  font-size: 12px;
+  line-height: 1;
+  margin: 6px 0;
+}
+
+.ausstello-slide-caption {
+  color: var(--ausstello-text-color, #000);
+  text-decoration: none;
+  outline: none;
+  border: none;
+}
+
+*:not(.pswp) .ausstello-slide-caption .image-copyright {
+  display: none;
+}
+
+.ausstello-slide-caption.pswp-caption-content {
+  display: block;
+}
+
+.ausstello-slide-image {
+  position: relative;
 }
 
 .ausstello-category-image-icon {
@@ -3586,5 +3629,55 @@ div.pswp__img--placeholder,
 }
 
 
+.pswp__dynamic-caption {
+  color: #fff;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  transition: opacity 120ms linear !important; /* override default */
+}
+
+.pswp-caption-content {
+  display: none;
+}
+
+.pswp__dynamic-caption a {
+  color: #fff;
+}
+
+.pswp__dynamic-caption--faded {
+  opacity: 0 !important;
+}
+
+.pswp__dynamic-caption--aside {
+  width: auto;
+  max-width: 300px;
+  padding: 20px 15px 20px 20px;
+  margin-top: 70px;
+}
+
+.pswp__dynamic-caption--below {
+  width: auto;
+  max-width: 700px;
+  padding: 15px 0 0;
+}
+
+.pswp__dynamic-caption--on-hor-edge {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.pswp__dynamic-caption--mobile {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 15px;
+  right: 0;
+  bottom: 0;
+  /* override styles that were set via JS.
+    as they interfere with size measurement */
+  top: auto !important;
+  left: 0 !important;
+}
 
 /*# sourceMappingURL=ausstello.css.map */

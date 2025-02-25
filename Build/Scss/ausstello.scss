@@ -1042,7 +1042,9 @@
                 }
 
                 .ausstello-slide-caption {
+                    margin-top: 7px;
                     font-size: var(--ausstello-font-size-text-mini);
+                    line-height: 1;
                 }
 
                 .swiper-pagination {
@@ -1197,6 +1199,49 @@ input:focus-visible {
 .ausstello-list-inline-text,
 .ausstello-detail-inline-text {
     margin: 24px 0;
+}
+
+.ausstello .image-copyright {
+    background-color: rgba(0, 0, 0, 0.14);
+    color: #fafafa;
+    font-size: 12px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    line-height: 1;
+    padding: 4px 6px;
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.pswp .image-copyright {
+    position: relative;
+    display: block;
+
+    font-size: 12px;
+    line-height: 1;
+    margin: 6px 0;
+}
+
+.ausstello-slide-caption {
+    color: var(--ausstello-text-color, #000);
+    text-decoration: none;
+    outline: none;
+    border: none;
+}
+
+*:not(.pswp) .ausstello-slide-caption .image-copyright {
+    display: none;
+}
+
+.ausstello-slide-caption.pswp-caption-content{
+    display: block;
+}
+
+.ausstello-slide-image {
+    position: relative;
 }
 
 .ausstello-category-image-icon {
