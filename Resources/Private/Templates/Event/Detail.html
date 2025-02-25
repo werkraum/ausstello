@@ -5,6 +5,7 @@
 >
 <f:layout name="Default"/>
 <f:section name="Main">
+    <f:asset.script identifier="ausstello" src="EXT:ausstello/Resources/Public/JavaScript/detail.js" type="module"/>
     <div class="ausstello-detail-container d-flex flex-row">
         <div class="ausstello-detail-column">
             <a class="ausstello-back" href="{f:uri.action(action: 'list', absolute: '1')}" onclick="window.history.back(); return false;" target="_top">
@@ -83,17 +84,25 @@
         </div>
         <f:if condition="{event.images.0}">
             <div class="ausstello-detail-column">
-                <div class="swiper">
-                    <div class="swiper-wrapper">
+                <div class="swiper" id="lightbox-gallery">
+                    <div class="swiper-wrapper" itemscope itemtype="http://schema.org/ImageGallery">
                         <f:for as="image" each="{event.images}">
-                            <div class="swiper-slide">
+                            <div class="swiper-slide" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                                 <div class="ausstello-slide-image">
-                                    <ausstello:remote.image
-                                        alt="{image.alternative}"
-                                        loading="lazy"
-                                        width="880"
-                                        src="{image.file.publicUrl}"
-                                    />
+                                    <a href="{ausstello:remote.uri.image(src: image.file.publicUrl)}"
+                                       data-pswp-width="{image.file.width}"
+                                       data-pswp-height="{image.file.height}"
+                                       itemprop="contentUrl"
+                                       target="_blank"
+                                    >
+                                        <ausstello:remote.image
+                                            alt="{image.alternative}"
+                                            loading="lazy"
+                                            width="880"
+                                            src="{image.file.publicUrl}"
+                                            additionalAttributes="{itemprop: 'thumbnail'}"
+                                        />
+                                    </a>
                                 </div>
                                 <div class="ausstello-slide-caption">
                                     {image.description}

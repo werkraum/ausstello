@@ -15,6 +15,7 @@ export default defineConfig([
   {
     input: {
       ausstello: "./JavaScript/ausstello.js",
+      detail: "./JavaScript/detail.js",
     },
     output: {
       sourcemap: true,

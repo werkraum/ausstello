@@ -1,40 +1,15 @@
-import Swiper from "swiper";
-import {Pagination} from "swiper/modules";
 import AirDatepicker from "air-datepicker";
 import localeDe from "air-datepicker/locale/de";
 import TomSelect from 'tom-select';
 
 import 'air-datepicker/air-datepicker.css';
 import "tom-select/dist/css/tom-select.bootstrap5.css";
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import "../Scss/ausstello.scss";
-
-const setupSwiper = () => {
-
-  const swiper = new Swiper('.swiper', {
-    modules: [Pagination],
-    loop: true,
-    pagination: {
-      el: '.swiper-pagination'
-    }
-  });
-
-  swiper.on('slideChange', () => {
-    const activeIndex = swiper.realIndex;
-    const paginationBullets = document.querySelectorAll('.swiper-pagination-bullet');
-
-    paginationBullets.forEach((bullet, index) => {
-      if (index === activeIndex) {
-        bullet.classList.add('swiper-pagination-bullet-active');
-      } else {
-        bullet.classList.remove('swiper-pagination-bullet-active');
-      }
-    });
-  });
-}
 
 const setupDatePicker = () => {
   const dateInput = document.querySelector('input[name="tx_ausstello_event[search][startDate]"]');
@@ -117,12 +92,4 @@ const setupTags = () => {
   setupTomSelect();
   setupDatePicker();
   setupTags();
-  setupSwiper();
-
-  document.querySelectorAll('.ausstello-detail-location-name-wrapper')?.forEach(btn => {
-    btn.addEventListener('click', (event) => {
-      event.preventDefault();
-      btn.closest('.ausstello-detail-location-infos').classList.toggle('show');
-    })
-  })
 })();
