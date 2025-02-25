@@ -1182,6 +1182,12 @@ input:focus-visible {
     }
 }
 
+.ausstello-list-inline-text,
+.ausstello-detail-inline-text {
+    margin: 24px 0;
+    font-size: var(--ausstello-font-size-text-large);
+    line-height: 24px;
+}
 
 .d-flex { display: flex; }
 .flex-row { flex-direction: row; }

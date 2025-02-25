@@ -19,6 +19,11 @@
             <f:comment>no filter</f:comment>
         </f:defaultCase>
     </f:switch>
+    <f:if condition="{meta.settings.publish.inlineTextList}">
+        <div class="ausstello-list-inline-text">
+            <f:format.html>{meta.settings.publish.inlineTextList}</f:format.html>
+        </div>
+    </f:if>
     <div class="ausstello-list">
         <f:if condition="{events.pager.items} !== 0">
             <f:for as="event" each="{events.pager.items}">
