@@ -73,7 +73,6 @@ class SearchDemand extends Search
                 'startDate' => $this->getStartDate(),
                 'query' => $this->getQuery(),
             ],
-            'sorting' => $this->getSorting(),
             'page' => $this->getPage(),
             'itemsPerPage' => $this->getItemsPerPage(),
         ];

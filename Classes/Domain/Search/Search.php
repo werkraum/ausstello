@@ -17,8 +17,6 @@ class Search
 {
 
     protected ?string $query = null;
-    protected ?string $sortBy = null;
-    protected ?string $sortDirection = null;
     protected ?string $startDate = null;
 
     /** @var array|null */
@@ -148,37 +146,6 @@ class Search
     public function setItemsPerPage(?int $itemsPerPage): void
     {
         $this->itemsPerPage = $itemsPerPage;
-    }
-
-    public function getSortBy(): ?string
-    {
-        return $this->sortBy;
-    }
-
-    public function setSortBy(?string $sortBy): Search
-    {
-        $this->sortBy = $sortBy;
-        return $this;
-    }
-
-    public function getSortDirection(): ?string
-    {
-        return strtolower($this->sortDirection) === 'asc' ? 'ASC' : 'DESC';
-    }
-
-    public function setSortDirection(?string $sortDirection): Search
-    {
-        $this->sortDirection = $sortDirection;
-        return $this;
-    }
-
-    public function getSorting(): ?string
-    {
-        if ($this->getSortBy() === null || $this->getSortBy() === '') {
-            return null;
-        }
-
-        return $this->getSortBy() . ' ' . $this->getSortDirection();
     }
 
 }
