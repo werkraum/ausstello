@@ -119,7 +119,7 @@ const setupTags = () => {
   setupTags();
   setupSwiper();
 
-  document.querySelectorAll('.ausstello-detail-location-opener')?.forEach(btn => {
+  document.querySelectorAll('.ausstello-detail-location-name-wrapper')?.forEach(btn => {
     btn.addEventListener('click', (event) => {
       event.preventDefault();
       btn.closest('.ausstello-detail-location-infos').classList.toggle('show');

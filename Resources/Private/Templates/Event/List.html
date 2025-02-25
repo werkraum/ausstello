@@ -20,7 +20,7 @@
         </f:defaultCase>
     </f:switch>
     <div class="ausstello-list">
-        <f:if condition="{events.pager.items}">
+        <f:if condition="{events.pager.items} !== 0">
             <f:for as="event" each="{events.pager.items}">
                 <f:variable name="date">{event.startDate -> f:format.date(format: '%A, %d. %B %Y')}</f:variable>
                 <f:if condition="{date} !== {prevDate}">
@@ -29,8 +29,9 @@
                 </f:if>
                 <f:variable name="prevDate">{date}</f:variable>
                 <f:variable name="eventUrl"><f:uri.action action="detail" controller="Event" extensionName="Ausstello" absolute="1" arguments="{event: event.id}"/></f:variable>
-                <div class="ausstello-list-teaser">
-                    <div class="ausstello-list-teaser-info{f:if(condition: event.isHighlight, then: ' highlight', else: '')}">
+                <div class="ausstello-list-teaser" >
+                    <a href="{eventUrl}" class="ausstello-list-teaser-box-link"></a>
+                    <div class="ausstello-list-teaser-info">
                         <f:if condition="{event.primaryCategory.0}">
                             <f:render partial="Event/CategoryIcon" arguments="{category: '{meta.categories.{event.primaryCategory.0}}'}"/>
                         </f:if>
@@ -107,6 +108,11 @@
                     </div>
                 </div>
             </f:for>
+        </f:if>
+        <f:if condition="{events.pager.items -> f:count()} === 0">
+            <div class="ausstello-list-no-results">
+                <span>Keine Ergebnisse. Ihre Filterung ist zu stark eingeschränkt.</span>
+            </div>
         </f:if>
         <f:render partial="Pagination" arguments="{pagination: events.pager.pagination, search: search}"/>
     </div>
