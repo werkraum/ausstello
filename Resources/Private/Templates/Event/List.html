@@ -34,8 +34,7 @@
                 </f:if>
                 <f:variable name="prevDate">{date}</f:variable>
                 <f:variable name="eventUrl"><f:uri.action action="detail" controller="Event" extensionName="Ausstello" absolute="1" arguments="{event: event.id}"/></f:variable>
-                <div class="ausstello-list-teaser" >
-                    <a href="{eventUrl}" class="ausstello-list-teaser-box-link"></a>
+                <a href="{eventUrl}" class="ausstello-list-teaser" >
                     <div class="ausstello-list-teaser-info">
                         <f:if condition="{event.primaryCategory.0}">
                             <f:render partial="Event/CategoryIcon" arguments="{category: '{meta.categories.{event.primaryCategory.0}}'}"/>
@@ -51,8 +50,8 @@
                             </div>
                         </div>
                         <div class="ausstello-list-teaser-info-text">
-                            <div class="ausstello-list-teaser-title">{event.title -> f:format.htmlentitiesDecode()}</div>
-                            <div class="ausstello-list-teaser-subtitle">{event.subTitle -> f:format.htmlentitiesDecode()}</div>
+                            <h2 class="ausstello-list-teaser-title">{event.title -> f:format.htmlentitiesDecode()}</h2>
+                            <h3 class="ausstello-list-teaser-subtitle">{event.subTitle -> f:format.htmlentitiesDecode()}</h3>
                             <div class="ausstello-list-teaser-locations">
                                 <f:for each="{event.location}" as="l">
                                     <div class="ausstello-list-teaser-location">
@@ -67,9 +66,7 @@
                         </div>
                         <div class="ausstello-list-teaser-detail-info">
                             <div class="ausstello-list-teaser-detail-info-btn">
-                                <a href="{eventUrl}">
-                                    <f:image src="EXT:ausstello/Resources/Public/Icons/arrow_right.svg" width="13" height="10"/> Details
-                                </a>
+                                <f:image src="EXT:ausstello/Resources/Public/Icons/arrow_right.svg" width="13" height="10"/> <span>Details</span>
                             </div>
                             <div class="ausstello-list-teaser-tags">
                                 <f:for each="{event.tags}" as="t">
@@ -111,7 +108,7 @@
                             </f:else>
                         </f:if>
                     </div>
-                </div>
+                </a>
             </f:for>
         </f:if>
         <f:if condition="{events.pager.items -> f:count()} === 0">

@@ -445,6 +445,8 @@
   position: relative;
   z-index: 1;
   background-color: var(--ausstello-bg-color-light);
+  text-decoration: none;
+  color: inherit;
 }
 @media screen and (min-width: 992px) {
   .ausstello-list-teaser {
@@ -454,9 +456,6 @@
 }
 .ausstello-list-teaser:hover {
   filter: brightness(90%);
-}
-.ausstello-list-teaser:hover:has(.ausstello-list-teaser-detail-info-btn:hover) {
-  filter: none;
 }
 .ausstello-list-teaser-datetime {
   display: flex;
@@ -472,20 +471,12 @@
     align-items: flex-start;
   }
 }
-.ausstello-list-teaser-box-link {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  text-decoration: none;
-  background: transparent;
-}
 .ausstello-list-teaser-title {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 6px;
+  margin-top: 0;
+  padding: 0;
   margin-right: 40px;
   text-wrap: balance;
 }
@@ -493,6 +484,11 @@
   .ausstello-list-teaser-title {
     font-size: var(--ausstello-font-size-event-titel-list);
   }
+}
+.ausstello-list-teaser-subtitle {
+  margin: 0;
+  font-weight: normal;
+  font-size: var(--ausstello-font-size-subheading);
 }
 .ausstello-list-teaser-locations {
   display: flex;
@@ -563,18 +559,8 @@
   flex-direction: row;
   flex-wrap: nowrap;
   flex-shrink: 0;
-  align-items: flex-end;
-  z-index: 2;
-}
-@media screen and (max-width: 991px) {
-  .ausstello-list-teaser-detail-info-btn {
-    width: 100%;
-  }
-}
-.ausstello-list-teaser-detail-info-btn :hover {
-  filter: brightness(90%);
-}
-.ausstello-list-teaser-detail-info-btn a {
+  align-items: center;
+  gap: 10px;
   text-decoration: none;
   font-weight: bold;
   background-color: var(--ausstello-highlight-color);
@@ -583,7 +569,7 @@
   color: var(--ausstello-text-color);
 }
 @media screen and (max-width: 991px) {
-  .ausstello-list-teaser-detail-info-btn a {
+  .ausstello-list-teaser-detail-info-btn {
     width: 100%;
   }
 }
@@ -701,6 +687,8 @@
   font-size: var(--ausstello-font-size-event-titel-detail-mobile);
   font-weight: bold;
   margin-bottom: 7px;
+  margin-top: 0;
+  padding: 0;
 }
 @media screen and (min-width: 992px) {
   .ausstello-detail-title {
@@ -712,6 +700,8 @@
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 20px;
+  margin-top: 0;
+  padding: 0;
 }
 @media screen and (min-width: 992px) {
   .ausstello-detail-subtitle {
@@ -746,6 +736,8 @@
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 15px;
+  margin-top: 0;
+  padding: 0;
 }
 .ausstello-detail-location-item {
   display: flex;
@@ -968,6 +960,8 @@
   font-size: var(--ausstello-font-size-subheading);
   font-weight: bold;
   margin-bottom: -6px;
+  margin-top: 0;
+  padding: 0;
 }
 .ausstello-detail-partner, .ausstello-detail-sponsor, .ausstello-detail-speaker {
   display: flex;

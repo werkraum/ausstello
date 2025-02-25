@@ -42,12 +42,12 @@
     </div>
     <div class="ausstello-detail-container d-flex flex-column flex-lg-row">
         <div class="ausstello-detail-column">
-            <div class="ausstello-detail-title">
+            <h1 class="ausstello-detail-title">
                 {event.title -> f:format.htmlentitiesDecode()}
-            </div>
-            <div class="ausstello-detail-subtitle">
+            </h1>
+            <h2 class="ausstello-detail-subtitle">
                 {event.subTitle -> f:format.htmlentitiesDecode()}
-            </div>
+            </h2>
 
             <div class="ausstello-detail-info-desktop">
                 <f:if condition="{event.bookingLink.url} || {event.externalLink.url}">
@@ -65,7 +65,7 @@
                     </div>
                 </f:if>
                 <f:if condition="{event.location -> f:count()} > 0">
-                    <div class="ausstello-detail-location-header">Veranstaltungsort:</div>
+                    <h3 class="ausstello-detail-location-header">Veranstaltungsort:</h3>
                     <div class="ausstello-detail-location-item">
                         <f:for each="{event.location}" as="l">
                             <f:render partial="Event/Location" arguments="{location: '{meta.locations.{l}}'}"/>
@@ -139,7 +139,7 @@
                 </div>
             </f:if>
             <f:if condition="{event.location}">
-                <div class="ausstello-detail-location-header">Veranstaltungsort:</div>
+                <h3 class="ausstello-detail-location-header">Veranstaltungsort:</h3>
                 <f:for each="{event.location}" as="l">
                     <div class="ausstello-detail-location-item">
                         <i class="bi bi-geo-alt-fill"></i>
@@ -171,7 +171,7 @@
         <div class="ausstello-detail-partner-sponsor">
             <f:if condition="{event.partner}">
                 <div class="ausstello-detail-partner">
-                    <div class="ausstello-detail-subheader">In Zusammenarbeit mit:</div>
+                    <h4 class="ausstello-detail-subheader">In Zusammenarbeit mit:</h4>
                     <f:for each="{event.partner}" as="p">
                         <f:render partial="Event/Box" arguments="{item: '{meta.partners.{p}}'}"/>
                     </f:for>
@@ -179,7 +179,7 @@
             </f:if>
             <f:if condition="{event.sponsor}">
                 <div class="ausstello-detail-sponsor">
-                    <div class="ausstello-detail-subheader">Unterstützt durch:</div>
+                    <h4 class="ausstello-detail-subheader">Unterstützt durch:</h4>
                     <f:for each="{event.sponsor}" as="s">
                         <f:render partial="Event/Box" arguments="{item: '{meta.sponsors.{s}}'}"/>
                     </f:for>
