@@ -822,6 +822,9 @@
     grid-template-areas: "head head" "text image" "options options";
   }
 }
+.ausstello-detail-location-infos:has(> :last-child:nth-child(1)) {
+  gap: 0;
+}
 .ausstello-detail-location-infos a {
   color: black;
   font-weight: bold;

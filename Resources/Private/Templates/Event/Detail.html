@@ -6,6 +6,7 @@
 <f:layout name="Default"/>
 <f:section name="Main">
     <f:asset.script identifier="ausstello" src="EXT:ausstello/Resources/Public/JavaScript/detail.js" type="module"/>
+
     <div class="ausstello-detail-container d-flex flex-row">
         <div class="ausstello-detail-column">
             <a class="ausstello-back" href="{f:uri.action(action: 'list', absolute: '1')}" onclick="window.history.back(); return false;" target="_top">
@@ -27,9 +28,7 @@
             <div class="ausstello-detail-date">
                 <f:format.date format="%d. %B %Y">{event.startDate}</f:format.date>
             </div>
-            <f:if condition="{event.allDay} == false">
-                <div class="ausstello-detail-time"><f:render partial="Event/Time" arguments="{startTime: event.startTime, endTime: event.endTime, format: 'H:i'}"/></div>
-            </f:if>
+            <div class="ausstello-detail-time"><f:render partial="Event/Time" arguments="{startTime: event.startTime, endTime: event.endTime, format: 'H:i'}"/></div>
         </div>
         <div class="ausstello-detail-column d-none d-lg-flex">
             <div class="ausstello-detail-primary-category">
@@ -51,18 +50,20 @@
             </div>
 
             <div class="ausstello-detail-info-desktop">
-                <div class="ausstello-detail-event-links">
-                    <f:if condition="{event.bookingLink.url}">
-                        <a href="{event.bookingLink.url}" target="{event.bookingLink.target}">
-                            <f:image src="EXT:ausstello/Resources/Public/Icons/ticket.svg" width="18" height="12"/>
-                            Tickets buchen</a>
-                    </f:if>
-                    <f:if condition="{event.externalLink.url}">
-                        <a href="{event.externalLink.url}" target="{event.externalLink.target}">
-                            <f:image src="EXT:ausstello/Resources/Public/Icons/external_link.svg" width="15" height="15"/>
-                            Weitere Informationen</a>
-                    </f:if>
-                </div>
+                <f:if condition="{event.bookingLink.url} || {event.externalLink.url}">
+                    <div class="ausstello-detail-event-links">
+                        <f:if condition="{event.bookingLink.url}">
+                            <a href="{event.bookingLink.url}" target="{event.bookingLink.target}">
+                                <f:image src="EXT:ausstello/Resources/Public/Icons/ticket.svg" width="18" height="12"/>
+                                Tickets buchen</a>
+                        </f:if>
+                        <f:if condition="{event.externalLink.url}">
+                            <a href="{event.externalLink.url}" target="{event.externalLink.target}">
+                                <f:image src="EXT:ausstello/Resources/Public/Icons/external_link.svg" width="15" height="15"/>
+                                Weitere Informationen</a>
+                        </f:if>
+                    </div>
+                </f:if>
                 <f:if condition="{event.location -> f:count()} > 0">
                     <div class="ausstello-detail-location-header">Veranstaltungsort:</div>
                     <div class="ausstello-detail-location-item">
@@ -123,25 +124,26 @@
             </div>
         </f:if>
         <div class="ausstello-detail-info-mobile">
-            <div class="ausstello-detail-event-links">
-                <f:if condition="{event.bookingLink.url}">
-                    <a href="{event.bookingLink.url}" target="{event.bookingLink.target}">
-                        <f:image src="EXT:ausstello/Resources/Public/Icons/ticket.svg" width="18" height="12"/>
-                        Tickets buchen</a>
-                </f:if>
-                <f:if condition="{event.externalLink.url}">
-                    <a href="{event.externalLink.url}" target="{event.externalLink.target}">
-                        <f:image src="EXT:ausstello/Resources/Public/Icons/external_link.svg" width="15" height="15"/>
-                        Weitere Informationen</a>
-                </f:if>
-            </div>
+            <f:if condition="{event.bookingLink.url} || {event.externalLink.url}">
+                <div class="ausstello-detail-event-links">
+                    <f:if condition="{event.bookingLink.url}">
+                        <a href="{event.bookingLink.url}" target="{event.bookingLink.target}">
+                            <f:image src="EXT:ausstello/Resources/Public/Icons/ticket.svg" width="18" height="12"/>
+                            Tickets buchen</a>
+                    </f:if>
+                    <f:if condition="{event.externalLink.url}">
+                        <a href="{event.externalLink.url}" target="{event.externalLink.target}">
+                            <f:image src="EXT:ausstello/Resources/Public/Icons/external_link.svg" width="15" height="15"/>
+                            Weitere Informationen</a>
+                    </f:if>
+                </div>
+            </f:if>
             <f:if condition="{event.location}">
                 <div class="ausstello-detail-location-header">Veranstaltungsort:</div>
                 <f:for each="{event.location}" as="l">
                     <div class="ausstello-detail-location-item">
                         <i class="bi bi-geo-alt-fill"></i>
-                        <f:render partial="Event/Location"
-                                  arguments="{location: '{meta.locations.{l}}'}"/>
+                        <f:render partial="Event/Location" arguments="{location: '{meta.locations.{l}}'}"/>
                     </div>
                 </f:for>
             </f:if>
@@ -165,24 +167,26 @@
         </div>
     </div>
 
-    <div class="ausstello-detail-partner-sponsor">
-        <f:if condition="{event.partner}">
-            <div class="ausstello-detail-partner">
-                <div class="ausstello-detail-subheader">In Zusammenarbeit mit:</div>
-                <f:for each="{event.partner}" as="p">
-                    <f:render partial="Event/Box" arguments="{item: '{meta.partners.{p}}'}"/>
-                </f:for>
-            </div>
-        </f:if>
-        <f:if condition="{event.sponsor}">
-            <div class="ausstello-detail-sponsor">
-                <div class="ausstello-detail-subheader">Unterstützt durch:</div>
-                <f:for each="{event.sponsor}" as="s">
-                    <f:render partial="Event/Box" arguments="{item: '{meta.sponsors.{s}}'}"/>
-                </f:for>
-            </div>
-        </f:if>
-    </div>
+    <f:if condition="{event.partner} || {event.sponsor}">
+        <div class="ausstello-detail-partner-sponsor">
+            <f:if condition="{event.partner}">
+                <div class="ausstello-detail-partner">
+                    <div class="ausstello-detail-subheader">In Zusammenarbeit mit:</div>
+                    <f:for each="{event.partner}" as="p">
+                        <f:render partial="Event/Box" arguments="{item: '{meta.partners.{p}}'}"/>
+                    </f:for>
+                </div>
+            </f:if>
+            <f:if condition="{event.sponsor}">
+                <div class="ausstello-detail-sponsor">
+                    <div class="ausstello-detail-subheader">Unterstützt durch:</div>
+                    <f:for each="{event.sponsor}" as="s">
+                        <f:render partial="Event/Box" arguments="{item: '{meta.sponsors.{s}}'}"/>
+                    </f:for>
+                </div>
+            </f:if>
+        </div>
+    </f:if>
 
     <f:if condition="{meta.settings.publish.inlineTextDetail}">
         <div class="ausstello-detail-inline-text">

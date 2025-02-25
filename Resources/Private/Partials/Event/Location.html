@@ -21,9 +21,11 @@
             </f:if>
             <span class="ausstello-detail-location-opener"><f:image src="EXT:ausstello/Resources/Public/Icons/chevron_blue.svg" additionalAttributes="{width: 13, height: 21}"/></span>
         </div>
-        <div class="ausstello-detail-location-description">
-            <div>{location.description -> f:format.htmlentitiesDecode()}</div>
-        </div>
+        <f:if condition="{location.description}">
+            <div class="ausstello-detail-location-description">
+                <div>{location.description -> f:format.htmlentitiesDecode()}</div>
+            </div>
+        </f:if>
         <f:if condition="{location.images.0.file.publicUrl}">
             <div class="ausstello-detail-location-image">
                 <ausstello:remote.image
@@ -34,17 +36,19 @@
                 />
             </div>
         </f:if>
-        <div class="ausstello-detail-location-options">
-            <f:if condition="{location.noBarrier}">
-                <div><f:image src="EXT:ausstello/Resources/Public/Icons/checkmark.svg" width="14" height="12"/> Barrierefrei</div>
-            </f:if>
-            <f:if condition="{location.toiletsNearBy}">
-                <div><f:image src="EXT:ausstello/Resources/Public/Icons/checkmark.svg" width="14" height="12"/> WC in der Nähe </div>
-            </f:if>
-            <f:if condition="{location.noBarrierToiletsNearBy}">
-                <div><f:image src="EXT:ausstello/Resources/Public/Icons/checkmark.svg" width="14" height="12"/> Barrierefreie Toilette</div>
-            </f:if>
-        </div>
+        <f:if condition="{location.noBarrier} || {location.toiletsNearBy} || {location.noBarrierToiletsNearBy}">
+            <div class="ausstello-detail-location-options">
+                <f:if condition="{location.noBarrier}">
+                    <div><f:image src="EXT:ausstello/Resources/Public/Icons/checkmark.svg" width="14" height="12"/> Barrierefrei</div>
+                </f:if>
+                <f:if condition="{location.toiletsNearBy}">
+                    <div><f:image src="EXT:ausstello/Resources/Public/Icons/checkmark.svg" width="14" height="12"/> WC in der Nähe </div>
+                </f:if>
+                <f:if condition="{location.noBarrierToiletsNearBy}">
+                    <div><f:image src="EXT:ausstello/Resources/Public/Icons/checkmark.svg" width="14" height="12"/> Barrierefreie Toilette</div>
+                </f:if>
+            </div>
+        </f:if>
     </div>
 
 </div>
