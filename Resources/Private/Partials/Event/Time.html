@@ -5,14 +5,17 @@
 >
 <f:if condition="{format} == ''"><f:variable name="format">H:i</f:variable></f:if>
 <f:if condition="{startTime}">
-    <f:if condition="{endTime}">
-        <f:then>
-            <f:format.date format="{format}">{startTime}</f:format.date> - <f:format.date format="{format}">{endTime}</f:format.date>
-        </f:then>
-        <f:else>
-            <f:format.date format="{format}">{startTime}</f:format.date>
-        </f:else>
-    </f:if> Uhr
+    <f:then>
+        <f:if condition="{endTime}">
+            <f:then>
+                <f:format.date format="{format}">{startTime}</f:format.date> - <f:format.date format="{format}">{endTime}</f:format.date>
+            </f:then>
+            <f:else>
+                <f:format.date format="{format}">{startTime}</f:format.date>
+            </f:else>
+        </f:if> Uhr
+    </f:then>
+    <f:else>ganztägig</f:else>
 </f:if>
 
 </html>
