@@ -5,146 +5,135 @@
     <sheets>
         <main>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>Filter</sheetTitle>
-                </TCEforms>
+                <sheetTitle>Filter</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.templateType>
-                        <TCEforms>
-                            <label>Template Type</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items>
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">Liste</numIndex>
-                                        <numIndex index="1"></numIndex>
-                                    </numIndex>
-                                    <numIndex index="1">
-                                        <numIndex index="0">Teaserblock</numIndex>
-                                        <numIndex index="1">teaser</numIndex>
-                                    </numIndex>
-                                </items>
-                            </config>
-                        </TCEforms>
+                        <label>Template Type</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items>
+                                <numIndex index="0" type="array">
+                                    <numIndex index="0">Liste</numIndex>
+                                    <numIndex index="1"></numIndex>
+                                </numIndex>
+                                <numIndex index="1">
+                                    <numIndex index="0">Teaserblock</numIndex>
+                                    <numIndex index="1">teaser</numIndex>
+                                </numIndex>
+                            </items>
+                        </config>
                     </settings.templateType>
+                    <settings.pagination.itemsPerPage>
+                        <label>Pagination Items per Page</label>
+                        <config>
+                            <type>input</type>
+                            <size>2</size>
+                            <default>50</default>
+                        </config>
+                    </settings.pagination.itemsPerPage>
                     <settings.query.location>
-                        <TCEforms>
-                            <label>Location</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectCheckBox</renderType>
-                                <itemsProcFunc>Werkraum\Ausstello\TCA\EventFilterValueProvider->getLocations</itemsProcFunc>
-                            </config>
-                        </TCEforms>
+                        <label>Location</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectCheckBox</renderType>
+                            <itemsProcFunc>Werkraum\Ausstello\TCA\EventFilterValueProvider->getLocations</itemsProcFunc>
+                        </config>
                     </settings.query.location>
                     <settings.query.locationConjunction>
-                        <TCEforms>
-                            <label>Location Conjunction</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items>
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">or</numIndex>
-                                        <numIndex index="1"></numIndex>
-                                    </numIndex>
-                                    <numIndex index="1">
-                                        <numIndex index="0">and</numIndex>
-                                        <numIndex index="1">and</numIndex>
-                                    </numIndex>
-                                </items>
-                            </config>
-                        </TCEforms>
+                        <label>Location Conjunction</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items>
+                                <numIndex index="0" type="array">
+                                    <numIndex index="0">or</numIndex>
+                                    <numIndex index="1"></numIndex>
+                                </numIndex>
+                                <numIndex index="1">
+                                    <numIndex index="0">and</numIndex>
+                                    <numIndex index="1">and</numIndex>
+                                </numIndex>
+                            </items>
+                        </config>
                     </settings.query.locationConjunction>
                     <settings.query.tag>
-                        <TCEforms>
-                            <label>Tags</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectCheckBox</renderType>
-                                <itemsProcFunc>Werkraum\Ausstello\TCA\EventFilterValueProvider->getTags</itemsProcFunc>
-                            </config>
-                        </TCEforms>
+                        <label>Tags</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectCheckBox</renderType>
+                            <itemsProcFunc>Werkraum\Ausstello\TCA\EventFilterValueProvider->getTags</itemsProcFunc>
+                        </config>
                     </settings.query.tag>
-
                     <settings.query.tagConjunction>
-                        <TCEforms>
-                            <label>Tags Conjunction</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items>
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">or</numIndex>
-                                        <numIndex index="1"></numIndex>
-                                    </numIndex>
-                                    <numIndex index="1">
-                                        <numIndex index="0">and</numIndex>
-                                        <numIndex index="1">and</numIndex>
-                                    </numIndex>
-                                </items>
-                            </config>
-                        </TCEforms>
+                        <label>Tags Conjunction</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items>
+                                <numIndex index="0" type="array">
+                                    <numIndex index="0">or</numIndex>
+                                    <numIndex index="1"></numIndex>
+                                </numIndex>
+                                <numIndex index="1">
+                                    <numIndex index="0">and</numIndex>
+                                    <numIndex index="1">and</numIndex>
+                                </numIndex>
+                            </items>
+                        </config>
                     </settings.query.tagConjunction>
                     <settings.query.primaryCategory>
-                        <TCEforms>
-                            <label>Primary Category</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectCheckBox</renderType>
-                                <itemsProcFunc>Werkraum\Ausstello\TCA\EventFilterValueProvider->getPrimaryCategory</itemsProcFunc>
-                            </config>
-                        </TCEforms>
+                        <label>Primary Category</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectCheckBox</renderType>
+                            <itemsProcFunc>Werkraum\Ausstello\TCA\EventFilterValueProvider->getPrimaryCategory
+                            </itemsProcFunc>
+                        </config>
                     </settings.query.primaryCategory>
                     <settings.query.primaryCategoryConjunction>
-                        <TCEforms>
-                            <label>Primary Category Conjunction</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items>
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">or</numIndex>
-                                        <numIndex index="1"></numIndex>
-                                    </numIndex>
-                                    <numIndex index="1">
-                                        <numIndex index="0">and</numIndex>
-                                        <numIndex index="1">and</numIndex>
-                                    </numIndex>
-                                </items>
-                            </config>
-                        </TCEforms>
+                        <label>Primary Category Conjunction</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items>
+                                <numIndex index="0" type="array">
+                                    <numIndex index="0">or</numIndex>
+                                    <numIndex index="1"></numIndex>
+                                </numIndex>
+                                <numIndex index="1">
+                                    <numIndex index="0">and</numIndex>
+                                    <numIndex index="1">and</numIndex>
+                                </numIndex>
+                            </items>
+                        </config>
                     </settings.query.primaryCategoryConjunction>
                     <settings.query.secondaryCategory>
-                        <TCEforms>
-                            <label>Secondary Category</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectCheckBox</renderType>
-                                <itemsProcFunc>Werkraum\Ausstello\TCA\EventFilterValueProvider->getSecondaryCategory</itemsProcFunc>
-                            </config>
-                        </TCEforms>
+                        <label>Secondary Category</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectCheckBox</renderType>
+                            <itemsProcFunc>Werkraum\Ausstello\TCA\EventFilterValueProvider->getSecondaryCategory
+                            </itemsProcFunc>
+                        </config>
                     </settings.query.secondaryCategory>
                     <settings.query.secondaryCategoryConjunction>
-                        <TCEforms>
-                            <label>Secondary Category Conjunction</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items>
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">or</numIndex>
-                                        <numIndex index="1"></numIndex>
-                                    </numIndex>
-                                    <numIndex index="1">
-                                        <numIndex index="0">and</numIndex>
-                                        <numIndex index="1">and</numIndex>
-                                    </numIndex>
-                                </items>
-                            </config>
-                        </TCEforms>
+                        <label>Secondary Category Conjunction</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items>
+                                <numIndex index="0" type="array">
+                                    <numIndex index="0">or</numIndex>
+                                    <numIndex index="1"></numIndex>
+                                </numIndex>
+                                <numIndex index="1">
+                                    <numIndex index="0">and</numIndex>
+                                    <numIndex index="1">and</numIndex>
+                                </numIndex>
+                            </items>
+                        </config>
                     </settings.query.secondaryCategoryConjunction>
                 </el>
             </ROOT>
