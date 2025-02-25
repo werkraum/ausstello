@@ -1105,6 +1105,12 @@ input:focus-visible {
   object-position: center;
 }
 
+.ausstello-filter-reset {
+  color: inherit;
+  display: block;
+  padding-top: 25px;
+}
+
 .d-flex {
   display: flex;
 }
