@@ -6,7 +6,15 @@
 <div title="{location.name -> f:format.stripTags()}" class="ausstello-detail-location-section">
     <div class="ausstello-detail-location-infos" >
         <div class="ausstello-detail-location-name-wrapper">
-            <span class="ausstello-detail-location-number">{location.locationNumber}</span>
+            <span class="ausstello-detail-location-number">
+                <f:if condition="{location.locationNumber}">
+                    {location.locationNumber}
+                    <f:else>
+                        <f:image src="EXT:ausstello/Resources/Public/Icons/pin_white.svg" width="12" height="17"/>
+                    </f:else>
+                </f:if>
+
+            </span>
             <span class="ausstello-detail-location-name">{location.name -> f:format.htmlentitiesDecode()}</span>
             <f:if condition="{location.link.url}">
                 <span class="ausstello-detail-location-area"> <a href="{location.link.url}" target="{location.link.target}">{location.link.label} <f:image src="EXT:ausstello/Resources/Public/Icons/pin_black.svg" width="12" height="17"/> </a></span>

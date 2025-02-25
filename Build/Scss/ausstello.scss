@@ -16,6 +16,7 @@
     --ausstello-font-size-base: 1rem;
     --ausstello-font-size-event-titel-list: 1.75rem;
     --ausstello-font-size-event-titel-detail: 2.5rem;
+    --ausstello-font-size-event-titel-detail-mobile: 2rem;
     --ausstello-font-size-text-mini: calc(var(--ausstello-font-size-base) * 0.75);
     --ausstello-font-size-text-small: calc(var(--ausstello-font-size-base) * 0.9);
     --ausstello-font-size-text-large: calc(var(--ausstello-font-size-base) * 1.15);
@@ -32,7 +33,6 @@
 
     margin: 0 auto;
     width: 100%;
-    max-width: 1137px;
 
     font-size: var(--ausstello-font-size-base);
     color: var(--ausstello-text-color);
@@ -53,6 +53,10 @@
         padding-bottom: 2px;
         border-bottom: 2px solid black;
         font-size: var(--ausstello-font-size-text-small);
+        &:hover {
+            color: rgb(black, 0.8);
+            border-bottom: 2px rgba(black, 0.8) solid;
+        }
     }
 
     &-share {
@@ -60,6 +64,12 @@
         color: black;
         text-decoration: none;
         margin-left: auto;
+
+        img {
+            &:hover {
+                opacity: 0.8;
+            }
+        }
     }
 
     form select {
@@ -75,6 +85,7 @@
         background-color: var(--ausstello-bg-color-light);
         border-radius: unset !important;
         font-size: var(--ausstello-font-size-text-small);
+        cursor: pointer;
 
         &:hover {
             background-color: var(--ausstello-highlight-color);
@@ -87,6 +98,7 @@
         input {
             margin: 0!important;
             min-width: unset !important;
+            cursor: pointer;
         }
     }
 
@@ -95,11 +107,13 @@
         background-color: var(--ausstello-bg-color-filter);
         border-radius: 0;
 
+
         .option {
             display: flex;
             align-items: center;
             line-height: 1;
             padding: 6px 12px;
+
 
             &:is(.selected, .active) {
                 background-color: var(--ausstello-highlight-color);
@@ -187,7 +201,6 @@
             }
         }
 
-        @media screen and (max-width: 991px){
             // only show previous and next to current number
             &-siblings {
                 &:has(~ * + .ausstello-pagination-current),
@@ -198,7 +211,6 @@
             &-current + * ~ .ausstello-pagination-siblings {
                 display: none;
             }
-        }
 
     }
 
@@ -286,6 +298,8 @@
         flex-direction: column;
         font-weight: bold;
         font-size: var(--ausstello-font-size-text-small);
+        cursor: pointer;
+
 
         .input-group {
             position: relative;
@@ -299,6 +313,7 @@
             width: 48px;
             align-items: center;
             justify-content: center;
+            pointer-events: none;
         }
 
         input {
@@ -308,6 +323,7 @@
             padding: 12px 40px 12px 34px;
             background-color: var(--ausstello-bg-color-light);
             font-size: var(--ausstello-font-size-text-small);
+            cursor: pointer;
 
             &:hover {
                 background-color: var(--ausstello-highlight-color);
@@ -433,6 +449,15 @@
             }
         }
 
+        &-no-results {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            font-size: var(--ausstello-font-size-text-large);
+            text-align: center;
+        }
+
         &-section-date {
             margin-top: 3px;
             line-height: 1;
@@ -459,12 +484,16 @@
                 background-color: var(--ausstello-highlight-color);
             }
 
-            &:hover .ausstello-list-search-input-icon {
-                background-color: var(--ausstello-highlight-color);
-            }
+            //&:hover .ausstello-list-search-input-icon {
+            //    background-color: var(--ausstello-highlight-color);
+            //}
+
 
             &:hover .ausstello-list-search-input-form {
                 background-color: var(--ausstello-highlight-color);
+            }
+            .ausstello-list-search-input-form {
+                font-size: var(--ausstello-font-size-text-small);
             }
 
 
@@ -473,6 +502,7 @@
                 align-items: center;
                 justify-content: center;
                 width: 35px;
+                background-color: #000;
             }
 
             &-form {
@@ -498,9 +528,19 @@
             display: flex;
             flex-direction: column-reverse;
             position: relative;
+            z-index: 1;
             @media screen and (min-width: 992px) {
                 flex-direction: row;
                 min-height: 244px;
+            }
+            &:hover {
+                filter: brightness(90%);
+
+                &:has(.ausstello-list-teaser-detail-info-btn:hover) {
+                    filter: none;
+                }
+
+
             }
 
             &-datetime {
@@ -515,6 +555,17 @@
                     align-items: flex-start;
                 }
 
+            }
+
+            &-box-link {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                text-decoration: none;
+                background: transparent;
             }
 
             &-title {
@@ -589,9 +640,12 @@
 
             &-detail-info {
                 display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
                 flex-direction: row;
                 justify-content: space-between;
                 margin-top: auto;
+
 
                 &-btn {
                     display: flex;
@@ -599,6 +653,15 @@
                     flex-wrap: nowrap;
                     flex-shrink: 0;
                     align-items: flex-end;
+                    z-index: 2;
+                    @media screen and (max-width: 991px) {
+                        width: 100%;
+                    }
+
+                    :hover {
+                        filter: brightness(90%);
+
+                    }
 
                     a {
                         text-decoration: none;
@@ -607,6 +670,9 @@
                         padding: 8px 14px 10px 10px;
                         line-height: 1;
                         color: var(--ausstello-text-color);
+                        @media screen and (max-width: 991px) {
+                            width: 100%;
+                        }
                     }
                 }
             }
@@ -727,11 +793,12 @@
         }
 
         &-title {
-            font-size: var(--ausstello-font-size-event-titel-detail);
+            font-size: var(--ausstello-font-size-event-titel-detail-mobile);
             font-weight: bold;
             margin-bottom: 7px;
             @media screen and (min-width: 992px){
                 margin-bottom: 20px;
+                font-size: var(--ausstello-font-size-event-titel-detail);
             }
         }
 
