@@ -47,24 +47,12 @@
                                 <renderType>selectSingle</renderType>
                                 <items>
                                     <numIndex index="0" type="array">
-                                        <numIndex index="0">all</numIndex>
+                                        <numIndex index="0">or</numIndex>
                                         <numIndex index="1"></numIndex>
                                     </numIndex>
                                     <numIndex index="1">
-                                        <numIndex index="0">or</numIndex>
-                                        <numIndex index="1">or</numIndex>
-                                    </numIndex>
-                                    <numIndex index="2">
                                         <numIndex index="0">and</numIndex>
                                         <numIndex index="1">and</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3">
-                                        <numIndex index="0">notor</numIndex>
-                                        <numIndex index="1">notor</numIndex>
-                                    </numIndex>
-                                    <numIndex index="4">
-                                        <numIndex index="0">notand</numIndex>
-                                        <numIndex index="1">notand</numIndex>
                                     </numIndex>
                                 </items>
                             </config>
@@ -89,24 +77,12 @@
                                 <renderType>selectSingle</renderType>
                                 <items>
                                     <numIndex index="0" type="array">
-                                        <numIndex index="0">all</numIndex>
+                                        <numIndex index="0">or</numIndex>
                                         <numIndex index="1"></numIndex>
                                     </numIndex>
                                     <numIndex index="1">
-                                        <numIndex index="0">or</numIndex>
-                                        <numIndex index="1">or</numIndex>
-                                    </numIndex>
-                                    <numIndex index="2">
                                         <numIndex index="0">and</numIndex>
                                         <numIndex index="1">and</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3">
-                                        <numIndex index="0">notor</numIndex>
-                                        <numIndex index="1">notor</numIndex>
-                                    </numIndex>
-                                    <numIndex index="4">
-                                        <numIndex index="0">notand</numIndex>
-                                        <numIndex index="1">notand</numIndex>
                                     </numIndex>
                                 </items>
                             </config>
@@ -130,24 +106,12 @@
                                 <renderType>selectSingle</renderType>
                                 <items>
                                     <numIndex index="0" type="array">
-                                        <numIndex index="0">all</numIndex>
+                                        <numIndex index="0">or</numIndex>
                                         <numIndex index="1"></numIndex>
                                     </numIndex>
                                     <numIndex index="1">
-                                        <numIndex index="0">or</numIndex>
-                                        <numIndex index="1">or</numIndex>
-                                    </numIndex>
-                                    <numIndex index="2">
                                         <numIndex index="0">and</numIndex>
                                         <numIndex index="1">and</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3">
-                                        <numIndex index="0">notor</numIndex>
-                                        <numIndex index="1">notor</numIndex>
-                                    </numIndex>
-                                    <numIndex index="4">
-                                        <numIndex index="0">notand</numIndex>
-                                        <numIndex index="1">notand</numIndex>
                                     </numIndex>
                                 </items>
                             </config>
@@ -171,24 +135,12 @@
                                 <renderType>selectSingle</renderType>
                                 <items>
                                     <numIndex index="0" type="array">
-                                        <numIndex index="0">all</numIndex>
+                                        <numIndex index="0">or</numIndex>
                                         <numIndex index="1"></numIndex>
                                     </numIndex>
                                     <numIndex index="1">
-                                        <numIndex index="0">or</numIndex>
-                                        <numIndex index="1">or</numIndex>
-                                    </numIndex>
-                                    <numIndex index="2">
                                         <numIndex index="0">and</numIndex>
                                         <numIndex index="1">and</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3">
-                                        <numIndex index="0">notor</numIndex>
-                                        <numIndex index="1">notor</numIndex>
-                                    </numIndex>
-                                    <numIndex index="4">
-                                        <numIndex index="0">notand</numIndex>
-                                        <numIndex index="1">notand</numIndex>
                                     </numIndex>
                                 </items>
                             </config>
