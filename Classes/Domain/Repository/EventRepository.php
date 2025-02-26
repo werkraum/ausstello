@@ -32,7 +32,7 @@ class EventRepository
 
     public function findAllEvents(): array
     {
-        return $this->ausstelloClient->get('event');
+        return $this->ausstelloClient->get('event', ['itemsPerPage' => 9999]);
     }
 
     public function getMetaData(): array

@@ -33,7 +33,7 @@
                     <f:else><!-- {date} --></f:else>
                 </f:if>
                 <f:variable name="prevDate">{date}</f:variable>
-                <f:variable name="eventUrl"><f:uri.action action="detail" controller="Event" extensionName="Ausstello" absolute="1" arguments="{event: event.id}"/></f:variable>
+                <f:variable name="eventUrl"><f:uri.action action="detail" controller="Event" extensionName="Ausstello" absolute="1" arguments="{event: event.id}" addQueryString="false"/></f:variable>
                 <a href="{eventUrl}" class="ausstello-list-teaser" >
                     <div class="ausstello-list-teaser-info{f:if(condition: event.isHighlight, then:' highlight')}">
                         <f:if condition="{event.primaryCategory.0}">
