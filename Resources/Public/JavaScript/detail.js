@@ -6497,7 +6497,7 @@ class PhotoSwipeLightbox extends PhotoSwipeBase {
 }/**
  * PhotoSwipe Dynamic Caption plugin v1.2.7
  * https://github.com/dimsemenov/photoswipe-dynamic-caption-plugin
- * 
+ *
  * By https://dimsemenov.com
  */
 
@@ -6609,7 +6609,7 @@ class PhotoSwipeDynamicCaption {
       slide.dynamicCaption.hidden = true;
       captionElement.classList.add('pswp__dynamic-caption--faded');
 
-      // Disable caption visibility with the delay, so it's not interactable 
+      // Disable caption visibility with the delay, so it's not interactable
       if (slide.captionFadeTimeout) {
         clearTimeout(slide.captionFadeTimeout);
       }
@@ -6752,7 +6752,7 @@ class PhotoSwipeDynamicCaption {
         const verticalEnding = imageHeight + slide.bounds.center.y;
 
         // height between bottom of the screen and ending of the image
-        // (before any adjustments applied) 
+        // (before any adjustments applied)
         const verticalLeftover = slide.panAreaSize.y - verticalEnding;
         const initialPanAreaHeight = slide.panAreaSize.y;
         if (verticalLeftover <= captionHeight) {
