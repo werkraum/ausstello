@@ -41,6 +41,7 @@ class StaticEventMapper implements \TYPO3\CMS\Core\Routing\Aspect\StaticMappable
             GeneralUtility::makeInstance(CacheManager::class)
                 ?->getCache('ausstello_event')
                 ?->flush();
+            self::$cache = null;
             $values = $this->buildValues();
         }
         return $values[$value] ?? null;
@@ -55,6 +56,7 @@ class StaticEventMapper implements \TYPO3\CMS\Core\Routing\Aspect\StaticMappable
             GeneralUtility::makeInstance(CacheManager::class)
                 ?->getCache('ausstello_event')
                 ?->flush();
+            self::$cache = null;
             $values = $this->buildValues();
             $values = array_flip($values);
         }
