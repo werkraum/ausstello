@@ -28,6 +28,10 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['ausstello_
     ??= [];
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['ausstello_event']['frontend']
     ??= VariableFrontend::class;
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['ausstello_event']['groups']
+    ??= ['pages'];
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['ausstello_event']['options']
+    ??= ['defaultLifetime' => 86400];
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['routing']['aspects']['StaticEventMapper']
     = StaticEventMapper::class;

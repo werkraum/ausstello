@@ -1,0 +1,11 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:ausstello="http://typo3.org/ns/Werkraum/Ausstello/ViewHelper"
+      data-namespace-typo3-fluid="true"
+>
+<f:if condition="{meta.settings.publish.inlineTextList}">
+    <div class="ausstello-list-inline-text">
+        <f:format.html>{meta.settings.publish.inlineTextList}</f:format.html>
+    </div>
+</f:if>
+</html>

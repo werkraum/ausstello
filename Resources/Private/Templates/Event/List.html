@@ -5,118 +5,32 @@
 >
 <f:layout name="Default"/>
 <f:section name="Main">
-    <f:switch expression="{displayType}">
-        <f:case value="list">
-            <f:render partial="Event/Form" arguments="{_all}"/>
-        </f:case>
-        <f:case value="listWithQuery">
-            <f:render partial="Event/Form" arguments="{_all}"/>
-        </f:case>
-        <f:case value="teaser">
-            <f:comment>no filter</f:comment>
-        </f:case>
-        <f:defaultCase>
-            <f:comment>no filter</f:comment>
-        </f:defaultCase>
-    </f:switch>
-    <f:if condition="{meta.settings.publish.inlineTextList}">
-        <div class="ausstello-list-inline-text">
-            <f:format.html>{meta.settings.publish.inlineTextList}</f:format.html>
-        </div>
-    </f:if>
-    <div class="ausstello-list">
-        <f:if condition="{events.pager.items} !== 0">
-            <f:for as="event" each="{events.pager.items}">
-                <f:variable name="date">{event.startDate -> f:format.date(format: '%A, %d. %B %Y')}</f:variable>
-                <f:if condition="{date} !== {prevDate}">
-                    <f:then><div class="ausstello-list-section-date">{date}</div></f:then>
-                    <f:else><!-- {date} --></f:else>
-                </f:if>
-                <f:variable name="prevDate">{date}</f:variable>
-                <f:variable name="eventUrl"><f:uri.action action="detail" controller="Event" extensionName="Ausstello" absolute="1" arguments="{event: event.id}" addQueryString="false"/></f:variable>
-                <a href="{eventUrl}" class="ausstello-list-teaser" >
-                    <div class="ausstello-list-teaser-info{f:if(condition: event.isHighlight, then:' highlight')}">
-                        <f:if condition="{event.primaryCategory.0}">
-                            <f:render partial="Event/CategoryIcon" arguments="{category: '{meta.categories.{event.primaryCategory.0}}'}"/>
-                        </f:if>
-                        <div class="ausstello-list-teaser-datetime">
-                            <div class="ausstello-list-datetime-mobile-wrapper">
-                                <div class="ausstello-list-teaser-info-date">
-                                    <f:render partial="Event/Date" arguments="{startDate: event.startDate, endDate: event.endDate, format: ' %d. %B %Y'}"/>
-                                </div>
-                                <div class="ausstello-list-teaser-info-time">
-                                    <f:render partial="Event/Time" arguments="{startTime: event.startTime, endTime: event.endTime, format: 'H:i'}"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ausstello-list-teaser-info-text">
-                            <h2 class="ausstello-list-teaser-title">{event.title -> f:format.htmlentitiesDecode()}</h2>
-                            <h3 class="ausstello-list-teaser-subtitle">{event.subTitle -> f:format.htmlentitiesDecode()}</h3>
-                            <div class="ausstello-list-teaser-locations">
-                                <f:for each="{event.location}" as="l">
-                                    <div class="ausstello-list-teaser-location">
-                                        <f:image src="EXT:ausstello/Resources/Public/Icons/pin.svg" width="10" height="14"/>
-                                        <f:variable name="locationData" value="{meta.locations.{l}}" />
-                                        <div title="{locationData.name -> f:format.stripTags()}">
-                                            <span>{locationData.name -> f:format.htmlentitiesDecode()}</span>
-                                        </div>
-                                    </div>
-                                </f:for>
-                            </div>
-                        </div>
-                        <div class="ausstello-list-teaser-detail-info">
-                            <div class="ausstello-list-teaser-detail-info-btn">
-                                <f:image src="EXT:ausstello/Resources/Public/Icons/arrow_right.svg" width="13" height="10"/> <span>Details</span>
-                            </div>
-                            <div class="ausstello-list-teaser-tags">
-                                <f:for each="{event.tags}" as="t">
-                                    <f:variable name="tag" value="{meta.tags.{t}}"/>
-                                    <f:if condition="{tag.displayOnWebsite} !== false"><span
-                                        class="ausstello-list-category-item" style="text-decoration: underline">#{tag.name}</span>
-                                    </f:if>
-                                </f:for>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ausstello-list-teaser-image">
-                        <f:if condition="{event.images.0.file.publicUrl}">
-                            <f:then>
-                                <ausstello:remote.image
-                                    alt="{event.images.0.alternative}"
-                                    loading="lazy"
-                                    width="880"
-                                    src="{event.images.0.file.publicUrl}"
-                                />
-                            </f:then>
-                            <f:else if="{meta.settings.publish.noPlaceholderImages} == FALSE">
-                                <f:variable name="imageCount" value="{meta.settings.publish.placeholderImages -> f:count()}"/>
-                                <f:if condition="{imageCount} > 0">
-                                    <f:variable name="randomIndex"><ausstello:randomNumber min="0" max="{imageCount - 1}"></ausstello:randomNumber></f:variable>
-                                    <f:if condition="{meta.settings.publish.placeholderImages.{randomIndex}.publicUrl}">
-                                        <ausstello:remote.image
-                                            alt=""
-                                            loading="lazy"
-                                            width="880"
-                                            src="{meta.settings.publish.placeholderImages.{randomIndex}.publicUrl}"
-                                        />
-                                    </f:if>
-                                </f:if>
-
-                            </f:else>
-                            <f:else>
-
-                            </f:else>
-                        </f:if>
-                    </div>
-                </a>
-            </f:for>
-        </f:if>
-        <f:if condition="{events.pager.items -> f:count()} === 0">
-            <div class="ausstello-list-no-results">
-                <span>Keine Ergebnisse. Ihre Filterung ist zu stark eingeschränkt.</span>
+    <f:if condition="{displayType} == 'teaser'">
+        <f:then>
+            <div class="ausstello-teaser">
+                <f:for as="event" each="{events.pager.items}">
+                    <f:render partial="List/ListItem" arguments="{event: event, settings: settings, meta: meta}"/>
+                </f:for>
             </div>
-        </f:if>
-        <f:render partial="Pagination" arguments="{pagination: events.pager.pagination, search: search}"/>
-    </div>
+        </f:then>
+        <f:else>
+            <f:render partial="Event/Form" arguments="{_all}"/>
+            <f:render partial="List/InlineText" arguments="{_all}"/>
+            <div class="ausstello-list">
+                <f:for as="event" each="{events.pager.items}">
+                    <f:variable name="date">{event.startDate -> f:format.date(format: '%A, %d. %B %Y')}</f:variable>
+                    <f:if condition="{date} !== {prevDate}">
+                        <f:then><div class="ausstello-list-section-date">{date}</div></f:then>
+                        <f:else><!-- {date} --></f:else>
+                    </f:if>
+                    <f:variable name="prevDate">{date}</f:variable>
+                    <f:render partial="List/ListItem" arguments="{event: event, settings: settings, meta: meta}"/>
+                </f:for>
+            </div>
+            <f:render partial="Pagination" arguments="{pagination: events.pager.pagination, search: search}"/>
+        </f:else>
+    </f:if>
+
+    <f:render partial="List/NoResults" arguments="{_all}"/>
 </f:section>
 </html>

@@ -44,7 +44,8 @@ class EventController extends ActionController
         $search ??= new Search;
 
         if ($search->getItemsPerPage() === null) {
-            $search->setItemsPerPage((int) ($this->settings['pagination']['itemsPerPage'] ?? 50));
+            $itemsPerPage = (int) ($this->settings['pagination']['itemsPerPage'] ?? 20);
+            $search->setItemsPerPage(max(1, $itemsPerPage));
         }
         if ($search->getPage() === null) {
             $search->setPage((int)($this->request->getQueryParams()['page'] ?? 1));
