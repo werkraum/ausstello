@@ -12,10 +12,14 @@
             </f:else>
         </f:if>
         <f:if condition="{meta.settings.publish.customPrimaryCategoryName}">
-        <f:then>{meta.settings.publish.customPrimaryCategoryName}</f:then>
-        <f:else>Primär Kategorie</f:else>
-    </f:if>
+            <f:then>{meta.settings.publish.customPrimaryCategoryName}</f:then>
+            <f:else>Primär Kategorie</f:else>
+        </f:if>
+        <span class="ausstello-form-primary-category-label-counter counter">3</span>
+        <span class="ausstello-form-primary-category-label-arrow filter-arrow"><f:image src="EXT:ausstello/Resources/Public/Icons/chevron_right.svg"/></span>
     </label>
-    <f:form.select id="ausstello-form-primary-category-label" property="primaryCategories" multiple="true" options="{meta.primary_categories}" class="" optionValueField="id" optionLabelField="name" prependOptionLabel="auswählen..."/>
+    <f:form.select id="ausstello-form-primary-category-label" property="primaryCategories" multiple="true" options="{meta.primary_categories}" class="" optionValueField="id" optionLabelField="name" prependOptionLabel=""/>
+
 </div>
+
 </html>

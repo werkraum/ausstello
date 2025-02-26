@@ -37,6 +37,18 @@
     height: auto;
 }
 
+.filter-arrow {
+    position: absolute;
+    left: 560px;
+    top: 3px;
+}
+
+.counter {
+    position: absolute;
+    left: 520px;
+    top: 3px;
+}
+
 .ausstello {
     hyphens: auto;
     line-height: 1.25;
@@ -91,7 +103,7 @@
     form .ts-wrapper.multi .ts-control, {
         line-height: 1;
         border: 2px solid black;
-        padding: 12px 40px 11px 15px!important;
+        padding: 12px 40px 12px 15px!important;
         background-color: var(--ausstello-bg-color-light);
         border-radius: unset !important;
         font-size: var(--ausstello-font-size-text-small);
@@ -304,6 +316,7 @@
     }
 
     &-form-date {
+        position: relative;
         display: flex;
         flex-direction: column;
         font-weight: bold;
@@ -332,6 +345,7 @@
             border: 2px solid black;
             padding: 12px 40px 12px 34px;
             background-color: var(--ausstello-bg-color-light);
+            color: var(--ausstello-bg-color-light);
             font-size: var(--ausstello-font-size-text-small);
             cursor: pointer;
 
@@ -344,9 +358,15 @@
             right: 15px;
         }
 
+
         label {
+            z-index: 2;
+            top: 8px;
+            left: 10px;
+            position: absolute;
             display: flex;
             align-items: center;
+            pointer-events: none;
             gap: 12px;
             margin-bottom: 15px;
             font-weight: bold;
@@ -356,9 +376,15 @@
 
     &-form-location {
 
+        position: relative;
         label {
+            z-index: 2;
+            top: 8px;
+            left: 10px;
+            position: absolute;
             display: flex;
             align-items: center;
+            pointer-events: none;
             gap: 12px;
             margin-bottom: 15px;
             font-weight: bold;
@@ -368,14 +394,21 @@
     }
 
     &-form-primary-category {
+        position: relative;
         label {
+            z-index: 2;
+            top: 8px;
+            left: 10px;
+            position: absolute;
             display: flex;
             align-items: center;
+            pointer-events: none;
             gap: 12px;
             margin-bottom: 15px;
             font-weight: bold;
             text-transform: uppercase;
         }
+
     }
 
     &-form-secondary-category {

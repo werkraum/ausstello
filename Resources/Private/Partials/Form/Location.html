@@ -1,12 +1,14 @@
 <div class="ausstello-form-location">
     <label for="ausstello-form-location-label">
         <f:image src="EXT:ausstello/Resources/Public/Icons/location.svg" width="25" height="25"/> Veranstaltungsort
+        <span class="ausstello-form-location-label-counter counter">3</span>
+        <span class="ausstello-form-location-label-arrow filter-arrow"><f:image src="EXT:ausstello/Resources/Public/Icons/chevron_right.svg"/></span>
     </label>
     <f:form.select property="locations"
                    id="ausstello-form-location-label"
                    multiple="true"
                    class="ausstello-form-location-icon"
-                   prependOptionLabel="Ort wählen..."
+                   prependOptionLabel=""
     >
         <f:groupedFor as="items" groupKey="gk" groupBy="locationArea" each="{meta.locations}">
 
