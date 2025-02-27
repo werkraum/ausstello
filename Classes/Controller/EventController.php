@@ -43,10 +43,6 @@ class EventController extends ActionController
     {
         $search ??= new Search;
 
-        if ($search->getItemsPerPage() === null) {
-            $itemsPerPage = (int) ($this->settings['pagination']['itemsPerPage'] ?? 20);
-            $search->setItemsPerPage(max(1, $itemsPerPage));
-        }
         if ($search->getPage() === null) {
             $search->setPage((int)($this->request->getQueryParams()['page'] ?? 1));
         }
@@ -160,26 +156,29 @@ class EventController extends ActionController
         $demand->setLocationConjunction($settings['query']['locationConjunction'] ?? "");
         $demand->setPrimaryCategoryConjunction($settings['query']['primaryCategoryConjunction'] ?? "");
         $demand->setSecondaryCategoryConjunction($settings['query']['secondaryCategoryConjunction'] ?? "");
+
+        $demand->setItemsPerPage($settings['pagination']['itemsPerPage'] ?? "");
         return $demand;
     }
 
     private function extendDemandBySearch(SearchDemand $demand, Search $search): SearchDemand
     {
-        $demand->setQuery($search->getQuery());
-        $demand->setStartDate($search->getStartDate());
-        $demand->setPage($search->getPage());
-        $demand->setItemsPerPage($search->getItemsPerPage());
-        if (!empty($search->getTags())) {
-            $demand->setTags($search->getTags());
-        }
-        if (!empty($search->getLocations())) {
-            $demand->setLocations($search->getLocations());
-        }
-        if (!empty($search->getPrimaryCategories())) {
-            $demand->setPrimaryCategories($search->getPrimaryCategories());
-        }
-        if (!empty($search->getSecondaryCategories())) {
-            $demand->setSecondaryCategories($search->getSecondaryCategories());
+        if (($this->settings['disableFrontendFilter'] ?? null) !== '1') {
+            $demand->setPage($search->getPage());
+            $demand->setQuery($search->getQuery());
+            $demand->setStartDate($search->getStartDate());
+            if (!empty($search->getTags())) {
+                $demand->setTags($search->getTags());
+            }
+            if (!empty($search->getLocations())) {
+                $demand->setLocations($search->getLocations());
+            }
+            if (!empty($search->getPrimaryCategories())) {
+                $demand->setPrimaryCategories($search->getPrimaryCategories());
+            }
+            if (!empty($search->getSecondaryCategories())) {
+                $demand->setSecondaryCategories($search->getSecondaryCategories());
+            }
         }
         return $demand;
     }

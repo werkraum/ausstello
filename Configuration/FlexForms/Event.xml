@@ -49,6 +49,13 @@
                             </suggestOptions>
                         </config>
                     </settings.detailPid>
+                    <settings.disableFrontendFilter>
+                        <label>Disable Frontend Filter</label>
+                        <config>
+                            <type>check</type>
+                            <default>0</default>
+                        </config>
+                    </settings.disableFrontendFilter>
                     <settings.query.location>
                         <label>Location</label>
                         <config>
