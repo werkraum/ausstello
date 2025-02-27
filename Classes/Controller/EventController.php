@@ -11,10 +11,12 @@
 
 namespace Werkraum\Ausstello\Controller;
 
+use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Error\Http\PageNotFoundException;
 use TYPO3\CMS\Core\Http\ImmediateResponseException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Http\ForwardResponse;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
 use Werkraum\Ausstello\Domain\Repository\EventRepository;
@@ -67,9 +69,22 @@ class EventController extends ActionController
      */
     public function detailAction(?int $event = null): ResponseInterface
     {
+        if ($this->settings['templateType'] === "teaser") {
+            return new ForwardResponse('list');
+        }
         if ($event === null) {
             $this->eventNotFound();
         }
+        if (empty($GLOBALS['EXT']['ausstello']['alreadyDisplayed'])) {
+            $GLOBALS['EXT']['ausstello']['alreadyDisplayed'] = [];
+        }
+
+        if (array_key_exists($event, $GLOBALS['EXT']['ausstello']['alreadyDisplayed'])) {
+            return new Response(200);
+        }
+
+        $GLOBALS['EXT']['ausstello']['alreadyDisplayed'][$event] = $event;
+
         $data =  $this->eventRepository->findEvent($event);
         if (empty($data)) {
             $this->eventNotFound();
