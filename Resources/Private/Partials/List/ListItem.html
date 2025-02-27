@@ -48,35 +48,39 @@
             </div>
         </div>
     </div>
-    <div class="ausstello-list-teaser-image">
-        <f:if condition="{event.images.0.file.publicUrl}">
-            <f:then>
-                <ausstello:remote.image
-                    alt="{event.images.0.alternative}"
-                    loading="lazy"
-                    width="880"
-                    src="{event.images.0.file.publicUrl}"
-                />
-            </f:then>
-            <f:else if="{meta.settings.publish.noPlaceholderImages} == FALSE">
-                <f:variable name="imageCount" value="{meta.settings.publish.placeholderImages -> f:count()}"/>
-                <f:if condition="{imageCount} > 0">
-                    <f:variable name="randomIndex"><ausstello:randomNumber min="0" max="{imageCount - 1}"></ausstello:randomNumber></f:variable>
-                    <f:if condition="{meta.settings.publish.placeholderImages.{randomIndex}.publicUrl}">
-                        <ausstello:remote.image
-                            alt=""
-                            loading="lazy"
-                            width="880"
-                            src="{meta.settings.publish.placeholderImages.{randomIndex}.publicUrl}"
-                        />
+    <f:alias map="{image: event.images.0}">
+        <div class="ausstello-list-teaser-image">
+            <f:if condition="{image.file.publicUrl}">
+                <f:then>
+                    <ausstello:remote.image
+                        alt="{image.alternative}"
+                        title="{image.title}"
+                        loading="lazy"
+                        width="880"
+                        src="{image.file.publicUrl}"
+                    />
+                    <f:if condition="{image.copyright}">
+                        <span class="image-copyright">© {image.copyright}</span>
                     </f:if>
-                </f:if>
-
-            </f:else>
-            <f:else>
-
-            </f:else>
-        </f:if>
-    </div>
+                </f:then>
+                <f:else if="{meta.settings.publish.noPlaceholderImages} == FALSE">
+                    <f:variable name="imageCount" value="{meta.settings.publish.placeholderImages -> f:count()}"/>
+                    <f:if condition="{imageCount} > 0">
+                        <f:variable name="randomIndex"><ausstello:randomNumber min="0" max="{imageCount - 1}"></ausstello:randomNumber></f:variable>
+                        <f:if condition="{meta.settings.publish.placeholderImages.{randomIndex}.publicUrl}">
+                            <ausstello:remote.image
+                                alt=""
+                                loading="lazy"
+                                width="880"
+                                src="{meta.settings.publish.placeholderImages.{randomIndex}.publicUrl}"
+                            />
+                        </f:if>
+                    </f:if>
+                </f:else>
+                <f:else>
+                </f:else>
+            </f:if>
+        </div>
+    </f:alias>
 </a>
 </html>

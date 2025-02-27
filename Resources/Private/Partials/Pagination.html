@@ -3,7 +3,6 @@
       xmlns:ausstello="http://typo3.org/ns/Werkraum/Ausstello/ViewHelper"
       data-namespace-typo3-fluid="true"
 >
-
 <ul class="ausstello-pagination">
     <f:if condition="{pagination.has_previous_page}">
         <f:then>
@@ -67,7 +66,7 @@
             </f:else>
         </f:if>
     </f:for>
-    <f:if condition="{pagination.has_next_page }">
+    <f:if condition="{pagination.has_next_page}">
         <f:then>
             <li class="ausstello-pagination-active ausstello-pagination-next">
                 <f:link.action action="list" arguments="{search: {

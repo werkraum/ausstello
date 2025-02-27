@@ -85,42 +85,80 @@
         </div>
         <f:if condition="{event.images.0}">
             <div class="ausstello-detail-column">
-                <div class="swiper" id="lightbox-gallery">
-                    <div class="swiper-wrapper" itemscope itemtype="http://schema.org/ImageGallery">
-                        <f:for as="image" each="{event.images}">
-                            <div class="swiper-slide" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                                <a href="{ausstello:remote.uri.image(src: image.file.publicUrl)}"
-                                   data-pswp-width="{image.file.width}"
-                                   data-pswp-height="{image.file.height}"
-                                   itemprop="contentUrl"
-                                   target="_blank"
-                                   style="display: block; text-decoration: none;"
-                                >
-                                    <div class="ausstello-slide-image">
-                                        <ausstello:remote.image
-                                            alt="{image.alternative}"
-                                            loading="lazy"
-                                            width="880"
-                                            src="{image.file.publicUrl}"
-                                            additionalAttributes="{itemprop: 'thumbnail'}"
-                                        />
-                                        <f:if condition="{image.copyright}">
-                                            <span class="image-copyright">© {image.copyright}</span>
-                                        </f:if>
-                                    </div>
-                                    <div class="ausstello-slide-caption pswp-caption-content">
-                                        {image.description}
+                <f:if condition="{event.images -> f:count()} > 1">
+                    <f:then>
+                        <div class="swiper" id="lightbox-gallery">
+                            <div class="swiper-wrapper" itemscope itemtype="http://schema.org/ImageGallery">
+                                <f:for as="image" each="{event.images}">
+                                    <div class="swiper-slide" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                                        <a href="{ausstello:remote.uri.image(src: image.file.publicUrl)}"
+                                           data-pswp-width="{image.file.width}"
+                                           data-pswp-height="{image.file.height}"
+                                           itemprop="contentUrl"
+                                           target="_blank"
+                                           style="display: block; text-decoration: none;"
+                                        >
+                                            <div class="ausstello-slide-image">
+                                                <ausstello:remote.image
+                                                    alt="{image.alternative}"
+                                                    loading="lazy"
+                                                    width="880"
+                                                    src="{image.file.publicUrl}"
+                                                    additionalAttributes="{itemprop: 'thumbnail'}"
+                                                />
+                                                <f:if condition="{image.copyright}">
+                                                    <span class="image-copyright">© {image.copyright}</span>
+                                                </f:if>
+                                            </div>
+                                            <div class="ausstello-slide-caption pswp-caption-content">
+                                                {image.description}
 
-                                        <f:if condition="{image.copyright}">
-                                            <span class="image-copyright">© {image.copyright}</span>
-                                        </f:if>
+                                                <f:if condition="{image.copyright}">
+                                                    <span class="image-copyright">© {image.copyright}</span>
+                                                </f:if>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
+                                </f:for>
                             </div>
-                        </f:for>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </f:then>
+                    <f:else>
+                        <div id="lightbox-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+                            <f:alias map="{image: event.images.0}">
+                                <div itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                                    <a href="{ausstello:remote.uri.image(src: image.file.publicUrl)}"
+                                       data-pswp-width="{image.file.width}"
+                                       data-pswp-height="{image.file.height}"
+                                       itemprop="contentUrl"
+                                       target="_blank"
+                                       style="display: block; text-decoration: none;"
+                                    >
+                                        <div class="ausstello-slide-image">
+                                            <ausstello:remote.image
+                                                alt="{image.alternative}"
+                                                loading="lazy"
+                                                width="880"
+                                                src="{image.file.publicUrl}"
+                                                additionalAttributes="{itemprop: 'thumbnail'}"
+                                            />
+                                            <f:if condition="{image.copyright}">
+                                                <span class="image-copyright">© {image.copyright}</span>
+                                            </f:if>
+                                        </div>
+                                        <div class="ausstello-slide-caption pswp-caption-content">
+                                            {image.description}
+                                            <f:if condition="{image.copyright}">
+                                                <span class="image-copyright">© {image.copyright}</span>
+                                            </f:if>
+                                        </div>
+                                    </a>
+                                </div>
+                            </f:alias>
+                        </div>
+                    </f:else>
+                </f:if>
             </div>
         </f:if>
         <div class="ausstello-detail-info-mobile">
