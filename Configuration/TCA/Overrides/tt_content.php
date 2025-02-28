@@ -44,7 +44,7 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignat
 $pluginSignature = \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'ausstello',
     'List',
-    'LLL:EXT:ausstello/Resources/Private/Language/locallang_be.xlf:plugin.detail.title',
+    'LLL:EXT:ausstello/Resources/Private/Language/locallang_be.xlf:plugin.list.title',
     'ausstello',
     'ausstello'
 );
