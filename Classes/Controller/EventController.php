@@ -69,7 +69,7 @@ class EventController extends ActionController
      */
     public function detailAction(?int $event = null): ResponseInterface
     {
-        if ($this->settings['templateType'] === "teaser") {
+        if (($this->settings['templateType'] ?? '') === "teaser") {
             return new ForwardResponse('list');
         }
         if ($event === null) {
