@@ -1,5 +1,3 @@
-
-(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = "http://localhost:35729/livereload.js?snipver=1"; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
 /**
  * SSR Window 4.0.2
  * Better handling for window object in SSR environment
@@ -6835,7 +6833,7 @@ class PhotoSwipeDynamicCaption {
 }const setupSwiper = () => {
   const photo_swipe_options = {
     gallery: '#lightbox-gallery',
-    pswpModule: () => import('./photoswipe.esm-DcNoHvvq.js'),
+    pswpModule: () => import('./photoswipe.esm-Dcgx9iW-.js'),
     children: 'a',
     initialZoomLevel: 'fit'
   };
