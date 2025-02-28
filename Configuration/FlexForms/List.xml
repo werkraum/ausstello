@@ -1,0 +1,165 @@
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <main>
+            <ROOT>
+                <sheetTitle>Filter</sheetTitle>
+                <type>array</type>
+                <el>
+                    <settings.templateType>
+                        <label>Template Type</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items>
+                                <numIndex index="0" type="array">
+                                    <numIndex index="0">Liste</numIndex>
+                                    <numIndex index="1"></numIndex>
+                                </numIndex>
+                                <numIndex index="1">
+                                    <numIndex index="0">Teaserblock</numIndex>
+                                    <numIndex index="1">teaser</numIndex>
+                                </numIndex>
+                            </items>
+                        </config>
+                    </settings.templateType>
+                    <settings.pagination.itemsPerPage>
+                        <label>Pagination Items per Page</label>
+                        <config>
+                            <type>input</type>
+                            <size>2</size>
+                            <default>50</default>
+                        </config>
+                    </settings.pagination.itemsPerPage>
+                    <settings.detailPid>
+                        <label>Detail PID</label>
+                        <config>
+                            <type>group</type>
+                            <allowed>pages</allowed>
+                            <relationship>manyToOne</relationship>
+                            <size>1</size>
+                            <maxitems>1</maxitems>
+                            <minitems>0</minitems>
+                            <suggestOptions>
+                                <default>
+                                    <addWhere>AND pages.doktype NOT in (6,199,254)</addWhere>
+                                </default>
+                            </suggestOptions>
+                        </config>
+                    </settings.detailPid>
+                    <settings.disableFrontendFilter>
+                        <label>Disable Frontend Filter</label>
+                        <config>
+                            <type>check</type>
+                            <default>0</default>
+                        </config>
+                    </settings.disableFrontendFilter>
+                    <settings.query.location>
+                        <label>Location</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectCheckBox</renderType>
+                            <itemsProcFunc>Werkraum\Ausstello\TCA\EventFilterValueProvider->getLocations</itemsProcFunc>
+                        </config>
+                    </settings.query.location>
+                    <settings.query.locationConjunction>
+                        <label>Location Conjunction</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items>
+                                <numIndex index="0" type="array">
+                                    <numIndex index="0">or</numIndex>
+                                    <numIndex index="1"></numIndex>
+                                </numIndex>
+                                <numIndex index="1">
+                                    <numIndex index="0">and</numIndex>
+                                    <numIndex index="1">and</numIndex>
+                                </numIndex>
+                            </items>
+                        </config>
+                    </settings.query.locationConjunction>
+                    <settings.query.tag>
+                        <label>Tags</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectCheckBox</renderType>
+                            <itemsProcFunc>Werkraum\Ausstello\TCA\EventFilterValueProvider->getTags</itemsProcFunc>
+                        </config>
+                    </settings.query.tag>
+                    <settings.query.tagConjunction>
+                        <label>Tags Conjunction</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items>
+                                <numIndex index="0" type="array">
+                                    <numIndex index="0">or</numIndex>
+                                    <numIndex index="1"></numIndex>
+                                </numIndex>
+                                <numIndex index="1">
+                                    <numIndex index="0">and</numIndex>
+                                    <numIndex index="1">and</numIndex>
+                                </numIndex>
+                            </items>
+                        </config>
+                    </settings.query.tagConjunction>
+                    <settings.query.primaryCategory>
+                        <label>Primary Category</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectCheckBox</renderType>
+                            <itemsProcFunc>Werkraum\Ausstello\TCA\EventFilterValueProvider->getPrimaryCategory
+                            </itemsProcFunc>
+                        </config>
+                    </settings.query.primaryCategory>
+                    <settings.query.primaryCategoryConjunction>
+                        <label>Primary Category Conjunction</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items>
+                                <numIndex index="0" type="array">
+                                    <numIndex index="0">or</numIndex>
+                                    <numIndex index="1"></numIndex>
+                                </numIndex>
+                                <numIndex index="1">
+                                    <numIndex index="0">and</numIndex>
+                                    <numIndex index="1">and</numIndex>
+                                </numIndex>
+                            </items>
+                        </config>
+                    </settings.query.primaryCategoryConjunction>
+                    <settings.query.secondaryCategory>
+                        <label>Secondary Category</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectCheckBox</renderType>
+                            <itemsProcFunc>Werkraum\Ausstello\TCA\EventFilterValueProvider->getSecondaryCategory
+                            </itemsProcFunc>
+                        </config>
+                    </settings.query.secondaryCategory>
+                    <settings.query.secondaryCategoryConjunction>
+                        <label>Secondary Category Conjunction</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items>
+                                <numIndex index="0" type="array">
+                                    <numIndex index="0">or</numIndex>
+                                    <numIndex index="1"></numIndex>
+                                </numIndex>
+                                <numIndex index="1">
+                                    <numIndex index="0">and</numIndex>
+                                    <numIndex index="1">and</numIndex>
+                                </numIndex>
+                            </items>
+                        </config>
+                    </settings.query.secondaryCategoryConjunction>
+                </el>
+            </ROOT>
+        </main>
+    </sheets>
+</T3DataStructure>
