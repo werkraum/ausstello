@@ -40,7 +40,7 @@ class EventRepository
         $meta = $this->ausstelloClient->get('meta');
         $temp = [];
         $temp['settings'] = $meta['settings'];
-        $temp['date'] = $meta['date'];
+        $temp['date'] = $meta['date'] ?? ['timezone' => 'Europe/Berlin'];
         unset($meta['settings'], $meta['date']);
         foreach ($meta as $entryKey => $entry) {
             foreach ($entry as $entity) {
