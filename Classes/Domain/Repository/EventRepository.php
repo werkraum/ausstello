@@ -40,7 +40,8 @@ class EventRepository
         $meta = $this->ausstelloClient->get('meta');
         $temp = [];
         $temp['settings'] = $meta['settings'];
-        unset($meta['settings']);
+        $temp['date'] = $meta['date'];
+        unset($meta['settings'], $meta['date']);
         foreach ($meta as $entryKey => $entry) {
             foreach ($entry as $entity) {
                 $temp[$entryKey][$entity['id']] = $entity;

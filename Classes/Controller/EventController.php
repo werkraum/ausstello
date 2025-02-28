@@ -49,6 +49,9 @@ class EventController extends ActionController
             $search->setPage((int)($this->request->getQueryParams()['page'] ?? 1));
         }
 
+        $meta = $this->eventRepository->getMetaData();
+        $this->setDateTimezone($meta['date']['timezone'] ?? 'Europe/Berlin');
+
         $demand = $this->buildSearchDemandFromSettings($this->settings);
         $demand = $this->extendDemandBySearch($demand, $search);
 
@@ -57,7 +60,7 @@ class EventController extends ActionController
             $events['pager']['pagination']['total_pages'] = array_fill(0, (int) $events['pager']['pagination']['total_pages'], '');
         }
         $this->view->assign('events', $events);
-        $this->view->assign('meta', $this->eventRepository->getMetaData());
+        $this->view->assign('meta', $meta);
         $this->view->assign('search', $search);
         $this->view->assign('displayType', $this->displayType());
         return $this->htmlResponse();
@@ -91,6 +94,7 @@ class EventController extends ActionController
         }
 
         $meta = $this->eventRepository->getMetaData();
+        $this->setDateTimezone($meta['date']['timezone'] ?? 'Europe/Berlin');
         $this->eventTitleProvider->setTitle($data['title']);
         $this->generateJsonSchema($data, $meta);
 
@@ -218,4 +222,11 @@ class EventController extends ActionController
         return 'teaser';
     }
 
+    private function setDateTimezone(string $timezone): void
+    {
+        $system = date_default_timezone_get();
+        if ($system !== $timezone) {
+            date_default_timezone_set($timezone);
+        }
+    }
 }
