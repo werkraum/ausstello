@@ -39,6 +39,8 @@ config.pageTitleProviders {
 page.includeCSS.ausstello = EXT:ausstello/Resources/Public/Css/ausstello.css
 page.includeJSFooter.ausstello = EXT:ausstello/Resources/Public/JavaScript/ausstello.js
 page.includeJSFooter.ausstello.type = module
+page.includeJSFooter.ausstello.excludeFromConcatenation = 1
+page.includeJSFooter.ausstello.disableCompression = 1
 
 [request && traverse(request.getQueryParams(), 'tx_ausstello_event/event') > 0]
   page.includeJSFooter.ausstello = EXT:ausstello/Resources/Public/JavaScript/detail.js
