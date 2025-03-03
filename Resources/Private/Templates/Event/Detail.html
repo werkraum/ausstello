@@ -24,7 +24,7 @@
     <div class="ausstello-detail-container d-flex flex-column flex-lg-row" style="margin-bottom: 15px;">
         <div class="ausstello-detail-column">
             <div class="ausstello-detail-date">
-                <f:format.date format="%d. %B %Y">{event.startDate}</f:format.date>
+                <f:format.date format="%A, %d. %B %Y">{event.startDate}</f:format.date>
             </div>
             <div class="ausstello-detail-time"><f:render partial="Event/Time" arguments="{startTime: event.startTime, endTime: event.endTime, format: 'H:i'}"/></div>
         </div>
