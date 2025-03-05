@@ -37,14 +37,18 @@
 
 .filter-arrow {
   position: absolute;
-  left: 560px;
-  top: 3px;
+  left: 92%;
+  top: 10px;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .counter {
   position: absolute;
-  left: 520px;
-  top: 3px;
+  left: 85%;
+  top: 12px;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .ausstello {
@@ -315,6 +319,9 @@
   font-weight: bold;
   text-transform: uppercase;
 }
+.ausstello-form-date :has(+ .air-datepicker) .ausstello-form-date-label-arrow {
+  transform: rotate(90deg);
+}
 .ausstello-form-location {
   position: relative;
 }
@@ -331,6 +338,9 @@
   font-weight: bold;
   text-transform: uppercase;
 }
+.ausstello-form-location:focus-within .ausstello-form-location-label-arrow {
+  transform: rotate(90deg);
+}
 .ausstello-form-primary-category {
   position: relative;
 }
@@ -346,6 +356,9 @@
   margin-bottom: 15px;
   font-weight: bold;
   text-transform: uppercase;
+}
+.ausstello-form-primary-category:focus-within .ausstello-form-primary-category-label-arrow {
+  transform: rotate(90deg);
 }
 .ausstello-form-secondary-category label {
   margin-bottom: 15px;
@@ -950,7 +963,7 @@
   }
 }
 .ausstello-detail-column {
-  flex: 1 0 50%;
+  flex: 1 0;
   overflow: hidden;
 }
 .ausstello-detail-information {
@@ -1556,57 +1569,6 @@ input:focus-visible {
   }
 }
 /* Slide styles end */
-.pswp__dynamic-caption {
-  color: #fff;
-  position: absolute;
-  width: 100%;
-  left: 0;
-  top: 0;
-  transition: opacity 120ms linear !important; /* override default */
-}
-
-.pswp-caption-content {
-  display: none;
-}
-
-.pswp__dynamic-caption a {
-  color: #fff;
-}
-
-.pswp__dynamic-caption--faded {
-  opacity: 0 !important;
-}
-
-.pswp__dynamic-caption--aside {
-  width: auto;
-  max-width: 300px;
-  padding: 20px 15px 20px 20px;
-  margin-top: 70px;
-}
-
-.pswp__dynamic-caption--below {
-  width: auto;
-  max-width: 700px;
-  padding: 15px 0 0;
-}
-
-.pswp__dynamic-caption--on-hor-edge {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.pswp__dynamic-caption--mobile {
-  width: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 10px 15px;
-  right: 0;
-  bottom: 0;
-  /* override styles that were set via JS.
-    as they interfere with size measurement */
-  top: auto !important;
-  left: 0 !important;
-}
-
 :root {
   /*
   --swiper-pagination-color: var(--swiper-theme-color);

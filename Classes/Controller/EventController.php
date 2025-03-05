@@ -176,7 +176,7 @@ class EventController extends ActionController
         $demand->setPrimaryCategoryConjunction($settings['query']['primaryCategoryConjunction'] ?? "");
         $demand->setSecondaryCategoryConjunction($settings['query']['secondaryCategoryConjunction'] ?? "");
 
-        $demand->setItemsPerPage($settings['pagination']['itemsPerPage'] ?? "");
+        $demand->setItemsPerPage($settings['pagination']['itemsPerPage'] ?? null);
         return $demand;
     }
 
