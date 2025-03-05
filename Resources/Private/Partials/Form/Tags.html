@@ -6,7 +6,7 @@
 <div class="ausstello-form-tags">
     <f:form.select property="tags"
                    multiple="true"
-                   options="{meta.tags}"
+                   options="{meta.filter_tags}"
                    style="display: none"
                    optionValueField="id"
                    optionLabelField="name"/>
@@ -16,10 +16,8 @@
         Weitere Filter
     </label>
     <div id="ausstello-form-tags-label" class="ausstello-form-tags-items">
-        <f:for each="{meta.tags}" as="tag">
-            <f:if condition="{tag.displayOnWebsite} == TRUE">
-                <div class="ausstello-form-tags-item-name" data-id="{tag.id}" data-selected="{ausstello:tagSelected(tag: tag.id, tags: search.tags, then: 1, else: 0)}"> {tag.name}</div>
-            </f:if>
+        <f:for each="{meta.filter_tags}" as="tag">
+            <div class="ausstello-form-tags-item-name" data-id="{tag.id}" data-selected="{ausstello:tagSelected(tag: tag.id, tags: search.tags, then: 1, else: 0)}"> {tag.name}</div>
         </f:for>
     </div>
 </div>

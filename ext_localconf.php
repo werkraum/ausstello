@@ -23,11 +23,27 @@ ExtensionUtility::configurePlugin(
     [EventController::class => 'list,detail'],
     [EventController::class => 'list,detail'],
 );
+ExtensionUtility::configurePlugin(
+    'Ausstello',
+    'Detail',
+    [EventController::class => 'detail'],
+    [EventController::class => 'detail'],
+);
+ExtensionUtility::configurePlugin(
+    'Ausstello',
+    'List',
+    [EventController::class => 'list'],
+    [EventController::class => 'list'],
+);
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['ausstello_event']
     ??= [];
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['ausstello_event']['frontend']
     ??= VariableFrontend::class;
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['ausstello_event']['groups']
+    ??= ['pages'];
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['ausstello_event']['options']
+    ??= ['defaultLifetime' => 86400];
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['routing']['aspects']['StaticEventMapper']
     = StaticEventMapper::class;

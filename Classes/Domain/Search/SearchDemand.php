@@ -17,6 +17,7 @@ class SearchDemand extends Search
     protected ?string $locationConjunction = null;
     protected ?string $primaryCategoryConjunction = null;
     protected ?string $secondaryCategoryConjunction = null;
+    protected ?int $itemsPerPage = null;
 
     public function getTagConjunction(): ?string
     {
@@ -76,6 +77,16 @@ class SearchDemand extends Search
             'page' => $this->getPage(),
             'itemsPerPage' => $this->getItemsPerPage(),
         ];
+    }
+
+    public function getItemsPerPage(): ?int
+    {
+        return $this->itemsPerPage;
+    }
+
+    public function setItemsPerPage(?int $itemsPerPage): void
+    {
+        $this->itemsPerPage = $itemsPerPage;
     }
 
 }

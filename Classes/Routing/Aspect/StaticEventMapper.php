@@ -11,6 +11,7 @@
 
 namespace Werkraum\Ausstello\Routing\Aspect;
 
+use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Werkraum\Ausstello\Domain\Repository\EventRepository;
 
@@ -18,6 +19,8 @@ class StaticEventMapper implements \TYPO3\CMS\Core\Routing\Aspect\StaticMappable
 {
 
     private EventRepository $eventRepository;
+
+    private static $cache = null;
 
     public function count(): int
     {
@@ -34,6 +37,13 @@ class StaticEventMapper implements \TYPO3\CMS\Core\Routing\Aspect\StaticMappable
     public function generate(string $value): ?string
     {
         $values = $this->buildValues();
+        if (!array_key_exists($value, $values)) {
+            GeneralUtility::makeInstance(CacheManager::class)
+                ?->getCache('ausstello_event')
+                ?->flush();
+            self::$cache = null;
+            $values = $this->buildValues();
+        }
         return $values[$value] ?? null;
     }
 
@@ -42,17 +52,29 @@ class StaticEventMapper implements \TYPO3\CMS\Core\Routing\Aspect\StaticMappable
     {
         $values = $this->buildValues();
         $values = array_flip($values);
+        if (!array_key_exists($value, $values)) {
+            GeneralUtility::makeInstance(CacheManager::class)
+                ?->getCache('ausstello_event')
+                ?->flush();
+            self::$cache = null;
+            $values = $this->buildValues();
+            $values = array_flip($values);
+        }
         return $values[$value] ?? null;
     }
 
     private function buildValues(): array
     {
-        $events = $this->eventRepository->findAllEvents();
-        $values = [];
-        foreach ($events['pager']['items'] as $event) {
-            $values[$event['id']] = $event['slug'];
+        if (self::$cache === null) {
+            $events = $this->eventRepository->findAllEvents();
+            $values = [];
+            foreach ($events['pager']['items'] as $event) {
+                $values[$event['id']] = $event['slug'];
+            }
+            self::$cache = $values;
         }
-        return $values;
+
+        return self::$cache;
     }
 
 }

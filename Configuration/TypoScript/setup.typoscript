@@ -29,6 +29,10 @@ plugin.tx_ausstello {
 
 }
 
+plugin.tx_ausstello_event.view.pluginNamespace = tx_ausstello_event
+plugin.tx_ausstello_detail.view.pluginNamespace = tx_ausstello_event
+plugin.tx_ausstello_list.view.pluginNamespace = tx_ausstello_event
+
 config.pageTitleProviders {
   news {
     provider = Werkraum\Ausstello\Seo\EventTitleProvider
@@ -39,6 +43,8 @@ config.pageTitleProviders {
 page.includeCSS.ausstello = EXT:ausstello/Resources/Public/Css/ausstello.css
 page.includeJSFooter.ausstello = EXT:ausstello/Resources/Public/JavaScript/ausstello.js
 page.includeJSFooter.ausstello.type = module
+page.includeJSFooter.ausstello.excludeFromConcatenation = 1
+page.includeJSFooter.ausstello.disableCompression = 1
 
 [request && traverse(request.getQueryParams(), 'tx_ausstello_event/event') > 0]
   page.includeJSFooter.ausstello = EXT:ausstello/Resources/Public/JavaScript/detail.js

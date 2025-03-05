@@ -11,10 +11,12 @@
 
 namespace Werkraum\Ausstello\Controller;
 
+use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Error\Http\PageNotFoundException;
 use TYPO3\CMS\Core\Http\ImmediateResponseException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Http\ForwardResponse;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
 use Werkraum\Ausstello\Domain\Repository\EventRepository;
@@ -43,12 +45,12 @@ class EventController extends ActionController
     {
         $search ??= new Search;
 
-        if ($search->getItemsPerPage() === null) {
-            $search->setItemsPerPage((int) ($this->settings['pagination']['itemsPerPage'] ?? 50));
-        }
         if ($search->getPage() === null) {
             $search->setPage((int)($this->request->getQueryParams()['page'] ?? 1));
         }
+
+        $meta = $this->eventRepository->getMetaData();
+        $this->setDateTimezone($meta['date']['timezone'] ?? 'Europe/Berlin');
 
         $demand = $this->buildSearchDemandFromSettings($this->settings);
         $demand = $this->extendDemandBySearch($demand, $search);
@@ -58,7 +60,7 @@ class EventController extends ActionController
             $events['pager']['pagination']['total_pages'] = array_fill(0, (int) $events['pager']['pagination']['total_pages'], '');
         }
         $this->view->assign('events', $events);
-        $this->view->assign('meta', $this->eventRepository->getMetaData());
+        $this->view->assign('meta', $meta);
         $this->view->assign('search', $search);
         $this->view->assign('displayType', $this->displayType());
         return $this->htmlResponse();
@@ -70,15 +72,29 @@ class EventController extends ActionController
      */
     public function detailAction(?int $event = null): ResponseInterface
     {
+        if (($this->settings['templateType'] ?? '') === "teaser") {
+            return new ForwardResponse('list');
+        }
         if ($event === null) {
             $this->eventNotFound();
         }
+        if (empty($GLOBALS['EXT']['ausstello']['alreadyDisplayed'])) {
+            $GLOBALS['EXT']['ausstello']['alreadyDisplayed'] = [];
+        }
+
+        if (array_key_exists($event, $GLOBALS['EXT']['ausstello']['alreadyDisplayed'])) {
+            return new Response(200);
+        }
+
+        $GLOBALS['EXT']['ausstello']['alreadyDisplayed'][$event] = $event;
+
         $data =  $this->eventRepository->findEvent($event);
         if (empty($data)) {
             $this->eventNotFound();
         }
 
         $meta = $this->eventRepository->getMetaData();
+        $this->setDateTimezone($meta['date']['timezone'] ?? 'Europe/Berlin');
         $this->eventTitleProvider->setTitle($data['title']);
         $this->generateJsonSchema($data, $meta);
 
@@ -159,26 +175,29 @@ class EventController extends ActionController
         $demand->setLocationConjunction($settings['query']['locationConjunction'] ?? "");
         $demand->setPrimaryCategoryConjunction($settings['query']['primaryCategoryConjunction'] ?? "");
         $demand->setSecondaryCategoryConjunction($settings['query']['secondaryCategoryConjunction'] ?? "");
+
+        $demand->setItemsPerPage($settings['pagination']['itemsPerPage'] ?? "");
         return $demand;
     }
 
     private function extendDemandBySearch(SearchDemand $demand, Search $search): SearchDemand
     {
-        $demand->setQuery($search->getQuery());
-        $demand->setStartDate($search->getStartDate());
-        $demand->setPage($search->getPage());
-        $demand->setItemsPerPage($search->getItemsPerPage());
-        if (!empty($search->getTags())) {
-            $demand->setTags($search->getTags());
-        }
-        if (!empty($search->getLocations())) {
-            $demand->setLocations($search->getLocations());
-        }
-        if (!empty($search->getPrimaryCategories())) {
-            $demand->setPrimaryCategories($search->getPrimaryCategories());
-        }
-        if (!empty($search->getSecondaryCategories())) {
-            $demand->setSecondaryCategories($search->getSecondaryCategories());
+        if (($this->settings['disableFrontendFilter'] ?? null) !== '1') {
+            $demand->setPage($search->getPage());
+            $demand->setQuery($search->getQuery());
+            $demand->setStartDate($search->getStartDate());
+            if (!empty($search->getTags())) {
+                $demand->setTags($search->getTags());
+            }
+            if (!empty($search->getLocations())) {
+                $demand->setLocations($search->getLocations());
+            }
+            if (!empty($search->getPrimaryCategories())) {
+                $demand->setPrimaryCategories($search->getPrimaryCategories());
+            }
+            if (!empty($search->getSecondaryCategories())) {
+                $demand->setSecondaryCategories($search->getSecondaryCategories());
+            }
         }
         return $demand;
     }
@@ -203,4 +222,11 @@ class EventController extends ActionController
         return 'teaser';
     }
 
+    private function setDateTimezone(string $timezone): void
+    {
+        $system = date_default_timezone_get();
+        if ($system !== $timezone) {
+            date_default_timezone_set($timezone);
+        }
+    }
 }

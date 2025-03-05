@@ -29,7 +29,6 @@ class Search
     protected ?array $tags = null;
 
     protected ?int $page = null;
-    protected ?int $itemsPerPage = null;
 
     public function getQuery(): ?string
     {
@@ -136,16 +135,6 @@ class Search
     public function setPage(?int $page): void
     {
         $this->page = $page;
-    }
-
-    public function getItemsPerPage(): ?int
-    {
-        return $this->itemsPerPage;
-    }
-
-    public function setItemsPerPage(?int $itemsPerPage): void
-    {
-        $this->itemsPerPage = $itemsPerPage;
     }
 
 }

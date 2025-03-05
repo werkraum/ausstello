@@ -1,0 +1,47 @@
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <main>
+            <ROOT>
+                <sheetTitle>Filter</sheetTitle>
+                <type>array</type>
+                <el>
+                    <settings.detailPid>
+                        <label>Detail PID</label>
+                        <config>
+                            <type>group</type>
+                            <allowed>pages</allowed>
+                            <relationship>manyToOne</relationship>
+                            <size>1</size>
+                            <maxitems>1</maxitems>
+                            <minitems>0</minitems>
+                            <suggestOptions>
+                                <default>
+                                    <addWhere>AND pages.doktype NOT in (6,199,254)</addWhere>
+                                </default>
+                            </suggestOptions>
+                        </config>
+                    </settings.detailPid>
+                    <settings.listPid>
+                        <label>List PID</label>
+                        <config>
+                            <type>group</type>
+                            <allowed>pages</allowed>
+                            <relationship>manyToOne</relationship>
+                            <size>1</size>
+                            <maxitems>1</maxitems>
+                            <minitems>0</minitems>
+                            <suggestOptions>
+                                <default>
+                                    <addWhere>AND pages.doktype NOT in (6,199,254)</addWhere>
+                                </default>
+                            </suggestOptions>
+                        </config>
+                    </settings.listPid>
+                </el>
+            </ROOT>
+        </main>
+    </sheets>
+</T3DataStructure>

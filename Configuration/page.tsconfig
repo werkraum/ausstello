@@ -1,0 +1,34 @@
+mod.wizards.newContentElement.wizardItems.ausstello {
+  header = ausstello.
+  after = common
+  elements {
+    event {
+      iconIdentifier = ausstello
+      title = LLL:EXT:ausstello/Resources/Private/Language/locallang_be.xlf:plugin.event.title
+      tt_content_defValues {
+        CType = list
+        list_type = ausstello_event
+      }
+    }
+    detail {
+      iconIdentifier = ausstello
+      title = LLL:EXT:ausstello/Resources/Private/Language/locallang_be.xlf:plugin.detail.title
+      description = Nur die Detail Ansicht. Um den Inhalt auch an anderer Stelle anzuzeigen.
+      tt_content_defValues {
+        CType = list
+        list_type = ausstello_detail
+      }
+    }
+    list {
+      iconIdentifier = ausstello
+      title = LLL:EXT:ausstello/Resources/Private/Language/locallang_be.xlf:plugin.list.title
+      description = Nur die Listen Ansichten.
+      tt_content_defValues {
+        CType = list
+        list_type = ausstello_list
+      }
+    }
+  }
+
+  show = *
+}

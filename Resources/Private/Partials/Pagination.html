@@ -3,12 +3,11 @@
       xmlns:ausstello="http://typo3.org/ns/Werkraum/Ausstello/ViewHelper"
       data-namespace-typo3-fluid="true"
 >
-
 <ul class="ausstello-pagination">
     <f:if condition="{pagination.has_previous_page}">
         <f:then>
             <li class="ausstello-pagination-active ausstello-pagination-previous">
-                <f:link.action action="list" arguments="{search: {
+                <f:link.action action="list" extensionName="Ausstello" controller="Event" pluginName="Event" arguments="{search: {
                  page: '{pagination.current_page - 1}',
                  query: search.query,
                  sortBy: search.sortBy,
@@ -33,7 +32,7 @@
         <f:if condition="{iter.cycle} == {search.page}">
             <f:then>
                 <li class="ausstello-pagination-current">
-                    <f:link.action class="active" action="list" arguments="{search: {
+                    <f:link.action class="active" action="list" extensionName="Ausstello" controller="Event" pluginName="Event" arguments="{search: {
                      page: search.page,
                      query: search.query,
                      sortBy: search.sortBy,
@@ -50,7 +49,7 @@
             </f:then>
             <f:else>
                 <li class="ausstello-pagination-siblings">
-                    <f:link.action action="list" arguments="{search: {
+                    <f:link.action action="list" extensionName="Ausstello" controller="Event" pluginName="Event" arguments="{search: {
                      page: iter.cycle,
                      query: search.query,
                      sortBy: search.sortBy,
@@ -67,10 +66,10 @@
             </f:else>
         </f:if>
     </f:for>
-    <f:if condition="{pagination.has_next_page }">
+    <f:if condition="{pagination.has_next_page}">
         <f:then>
             <li class="ausstello-pagination-active ausstello-pagination-next">
-                <f:link.action action="list" arguments="{search: {
+                <f:link.action action="list" extensionName="Ausstello" controller="Event" pluginName="Event" arguments="{search: {
                  page: '{pagination.current_page + 1}',
                  query: search.query,
                  sortBy: search.sortBy,

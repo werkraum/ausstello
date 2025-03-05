@@ -32,7 +32,7 @@ class EventRepository
 
     public function findAllEvents(): array
     {
-        return $this->ausstelloClient->get('event');
+        return $this->ausstelloClient->get('event', ['itemsPerPage' => 9999]);
     }
 
     public function getMetaData(): array
@@ -40,7 +40,8 @@ class EventRepository
         $meta = $this->ausstelloClient->get('meta');
         $temp = [];
         $temp['settings'] = $meta['settings'];
-        unset($meta['settings']);
+        $temp['date'] = $meta['date'] ?? ['timezone' => 'Europe/Berlin'];
+        unset($meta['settings'], $meta['date']);
         foreach ($meta as $entryKey => $entry) {
             foreach ($entry as $entity) {
                 $temp[$entryKey][$entity['id']] = $entity;
