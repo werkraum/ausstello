@@ -29,7 +29,7 @@ const setupDatePicker = () => {
     maxDate: dateInput.dataset.max ?? null,
     startDate: currentDate,
     selectedDates: [currentDate],
-    onSelect: function ({ date, datepicker}) {
+    onSelect: function ({date, datepicker}) {
       dateInput.value = datepicker.formatDate(date, 'yyyy-MM-dd');
       dateInput.form.requestSubmit();
     }
@@ -40,6 +40,9 @@ const setupTomSelect = () => {
   const location = document.querySelector('select[name="tx_ausstello_event[search][locations][]"]');
   const primaryCategory = document.querySelector('select[name="tx_ausstello_event[search][primaryCategories][]"]');
   const secondaryCategory = document.querySelector('select[name="tx_ausstello_event[search][secondaryCategories][]"]');
+  const counterElementPrimary = document.querySelector('.ausstello-form-primary-category-label-counter');
+  const counterElementLocation = document.querySelector('.ausstello-form-location-label-counter');
+  updateCounter(location, primaryCategory, secondaryCategory, counterElementPrimary, counterElementLocation);
 
   [location, primaryCategory, secondaryCategory].forEach((element) => {
     if (element) {
@@ -52,7 +55,10 @@ const setupTomSelect = () => {
         },
         create: false,
         onChange: function () {
-          element.form.requestSubmit()
+
+          updateCounter(location, primaryCategory, secondaryCategory, counterElementPrimary, counterElementLocation);
+
+          element.form.requestSubmit();
         },
         render: {
           option: function (data, escape) {
@@ -66,6 +72,9 @@ const setupTomSelect = () => {
       })
     }
   });
+
+
+
 
 }
 
@@ -87,6 +96,11 @@ const setupTags = () => {
     });
   });
 }
+
+const updateCounter = (location, primaryCategory, secondaryCategory, counterElementPrimary, counterElementLocation) => {
+  counterElementPrimary.innerText = primaryCategory.selectedOptions.length > 0 ? primaryCategory.selectedOptions.length : "";
+  counterElementLocation.innerText = location.selectedOptions.length > 0 ? location.selectedOptions.length : "";
+};
 
 (() => {
   setupTomSelect();

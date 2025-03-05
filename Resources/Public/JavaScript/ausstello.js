@@ -7554,6 +7554,9 @@ const setupTomSelect = () => {
   const location = document.querySelector('select[name="tx_ausstello_event[search][locations][]"]');
   const primaryCategory = document.querySelector('select[name="tx_ausstello_event[search][primaryCategories][]"]');
   const secondaryCategory = document.querySelector('select[name="tx_ausstello_event[search][secondaryCategories][]"]');
+  const counterElementPrimary = document.querySelector('.ausstello-form-primary-category-label-counter');
+  const counterElementLocation = document.querySelector('.ausstello-form-location-label-counter');
+  updateCounter(location, primaryCategory, secondaryCategory, counterElementPrimary, counterElementLocation);
   [location, primaryCategory, secondaryCategory].forEach(element => {
     if (element) {
       new TomSelect(element, {
@@ -7565,6 +7568,7 @@ const setupTomSelect = () => {
         },
         create: false,
         onChange: function () {
+          updateCounter(location, primaryCategory, secondaryCategory, counterElementPrimary, counterElementLocation);
           element.form.requestSubmit();
         },
         render: {
@@ -7597,6 +7601,10 @@ const setupTags = () => {
       tagElement.form.requestSubmit();
     });
   });
+};
+const updateCounter = (location, primaryCategory, secondaryCategory, counterElementPrimary, counterElementLocation) => {
+  counterElementPrimary.innerText = primaryCategory.selectedOptions.length > 0 ? primaryCategory.selectedOptions.length : "";
+  counterElementLocation.innerText = location.selectedOptions.length > 0 ? location.selectedOptions.length : "";
 };
 (() => {
   setupTomSelect();

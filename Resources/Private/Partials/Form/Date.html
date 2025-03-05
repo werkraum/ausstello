@@ -1,13 +1,11 @@
 <div class="ausstello-form-date">
     <f:form.hidden property="startDate" data="{min: meta.settings.user.startDate, max: meta.settings.user.endDate}"/>
     <label for="ausstello-form-date">
-        <f:image src="EXT:ausstello/Resources/Public/Icons/calender.svg" width="25" height="25"/> Zeitraum
-
-
+        <f:image src="EXT:ausstello/Resources/Public/Icons/calender.svg" width="25" height="25"/> Zeitraum:
+        <span>ab</span>
     </label>
     <div class="input-group">
-        <f:form.textfield id="ausstello-form-date" class="form-control" value=""></f:form.textfield>
+        <f:form.textfield id="ausstello-form-date" class="form-control"></f:form.textfield>
         <span class="ausstello-form-date-label-arrow filter-arrow"><f:image src="EXT:ausstello/Resources/Public/Icons/chevron_right.svg"/></span>
-        <span class="ausstello-form-date-label-counter counter"></span>
     </div>
 </div>
