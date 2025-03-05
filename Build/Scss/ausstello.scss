@@ -208,16 +208,16 @@
             }
         }
 
-            // only show previous and next to current number
-            &-siblings {
-                &:has(~ * + .ausstello-pagination-current),
-                {
-                    display: none;
-                }
-            }
-            &-current + * ~ .ausstello-pagination-siblings {
-                display: none;
-            }
+        // only show previous and next to current number
+        //&-siblings {
+        //    &:has(~ * + .ausstello-pagination-current),
+        //    {
+        //        display: none;
+        //    }
+        //}
+        //&-current + * ~ .ausstello-pagination-siblings {
+        //    display: none;
+        //}
 
     }
 

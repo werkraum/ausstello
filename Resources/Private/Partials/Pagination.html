@@ -3,6 +3,8 @@
       xmlns:ausstello="http://typo3.org/ns/Werkraum/Ausstello/ViewHelper"
       data-namespace-typo3-fluid="true"
 >
+<f:variable name="pages">{pagination.total_pages -> f:count()}</f:variable>
+<ausstello:pagination.calculateProximity pages="{pages}" proximity="2" page="{pagination.current_page}"/>
 <ul class="ausstello-pagination">
     <f:if condition="{pagination.has_previous_page}">
         <f:then>
@@ -24,12 +26,36 @@
         </f:then>
         <f:else>
             <li class="ausstello-pagination-inactive ausstello-pagination-previous">
-                <span><f:image src="EXT:ausstello/Resources/Public/Icons/chevron_left.svg" width="9" height="17"/></span>
+                <span><f:image src="EXT:ausstello/Resources/Public/Icons/chevron_left.svg" width="9"
+                               height="17"/></span>
             </li>
         </f:else>
     </f:if>
-    <f:for as="page" each="{pagination.total_pages}" iteration="iter">
-        <f:if condition="{iter.cycle} == {search.page}">
+
+    <f:if condition="{startPage} > 1">
+        <li class="ausstello-pagination-start">
+            <f:link.action action="list" extensionName="Ausstello" controller="Event" pluginName="Event" arguments="{search: {
+                     page: 1,
+                     query: search.query,
+                     sortBy: search.sortBy,
+                     sortDirection: search.sortDirection,
+                     startDate: search.startDate,
+                     locations: search.locations,
+                     primaryCategories: search.primaryCategories,
+                     secondaryCategories: search.secondaryCategories,
+                     tags: search.tags,
+                     }}" >
+                1
+            </f:link.action>
+        </li>
+    </f:if>
+
+    <f:if condition="{startPage} > 2">
+        <li><span>...</span></li>
+    </f:if>
+
+    <f:for as="page" each="{range}" iteration="iter">
+        <f:if condition="{page} == {pagination.current_page}">
             <f:then>
                 <li class="ausstello-pagination-current">
                     <f:link.action class="active" action="list" extensionName="Ausstello" controller="Event" pluginName="Event" arguments="{search: {
@@ -43,14 +69,14 @@
                      secondaryCategories: search.secondaryCategories,
                      tags: search.tags,
                      }}" >
-                        {iter.cycle}
+                        {page}
                     </f:link.action>
                 </li>
             </f:then>
             <f:else>
                 <li class="ausstello-pagination-siblings">
                     <f:link.action action="list" extensionName="Ausstello" controller="Event" pluginName="Event" arguments="{search: {
-                     page: iter.cycle,
+                     page: page,
                      query: search.query,
                      sortBy: search.sortBy,
                      sortDirection: search.sortDirection,
@@ -60,12 +86,35 @@
                      secondaryCategories: search.secondaryCategories,
                      tags: search.tags,
                      }}" >
-                        {iter.cycle}
+                        {page}
                     </f:link.action>
                 </li>
             </f:else>
         </f:if>
     </f:for>
+
+    <f:if condition="{endPage} < {pages - 1}">
+        <li><span>...</span></li>
+    </f:if>
+
+    <f:if condition="{pages} > {endPage}">
+        <li class="ausstello-pagination-last">
+            <f:link.action action="list" extensionName="Ausstello" controller="Event" pluginName="Event" arguments="{search: {
+                     page: pages,
+                     query: search.query,
+                     sortBy: search.sortBy,
+                     sortDirection: search.sortDirection,
+                     startDate: search.startDate,
+                     locations: search.locations,
+                     primaryCategories: search.primaryCategories,
+                     secondaryCategories: search.secondaryCategories,
+                     tags: search.tags,
+                     }}" >
+                {pages}
+            </f:link.action>
+        </li>
+    </f:if>
+
     <f:if condition="{pagination.has_next_page}">
         <f:then>
             <li class="ausstello-pagination-active ausstello-pagination-next">
@@ -86,7 +135,8 @@
         </f:then>
         <f:else>
             <li class="ausstello-pagination-inactive ausstello-pagination-next">
-                <span><f:image src="EXT:ausstello/Resources/Public/Icons/chevron_right.svg" width="9" height="17"/></span>
+                <span><f:image src="EXT:ausstello/Resources/Public/Icons/chevron_right.svg" width="9"
+                               height="17"/></span>
             </li>
         </f:else>
     </f:if>
