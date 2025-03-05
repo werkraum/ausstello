@@ -109,6 +109,10 @@
 .ausstello form .ts-wrapper.multi .ts-control:hover {
   background-color: var(--ausstello-highlight-color);
 }
+.ausstello form select:has(.item),
+.ausstello form .ts-wrapper.multi .ts-control:has(.item) {
+  background-color: var(--ausstello-highlight-color);
+}
 .ausstello form select .item,
 .ausstello form .ts-wrapper.multi .ts-control .item {
   display: none;

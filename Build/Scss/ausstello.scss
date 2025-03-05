@@ -122,6 +122,10 @@
             background-color: var(--ausstello-highlight-color);
         }
 
+        &:has(.item) {
+            background-color: var(--ausstello-highlight-color);
+        }
+
         .item {
             display: none;
         }
