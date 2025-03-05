@@ -48,7 +48,7 @@ class EventFilterValueProvider
 
     public function getTags(array &$params): void
     {
-        $this->populateItems($params, 'tags');
+        $this->populateItems($params, 'filter_tags');
     }
 
 }
