@@ -41,6 +41,7 @@
     position: absolute;
     left: 92%;
     top: 10px;
+    line-height: 1;
     z-index: 2;
     pointer-events: none;
 
@@ -49,14 +50,15 @@
 .counter {
     position: absolute;
     left: 85%;
-    top: 12px;
+    top: 13px;
     color: white;
     z-index: 2;
     pointer-events: none;
     background-color: #aa3333;
     border-radius: 50%;
     text-align: center;
-    width: 20px;
+    width: 16px;
+    line-height: 1;
 }
 
 .ausstello {
@@ -385,11 +387,12 @@
 
         label {
             z-index: 2;
-            top: 8px;
+            top: 9px;
             left: 10px;
             position: absolute;
             display: flex;
             align-items: center;
+            line-height: 1;
             pointer-events: none;
             gap: 12px;
             margin-bottom: 15px;
@@ -411,7 +414,7 @@
 
         label {
             z-index: 2;
-            top: 8px;
+            top: 9px;
             left: 10px;
             position: absolute;
             display: flex;
@@ -421,6 +424,7 @@
             margin-bottom: 15px;
             font-weight: bold;
             text-transform: uppercase;
+            line-height: 1;
         }
 
         &:focus-within .ausstello-form-location-label-arrow {
@@ -435,13 +439,14 @@
 
         label {
             z-index: 2;
-            top: 8px;
+            top: 9px;
             left: 10px;
             position: absolute;
             display: flex;
             align-items: center;
             pointer-events: none;
             gap: 12px;
+            line-height: 1;
             margin-bottom: 15px;
             font-weight: bold;
             text-transform: uppercase;
@@ -457,6 +462,7 @@
 
     &-form-secondary-category {
         label {
+            line-height: 1;
             margin-bottom: 15px;
             font-weight: bold;
             text-transform: uppercase;
@@ -565,6 +571,7 @@
             position: relative;
             display: flex;
             align-items: stretch;
+            font-size: var(--ausstello-font-size-text-small);
             width: 100%;
             margin-bottom: 20px;
 
@@ -590,7 +597,9 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 35px;
+                width: 27px;
+                height: 25px;
+                margin: 7px 0 7px 9px;
                 background-color: #000;
             }
 
