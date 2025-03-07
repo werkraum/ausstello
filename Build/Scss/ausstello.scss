@@ -39,8 +39,8 @@
 
 .filter-arrow {
     position: absolute;
-    left: 92%;
-    top: 10px;
+    right: 16px;
+    top: 12px;
     line-height: 1;
     z-index: 2;
     pointer-events: none;
@@ -49,16 +49,21 @@
 
 .counter {
     position: absolute;
-    left: 85%;
-    top: 13px;
+    right: 46px;
+    top: 10px;
     color: white;
     z-index: 2;
     pointer-events: none;
-    background-color: #aa3333;
+    background-color: #C0595F;
     border-radius: 50%;
     text-align: center;
-    width: 16px;
-    line-height: 1;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    font-weight: bold;
+    &:empty {
+        visibility: hidden;
+    }
 }
 
 .ausstello {
@@ -346,6 +351,9 @@
         font-weight: bold;
         cursor: pointer;
 
+        &.active input {
+            background-color: var(--ausstello-highlight-color);
+        }
 
         .input-group {
             position: relative;
@@ -365,12 +373,12 @@
         }
 
         input {
+            font-size: var(--ausstello-font-size-base);
             font-weight: 700;
             line-height: 1;
             border: 2px solid black;
-            padding: 12px 40px 12px 34px;
+            padding: 12px 40px 12px 38px;
             background-color: var(--ausstello-bg-color-light);
-            font-size: var(--ausstello-font-size-text-small);
             cursor: pointer;
             text-align: center;
 
@@ -387,16 +395,18 @@
 
         label {
             z-index: 2;
-            top: 9px;
+            top: 10px;
             left: 10px;
             position: absolute;
             display: flex;
             align-items: center;
             line-height: 1;
             pointer-events: none;
-            gap: 12px;
-            margin-bottom: 15px;
+            gap: 4px;
             font-weight: bold;
+            img{
+                margin-right: 5px;
+            }
         }
 
 
@@ -571,25 +581,19 @@
             position: relative;
             display: flex;
             align-items: stretch;
-            font-size: var(--ausstello-font-size-text-small);
+            //font-size: var(--ausstello-font-size-text-small);
             width: 100%;
             margin-bottom: 20px;
 
-            &:hover .ausstello-list-search-input-btn {
+            &:hover {
                 background-color: var(--ausstello-highlight-color);
-            }
-
-            //&:hover .ausstello-list-search-input-icon {
-            //    background-color: var(--ausstello-highlight-color);
-            //}
-
-
-            &:hover .ausstello-list-search-input-form {
-                background-color: var(--ausstello-highlight-color);
+                .ausstello-list-search-input-btn {
+                    background-color: var(--ausstello-highlight-color);
+                }
             }
 
             .ausstello-list-search-input-form {
-                font-size: var(--ausstello-font-size-text-small);
+                font-size: var(--ausstello-font-size-base);
             }
 
 
@@ -1438,6 +1442,10 @@ input:focus-visible {
     display: block;
     padding-top: 25px;
     width: fit-content;
+
+    @media (min-width: 992px) {
+        margin-left: auto;
+    }
 }
 
 .d-flex {
@@ -1454,6 +1462,10 @@ input:focus-visible {
 
 .align-items-center {
     align-items: center;
+}
+
+.align-items-end {
+    align-items: end;
 }
 
 .justify-content-center {
@@ -1496,5 +1508,10 @@ input:focus-visible {
     }
     .flex-lg-nowrap {
         flex-wrap: nowrap;
+    }
+
+
+    .align-items-lg-end {
+        align-items: end;
     }
 }

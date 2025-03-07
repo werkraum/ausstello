@@ -11,7 +11,7 @@
           </span>
             <f:form.textfield
                 property="query"
-                placeholder="Suche..."
+                placeholder="Suche ..."
                 class="ausstello-list-search-input-form"
                 aria="{label: 'Search', describedby: 'search-icon'}"
             />
@@ -42,12 +42,12 @@
                 </div>
             </f:if>
         </div>
-        <f:if condition="{meta.settings.publish.noTagsFilter} !== true">
-            <div>
-                <f:render partial="Form/Tags" arguments="{_all}"/>
-            </div>
-        </f:if>
-        <f:link.page class="ausstello-filter-reset">Filter zurücksetzen</f:link.page>
+        <div class="d-flex flex-column flex-lg-row align-items-lg-end">
+            <f:if condition="{meta.settings.publish.noTagsFilter} !== true">
+                    <f:render partial="Form/Tags" arguments="{_all}"/>
+            </f:if>
+            <f:link.page class="ausstello-filter-reset">Filter zurücksetzen</f:link.page>
+        </div>
     </f:if>
 </ausstello:form>
 

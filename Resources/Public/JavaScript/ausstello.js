@@ -1,5 +1,3 @@
-
-(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = "http://localhost:35729/livereload.js?snipver=1"; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
 function getDefaultExportFromCjs (x) {
 	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }var airDatepicker$1 = {exports: {}};var airDatepicker = airDatepicker$1.exports;
@@ -7530,7 +7528,10 @@ TomSelect.define('virtual_scroll', plugin);const setupDatePicker = () => {
   if (!dateInput) {
     return;
   }
-  const currentDate = dateInput?.value != "" ? dateInput.value : dateInput.dataset.min ? dateInput.dataset.min : Date.now();
+  const currentDate = dateInput.value != "" ? dateInput.value : dateInput.dataset.min ? dateInput.dataset.min : Date.now();
+  if (dateInput.value != "") {
+    dateInput.closest('.ausstello-form-date').classList.add('active');
+  }
   dateInput.parentElement.style.position = 'relative';
   new AirDatepicker('#ausstello-form-date', {
     container: dateInput.parentElement,
@@ -7545,6 +7546,7 @@ TomSelect.define('virtual_scroll', plugin);const setupDatePicker = () => {
         date,
         datepicker
       } = _ref;
+      dateInput.closest('.ausstello-form-date').classList.add('active');
       dateInput.value = datepicker.formatDate(date, 'yyyy-MM-dd');
       dateInput.form.requestSubmit();
     }
@@ -7554,11 +7556,19 @@ const setupTomSelect = () => {
   const location = document.querySelector('select[name="tx_ausstello_event[search][locations][]"]');
   const primaryCategory = document.querySelector('select[name="tx_ausstello_event[search][primaryCategories][]"]');
   const secondaryCategory = document.querySelector('select[name="tx_ausstello_event[search][secondaryCategories][]"]');
-  const counterElementPrimary = document.querySelector('.ausstello-form-primary-category-label-counter');
-  const counterElementLocation = document.querySelector('.ausstello-form-location-label-counter');
-  updateCounter(location, primaryCategory, secondaryCategory, counterElementPrimary, counterElementLocation);
   [location, primaryCategory, secondaryCategory].forEach(element => {
     if (element) {
+      const counterElement = element.parentElement.querySelector('.counter');
+      const updateCounter = () => {
+        const options = element.querySelectorAll('option[selected]');
+        const uniqueOptions = {};
+        Object.values(options).forEach(option => {
+          uniqueOptions[option.value] = option.selected;
+        });
+        const count = Object.keys(uniqueOptions).length;
+        counterElement.innerHTML = count > 0 ? count : null;
+      };
+      updateCounter();
       new TomSelect(element, {
         plugins: {
           'checkbox_options': {
@@ -7568,8 +7578,8 @@ const setupTomSelect = () => {
         },
         create: false,
         onChange: function () {
-          updateCounter(location, primaryCategory, secondaryCategory, counterElementPrimary, counterElementLocation);
           element.form.requestSubmit();
+          updateCounter();
         },
         render: {
           option: function (data, escape) {
@@ -7601,10 +7611,6 @@ const setupTags = () => {
       tagElement.form.requestSubmit();
     });
   });
-};
-const updateCounter = (location, primaryCategory, secondaryCategory, counterElementPrimary, counterElementLocation) => {
-  counterElementPrimary.innerText = primaryCategory.selectedOptions.length > 0 ? primaryCategory.selectedOptions.length : "";
-  counterElementLocation.innerText = location.selectedOptions.length > 0 ? location.selectedOptions.length : "";
 };
 (() => {
   setupTomSelect();
