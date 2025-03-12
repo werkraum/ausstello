@@ -1,3 +1,5 @@
+
+(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = "http://localhost:35729/livereload.js?snipver=1"; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
 function getDefaultExportFromCjs (x) {
 	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }var airDatepicker$1 = {exports: {}};var airDatepicker = airDatepicker$1.exports;
@@ -7612,8 +7614,46 @@ const setupTags = () => {
     });
   });
 };
+const setupModal = () => {
+  const modal = document.querySelector('.ausstello-form-modal');
+  modal.setAttribute('style', 'display: none;');
+  const modalTrigger = document.querySelector('.ausstello-form-modal-button');
+  const form = document.getElementById('filter-form');
+  const ausstello = document.querySelector('.ausstello');
+  const body = document.querySelector('body');
+  const modalClose = document.getElementById('close-modal');
+  modalTrigger.addEventListener('click', event => {
+    event.preventDefault();
+    if (modal.classList.contains('active')) {
+      modal.classList.remove('active');
+      modal.setAttribute('style', 'display: none;');
+      ausstello.prepend(form);
+      body.removeAttribute('style');
+      form.removeAttribute('style');
+      form.querySelector('.ausstello-list-row').setAttribute('style', 'grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));');
+    } else {
+      modal.classList.add('active');
+      modal.setAttribute('style', 'display: flex;');
+      modal.setAttribute('style', 'flex-direction: column;');
+      form.setAttribute('style', 'flex-direction: column;');
+      form.setAttribute('style', 'display: unset;');
+      form.querySelector('.ausstello-list-row').setAttribute('style', 'grid-template-columns: 1fr;');
+      modal.appendChild(form);
+      body.setAttribute('style', 'overflow: hidden;');
+    }
+  });
+  modalClose.addEventListener('click', event => {
+    modal.classList.remove('active');
+    modal.setAttribute('style', 'display: none;');
+    ausstello.prepend(form);
+    body.removeAttribute('style');
+    form.removeAttribute('style');
+    form.querySelector('.ausstello-list-row').setAttribute('style', 'grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));');
+  });
+};
 (() => {
   setupTomSelect();
   setupDatePicker();
   setupTags();
+  setupModal();
 })();//# sourceMappingURL=ausstello.js.map

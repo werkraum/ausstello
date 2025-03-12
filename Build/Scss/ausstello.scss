@@ -61,9 +61,23 @@
     height: 25px;
     line-height: 25px;
     font-weight: bold;
+
     &:empty {
         visibility: hidden;
     }
+}
+
+#filter-form {
+    @media screen and (max-width: 992px) {
+        display: none;
+    }
+}
+
+#close-modal {
+    width: fit-content;
+    font-size: x-large;
+    margin-left: auto;
+    margin-bottom: 20px;
 }
 
 .ausstello {
@@ -78,6 +92,52 @@
 
     p {
         margin: 0;
+    }
+
+    &-form-modal {
+        display: flex;
+        z-index: 1000;
+        position: fixed;
+        left: 50%;
+        width: 90%;
+        padding: 20px 20px 0 20px;
+        transform: translate(-50%);
+        justify-content: center;
+        background-color: white;
+    }
+
+    &-form-modal-button {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        position: relative;
+        margin-bottom: 20px;
+        height: 50px;
+        border: 2px solid black;
+
+        &:hover {
+            background-color: var(--ausstello-highlight-color);
+        }
+
+        label {
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            pointer-events: none;
+            gap: 12px;
+            line-height: 1;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-left: 10px;
+        }
+
+        &-label-arrow {
+            top: auto;
+        }
+
+        @media screen and (min-width: 992px) {
+            display: none;
+        }
     }
 
     &-back {
@@ -208,10 +268,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
-
         list-style: none;
         gap: 6px;
         margin-top: 20px;
+
 
         li {
             a, span {
@@ -404,7 +464,8 @@
             pointer-events: none;
             gap: 4px;
             font-weight: bold;
-            img{
+
+            img {
                 margin-right: 5px;
             }
         }
@@ -587,6 +648,7 @@
 
             &:hover {
                 background-color: var(--ausstello-highlight-color);
+
                 .ausstello-list-search-input-btn {
                     background-color: var(--ausstello-highlight-color);
                 }

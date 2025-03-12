@@ -3,7 +3,7 @@
       xmlns:ausstello="http://typo3.org/ns/Werkraum/Ausstello/ViewHelper"
       data-namespace-typo3-fluid="true"
 >
-<ausstello:form method="GET" addQueryString="1" action="list" object="{search}" name="search" extensionName="Ausstello" controller="Event" pluginName="Event">
+<ausstello:form method="GET" addQueryString="1" action="list" object="{search}" name="search" extensionName="Ausstello" controller="Event" pluginName="Event" id="filter-form">
     <f:if condition="{meta.settings.publish.noQueryFilter} !== true">
         <div class="ausstello-list-search-input">
           <span class="ausstello-list-search-input-icon" id="search-icon">
