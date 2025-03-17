@@ -11,6 +11,21 @@ import 'swiper/css/pagination';
 
 import "../Scss/ausstello.scss";
 
+const globalCounter = () => {
+  const counterElement = document.querySelector('.ausstello-form-global-counter');
+  const searchParams = new URLSearchParams(window.location.search);
+  let count = 0;
+  searchParams.forEach((item, name) => {
+    console.log({item, name})
+    if (item !== '') {
+      count++;
+    }
+  });
+  if (counterElement) {
+    counterElement.innerHTML = count > 0 ? count : null;
+  }
+}
+
 const setupDatePicker = () => {
   const dateInput = document.querySelector('input[name="tx_ausstello_event[search][startDate]"]');
   if (!dateInput) {
@@ -51,15 +66,9 @@ const setupTomSelect = () => {
       const counterElement = element.parentElement.querySelector('.counter');
 
       const updateCounter = () => {
-        const options = element.querySelectorAll('option[selected]');
-        const uniqueOptions = {};
-        Object.values(options).forEach((option) => {
-          uniqueOptions[option.value] = option.selected;
-        });
-        const count = Object.keys(uniqueOptions).length;
+        const count = element?.tomselect.items.length;
         counterElement.innerHTML = count > 0 ? count : null;
       }
-      updateCounter();
 
       new TomSelect(element, {
         plugins: {
@@ -70,8 +79,8 @@ const setupTomSelect = () => {
         },
         create: false,
         onChange: function () {
-          element.form.requestSubmit();
           updateCounter();
+          element.form.requestSubmit();
         },
         render: {
           option: function (data, escape) {
@@ -82,7 +91,8 @@ const setupTomSelect = () => {
             return '<div style="font-weight: bold">' + escape(data.text) + '</div>';
           }
         }
-      })
+      });
+      updateCounter();
     }
   });
 
@@ -151,5 +161,17 @@ const setupModal = () => {
   setupTomSelect();
   setupDatePicker();
   setupTags();
-  setupModal()
+  setupModal();
+
+  const form = document.querySelector('#filter-form');
+  form.addEventListener('submit', (event) => {
+    if(event instanceof SubmitEvent && window.innerWidth < 992) {
+      if (event.submitter === null) {
+        // if the submitter is null -> submitted via JS, but we want to submit via button on mobile!
+        event.preventDefault();
+      }
+    }
+  });
+
+  globalCounter();
 })();

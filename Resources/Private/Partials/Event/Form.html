@@ -42,11 +42,16 @@
                 </div>
             </f:if>
         </div>
-        <div class="d-flex flex-column flex-lg-row align-items-lg-end">
+        <div class="d-flex flex-column flex-lg-row align-items-lg-end justify-content-between">
             <f:if condition="{meta.settings.publish.noTagsFilter} !== true">
                     <f:render partial="Form/Tags" arguments="{_all}"/>
             </f:if>
-            <f:link.page class="ausstello-filter-reset">Filter zurücksetzen</f:link.page>
+            <div class="d-flex flex-row flex-wrap align-items-end justify-content-between">
+                <f:link.page class="ausstello-filter-reset">Filter zurücksetzen</f:link.page>
+                <button type="submit" class="d-lg-none">
+                    <f:image src="EXT:ausstello/Resources/Public/Icons/arrow_right.svg" width="13" height="10"/> <span>anwenden</span>
+                </button>
+            </div>
         </div>
     </f:if>
 </ausstello:form>

@@ -25,6 +25,29 @@
   --ausstello-border-radius-image: 0px;
 }
 
+.ausstello-list-teaser-detail-info-btn, .ausstello-form-modal button {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: var(--ausstello-highlight-color);
+  padding: 8px 14px 10px 10px;
+  line-height: 1;
+  color: var(--ausstello-text-color);
+}
+@media screen and (max-width: 991px) {
+  .ausstello-list-teaser-detail-info-btn, .ausstello-form-modal button {
+    width: 100%;
+  }
+}
+.ausstello-list-teaser-detail-info-btn:hover, .ausstello-form-modal button:hover {
+  background-color: #fff;
+}
+
 .swiper {
   max-width: 100%;
   height: auto;
@@ -70,10 +93,10 @@
 }
 
 #close-modal {
-  width: fit-content;
-  font-size: x-large;
   margin-left: auto;
-  margin-bottom: 20px;
+  margin-right: -13px;
+  margin-top: -13px;
+  margin-bottom: 7px;
 }
 
 .ausstello {
@@ -89,14 +112,38 @@
 }
 .ausstello-form-modal {
   display: flex;
-  z-index: 1000;
+  z-index: 1500;
   position: fixed;
-  left: 50%;
-  width: 90%;
-  padding: 20px 20px 0 20px;
-  transform: translate(-50%);
-  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
   background-color: white;
+  overflow: auto;
+}
+.ausstello-form-modal button {
+  width: auto;
+  border: unset;
+  font-weight: bold;
+  line-height: normal;
+}
+.ausstello-form-modal button:hover {
+  background-color: var(--ausstello-bg-color-light);
+}
+.ausstello-form-modal .air-datepicker {
+  position: static !important;
+}
+.ausstello-form-modal .ts-wrapper {
+  flex-direction: column !important;
+  min-height: auto;
+}
+.ausstello-form-modal .ts-dropdown {
+  position: static !important;
+  box-shadow: unset;
+}
+.ausstello-form-modal .ts-dropdown-content {
+  max-height: unset !important;
 }
 .ausstello-form-modal-button {
   display: flex;
@@ -104,7 +151,7 @@
   width: 100%;
   position: relative;
   margin-bottom: 20px;
-  height: 50px;
+  padding: 9px 6px;
   border: 2px solid black;
 }
 .ausstello-form-modal-button:hover {
@@ -119,10 +166,19 @@
   line-height: 1;
   font-weight: bold;
   text-transform: uppercase;
-  margin-left: 10px;
+  margin-left: 15px;
 }
 .ausstello-form-modal-button-label-arrow {
   top: auto;
+}
+.ausstello-form-modal-button-label-slider {
+  background-color: #000;
+  color: #fff;
+  width: 27px;
+  height: 27px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media screen and (min-width: 992px) {
   .ausstello-form-modal-button {
@@ -239,6 +295,7 @@
   list-style: none;
   gap: 6px;
   margin-top: 20px;
+  padding: 0;
 }
 .ausstello-pagination li a, .ausstello-pagination li span {
   color: var(--ausstello-text-color);
@@ -261,10 +318,20 @@
   height: 32px;
 }
 .ausstello-pagination li:last-child {
-  margin-left: 70px;
+  margin-left: auto;
+}
+@media screen and (min-width: 992px) {
+  .ausstello-pagination li:last-child {
+    margin-left: 70px;
+  }
 }
 .ausstello-pagination li:first-child {
-  margin-right: 70px;
+  margin-right: auto;
+}
+@media screen and (min-width: 992px) {
+  .ausstello-pagination li:first-child {
+    margin-right: 70px;
+  }
 }
 .ausstello .air-datepicker {
   --adp-font-family: inherit;
@@ -339,6 +406,11 @@
   font-weight: bold;
   cursor: pointer;
 }
+@media screen and (max-width: 324px) {
+  .ausstello-form-date span {
+    display: none;
+  }
+}
 .ausstello-form-date.active input {
   background-color: var(--ausstello-highlight-color);
 }
@@ -361,10 +433,15 @@
   font-weight: 700;
   line-height: 1;
   border: 2px solid black;
-  padding: 12px 40px 12px 38px;
+  padding: 12px 40px 12px 66px;
   background-color: var(--ausstello-bg-color-light);
   cursor: pointer;
-  text-align: center;
+  width: 100%;
+}
+@media screen and (min-width: 325px) {
+  .ausstello-form-date input {
+    padding-left: 162px;
+  }
 }
 .ausstello-form-date input:hover {
   background-color: var(--ausstello-highlight-color);
@@ -382,7 +459,7 @@
   align-items: center;
   line-height: 1;
   pointer-events: none;
-  gap: 4px;
+  gap: 6px;
   font-weight: bold;
 }
 .ausstello-form-date label img {
@@ -681,28 +758,6 @@
     justify-content: space-between;
     margin-top: auto;
   }
-}
-.ausstello-list-teaser-detail-info-btn {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  background-color: var(--ausstello-highlight-color);
-  padding: 8px 14px 10px 10px;
-  line-height: 1;
-  color: var(--ausstello-text-color);
-}
-@media screen and (max-width: 991px) {
-  .ausstello-list-teaser-detail-info-btn {
-    width: 100%;
-  }
-}
-.ausstello-list-teaser-detail-info-btn:hover {
-  background-color: #fff;
 }
 .ausstello-list-teaser-tags {
   display: flex;
@@ -1347,6 +1402,10 @@ input:focus-visible {
   justify-content: center;
 }
 
+.justify-content-between {
+  justify-content: space-between;
+}
+
 .flex-wrap {
   flex-wrap: wrap;
 }
@@ -1655,106 +1714,57 @@ input:focus-visible {
   }
 }
 /* Slide styles end */
-:root {
-  --swiper-navigation-size: 44px;
-  /*
-  --swiper-navigation-top-offset: 50%;
-  --swiper-navigation-sides-offset: 10px;
-  --swiper-navigation-color: var(--swiper-theme-color);
-  */
-}
-
-.swiper-button-prev,
-.swiper-button-next {
+.pswp__dynamic-caption {
+  color: #fff;
   position: absolute;
-  top: var(--swiper-navigation-top-offset, 50%);
-  width: calc(var(--swiper-navigation-size) / 44 * 27);
-  height: var(--swiper-navigation-size);
-  margin-top: calc(0px - var(--swiper-navigation-size) / 2);
-  z-index: 10;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--swiper-navigation-color, var(--swiper-theme-color));
-}
-
-.swiper-button-prev.swiper-button-disabled,
-.swiper-button-next.swiper-button-disabled {
-  opacity: 0.35;
-  cursor: auto;
-  pointer-events: none;
-}
-
-.swiper-button-prev.swiper-button-hidden,
-.swiper-button-next.swiper-button-hidden {
-  opacity: 0;
-  cursor: auto;
-  pointer-events: none;
-}
-
-.swiper-navigation-disabled .swiper-button-prev,
-.swiper-navigation-disabled .swiper-button-next {
-  display: none !important;
-}
-
-.swiper-button-prev svg,
-.swiper-button-next svg {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-  transform-origin: center;
+  left: 0;
+  top: 0;
+  transition: opacity 120ms linear !important; /* override default */
 }
 
-.swiper-rtl .swiper-button-prev svg,
-.swiper-rtl .swiper-button-next svg {
-  transform: rotate(180deg);
-}
-
-.swiper-button-prev,
-.swiper-rtl .swiper-button-next {
-  left: var(--swiper-navigation-sides-offset, 10px);
-  right: auto;
-}
-
-.swiper-button-next,
-.swiper-rtl .swiper-button-prev {
-  right: var(--swiper-navigation-sides-offset, 10px);
-  left: auto;
-}
-
-.swiper-button-lock {
+.pswp-caption-content {
   display: none;
 }
 
-/* Navigation font start */
-.swiper-button-prev:after,
-.swiper-button-next:after {
-  font-family: swiper-icons;
-  font-size: var(--swiper-navigation-size);
-  text-transform: none !important;
-  letter-spacing: 0;
-  font-variant: initial;
-  line-height: 1;
+.pswp__dynamic-caption a {
+  color: #fff;
 }
 
-.swiper-button-prev:after,
-.swiper-rtl .swiper-button-next:after {
-  content: "prev";
+.pswp__dynamic-caption--faded {
+  opacity: 0 !important;
 }
 
-.swiper-button-next,
-.swiper-rtl .swiper-button-prev {
-  right: var(--swiper-navigation-sides-offset, 10px);
-  left: auto;
+.pswp__dynamic-caption--aside {
+  width: auto;
+  max-width: 300px;
+  padding: 20px 15px 20px 20px;
+  margin-top: 70px;
 }
 
-.swiper-button-next:after,
-.swiper-rtl .swiper-button-prev:after {
-  content: "next";
+.pswp__dynamic-caption--below {
+  width: auto;
+  max-width: 700px;
+  padding: 15px 0 0;
 }
 
-/* Navigation font end */
+.pswp__dynamic-caption--on-hor-edge {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.pswp__dynamic-caption--mobile {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 15px;
+  right: 0;
+  bottom: 0;
+  /* override styles that were set via JS.
+    as they interfere with size measurement */
+  top: auto !important;
+  left: 0 !important;
+}
+
 :root {
   /*
   --swiper-pagination-color: var(--swiper-theme-color);
@@ -1969,6 +1979,106 @@ button.swiper-pagination-bullet {
   display: none;
 }
 
+:root {
+  --swiper-navigation-size: 44px;
+  /*
+  --swiper-navigation-top-offset: 50%;
+  --swiper-navigation-sides-offset: 10px;
+  --swiper-navigation-color: var(--swiper-theme-color);
+  */
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  top: var(--swiper-navigation-top-offset, 50%);
+  width: calc(var(--swiper-navigation-size) / 44 * 27);
+  height: var(--swiper-navigation-size);
+  margin-top: calc(0px - var(--swiper-navigation-size) / 2);
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--swiper-navigation-color, var(--swiper-theme-color));
+}
+
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
+  opacity: 0.35;
+  cursor: auto;
+  pointer-events: none;
+}
+
+.swiper-button-prev.swiper-button-hidden,
+.swiper-button-next.swiper-button-hidden {
+  opacity: 0;
+  cursor: auto;
+  pointer-events: none;
+}
+
+.swiper-navigation-disabled .swiper-button-prev,
+.swiper-navigation-disabled .swiper-button-next {
+  display: none !important;
+}
+
+.swiper-button-prev svg,
+.swiper-button-next svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform-origin: center;
+}
+
+.swiper-rtl .swiper-button-prev svg,
+.swiper-rtl .swiper-button-next svg {
+  transform: rotate(180deg);
+}
+
+.swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+  left: var(--swiper-navigation-sides-offset, 10px);
+  right: auto;
+}
+
+.swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+  right: var(--swiper-navigation-sides-offset, 10px);
+  left: auto;
+}
+
+.swiper-button-lock {
+  display: none;
+}
+
+/* Navigation font start */
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-family: swiper-icons;
+  font-size: var(--swiper-navigation-size);
+  text-transform: none !important;
+  letter-spacing: 0;
+  font-variant: initial;
+  line-height: 1;
+}
+
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+  content: "prev";
+}
+
+.swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+  right: var(--swiper-navigation-sides-offset, 10px);
+  left: auto;
+}
+
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after {
+  content: "next";
+}
+
+/* Navigation font end */
 .air-datepicker-cell.-year-.-other-decade-, .air-datepicker-cell.-day-.-other-month- {
   color: var(--adp-color-other-month);
 }
@@ -2515,14 +2625,14 @@ button.swiper-pagination-bullet {
   --adp-mobile-width: 320px;
   --adp-mobile-day-cell-height: 38px;
   --adp-mobile-month-cell-height: 48px;
-  --adp-mobile-year-cell-height: 64px;
+  --adp-mobile-year-cell-height: 64px ;
 }
 
 .air-datepicker-overlay {
   --adp-overlay-background-color: rgba(0, 0, 0, .3);
   --adp-overlay-transition-duration: .3s;
   --adp-overlay-transition-ease: ease-out;
-  --adp-overlay-z-index: 99;
+  --adp-overlay-z-index: 99 ;
 }
 
 .air-datepicker {
@@ -3439,6 +3549,415 @@ button.swiper-pagination-bullet {
   border-bottom-right-radius: 0;
 }
 
+ /*! PhotoSwipe main CSS by Dmytro Semenov | photoswipe.com */
+.pswp {
+  --pswp-bg: #000;
+  --pswp-placeholder-bg: #222;
+  --pswp-root-z-index: 100000;
+  --pswp-preloader-color: rgba(79, 79, 79, 0.4);
+  --pswp-preloader-color-secondary: rgba(255, 255, 255, 0.9);
+  /* defined via js:
+  --pswp-transition-duration: 333ms; */
+  --pswp-icon-color: #fff;
+  --pswp-icon-color-secondary: #4f4f4f;
+  --pswp-icon-stroke-color: #4f4f4f;
+  --pswp-icon-stroke-width: 2px;
+  --pswp-error-text-color: var(--pswp-icon-color);
+}
 
+/*
+	Styles for basic PhotoSwipe (pswp) functionality (sliding area, open/close transitions)
+*/
+.pswp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--pswp-root-z-index);
+  display: none;
+  touch-action: none;
+  outline: 0;
+  opacity: 0.003;
+  contain: layout style size;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* Prevents focus outline on the root element,
+  (it may be focused initially) */
+.pswp:focus {
+  outline: 0;
+}
+
+.pswp * {
+  box-sizing: border-box;
+}
+
+.pswp img {
+  max-width: none;
+}
+
+.pswp--open {
+  display: block;
+}
+
+.pswp,
+.pswp__bg {
+  transform: translateZ(0);
+  will-change: opacity;
+}
+
+.pswp__bg {
+  opacity: 0.005;
+  background: var(--pswp-bg);
+}
+
+.pswp,
+.pswp__scroll-wrap {
+  overflow: hidden;
+}
+
+.pswp__scroll-wrap,
+.pswp__bg,
+.pswp__container,
+.pswp__item,
+.pswp__content,
+.pswp__img,
+.pswp__zoom-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pswp__img,
+.pswp__zoom-wrap {
+  width: auto;
+  height: auto;
+}
+
+.pswp--click-to-zoom.pswp--zoom-allowed .pswp__img {
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: zoom-in;
+}
+
+.pswp--click-to-zoom.pswp--zoomed-in .pswp__img {
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
+}
+
+.pswp--click-to-zoom.pswp--zoomed-in .pswp__img:active {
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: grabbing;
+}
+
+/* :active to override grabbing cursor */
+.pswp--no-mouse-drag.pswp--zoomed-in .pswp__img,
+.pswp--no-mouse-drag.pswp--zoomed-in .pswp__img:active,
+.pswp__img {
+  cursor: -webkit-zoom-out;
+  cursor: -moz-zoom-out;
+  cursor: zoom-out;
+}
+
+/* Prevent selection and tap highlights */
+.pswp__container,
+.pswp__img,
+.pswp__button,
+.pswp__counter {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.pswp__item {
+  /* z-index for fade transition */
+  z-index: 1;
+  overflow: hidden;
+}
+
+.pswp__hidden {
+  display: none !important;
+}
+
+/* Allow to click through pswp__content element, but not its children */
+.pswp__content {
+  pointer-events: none;
+}
+
+.pswp__content > * {
+  pointer-events: auto;
+}
+
+/*
+
+  PhotoSwipe UI
+
+*/
+/*
+	Error message appears when image is not loaded
+	(JS option errorMsg controls markup)
+*/
+.pswp__error-msg-container {
+  display: grid;
+}
+
+.pswp__error-msg {
+  margin: auto;
+  font-size: 1em;
+  line-height: 1;
+  color: var(--pswp-error-text-color);
+}
+
+/*
+class pswp__hide-on-close is applied to elements that
+should hide (for example fade out) when PhotoSwipe is closed
+and show (for example fade in) when PhotoSwipe is opened
+ */
+.pswp .pswp__hide-on-close {
+  opacity: 0.005;
+  will-change: opacity;
+  transition: opacity var(--pswp-transition-duration) cubic-bezier(0.4, 0, 0.22, 1);
+  z-index: 10; /* always overlap slide content */
+  pointer-events: none; /* hidden elements should not be clickable */
+}
+
+/* class pswp--ui-visible is added when opening or closing transition starts */
+.pswp--ui-visible .pswp__hide-on-close {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* <button> styles, including css reset */
+.pswp__button {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 60px;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  opacity: 0.85;
+  -webkit-appearance: none;
+  -webkit-touch-callout: none;
+}
+
+.pswp__button:hover,
+.pswp__button:active,
+.pswp__button:focus {
+  transition: none;
+  padding: 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  opacity: 1;
+}
+
+.pswp__button:disabled {
+  opacity: 0.3;
+  cursor: auto;
+}
+
+.pswp__icn {
+  fill: var(--pswp-icon-color);
+  color: var(--pswp-icon-color-secondary);
+}
+
+.pswp__icn {
+  position: absolute;
+  top: 14px;
+  left: 9px;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.pswp__icn-shadow {
+  stroke: var(--pswp-icon-stroke-color);
+  stroke-width: var(--pswp-icon-stroke-width);
+  fill: none;
+}
+
+.pswp__icn:focus {
+  outline: 0;
+}
+
+/*
+	div element that matches size of large image,
+	large image loads on top of it,
+	used when msrc is not provided
+*/
+div.pswp__img--placeholder,
+.pswp__img--with-bg {
+  background: var(--pswp-placeholder-bg);
+}
+
+.pswp__top-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  z-index: 10;
+  /* allow events to pass through top bar itself */
+  pointer-events: none !important;
+}
+
+.pswp__top-bar > * {
+  pointer-events: auto;
+  /* this makes transition significantly more smooth,
+     even though inner elements are not animated */
+  will-change: opacity;
+}
+
+/*
+
+  Close button
+
+*/
+.pswp__button--close {
+  margin-right: 6px;
+}
+
+/*
+
+  Arrow buttons
+
+*/
+.pswp__button--arrow {
+  position: absolute;
+  top: 0;
+  width: 75px;
+  height: 100px;
+  top: 50%;
+  margin-top: -50px;
+}
+
+.pswp__button--arrow:disabled {
+  display: none;
+  cursor: default;
+}
+
+.pswp__button--arrow .pswp__icn {
+  top: 50%;
+  margin-top: -30px;
+  width: 60px;
+  height: 60px;
+  background: none;
+  border-radius: 0;
+}
+
+.pswp--one-slide .pswp__button--arrow {
+  display: none;
+}
+
+/* hide arrows on touch screens */
+.pswp--touch .pswp__button--arrow {
+  visibility: hidden;
+}
+
+/* show arrows only after mouse was used */
+.pswp--has_mouse .pswp__button--arrow {
+  visibility: visible;
+}
+
+.pswp__button--arrow--prev {
+  right: auto;
+  left: 0px;
+}
+
+.pswp__button--arrow--next {
+  right: 0px;
+}
+
+.pswp__button--arrow--next .pswp__icn {
+  left: auto;
+  right: 14px;
+  /* flip horizontally */
+  transform: scale(-1, 1);
+}
+
+/*
+
+  Zoom button
+
+*/
+.pswp__button--zoom {
+  display: none;
+}
+
+.pswp--zoom-allowed .pswp__button--zoom {
+  display: block;
+}
+
+/* "+" => "-" */
+.pswp--zoomed-in .pswp__zoom-icn-bar-v {
+  display: none;
+}
+
+/*
+
+  Loading indicator
+
+*/
+.pswp__preloader {
+  position: relative;
+  overflow: hidden;
+  width: 50px;
+  height: 60px;
+  margin-right: auto;
+}
+
+.pswp__preloader .pswp__icn {
+  opacity: 0;
+  transition: opacity 0.2s linear;
+  animation: pswp-clockwise 600ms linear infinite;
+}
+
+.pswp__preloader--active .pswp__icn {
+  opacity: 0.85;
+}
+
+@keyframes pswp-clockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/*
+
+  "1 of 10" counter
+
+*/
+.pswp__counter {
+  height: 30px;
+  margin-top: 15px;
+  margin-inline-start: 20px;
+  font-size: 14px;
+  line-height: 30px;
+  color: var(--pswp-icon-color);
+  text-shadow: 1px 1px 3px var(--pswp-icon-color-secondary);
+  opacity: 0.85;
+}
+
+.pswp--one-slide .pswp__counter {
+  display: none;
+}
 
 /*# sourceMappingURL=ausstello.css.map */

@@ -15,13 +15,16 @@
         </f:then>
         <f:else>
             <div class="ausstello-form-modal">
-                <span id="close-modal">X</span>
+                <span id="close-modal">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path fill="currentColor" d="m16.192 6.344l-4.243 4.242l-4.242-4.242l-1.414 1.414L10.535 12l-4.242 4.242l1.414 1.414l4.242-4.242l4.243 4.242l1.414-1.414L13.364 12l4.242-4.242z"/></svg>                </span>
             </div>
             <div class="ausstello-form-modal-button">
+                <span class="ausstello-form-modal-button-label-slider">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z"/></svg>
+                </span>
                 <span class="ausstello-form-modal-button-label-arrow filter-arrow"><f:image src="EXT:ausstello/Resources/Public/Icons/chevron_right.svg"/></span>
-                <label>
-                    Filtern
-                </label>
+                <label>Filtern ...</label>
+                <span class="ausstello-form-global-counter counter"></span>
             </div>
             <f:render partial="Event/Form" arguments="{_all}"/>
             <f:render partial="List/InlineText" arguments="{_all}"/>
