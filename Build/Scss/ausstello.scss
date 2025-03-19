@@ -35,10 +35,12 @@
     align-items: center;
     gap: 10px;
 
+    cursor: pointer;
     text-decoration: none;
+    font-size: var(--ausstello-font-size-base);
     font-weight: bold;
     background-color: var(--ausstello-highlight-color);
-    padding: 8px 14px 10px 10px;
+    padding: 8px 14px 8px 10px;
     line-height: 1;
     color: var(--ausstello-text-color);
 
@@ -130,19 +132,37 @@
         background-color: white;
         overflow: auto;
 
-        button {
+        &-submit-button {
             @extend %button;
             width: auto;
             border: unset;
             font-weight: bold;
-            line-height: normal;
             &:hover {
                 background-color: var(--ausstello-bg-color-light);
             }
+
+            @media screen and (min-width: 992px) {
+                display: none;
+            }
+        }
+
+        .ausstello-list-search-input {
+            margin-bottom: 40px;
         }
 
         .air-datepicker {
             position: static!important;
+            width: auto;
+            margin-top: 16px;
+            border-width: 2px;
+
+            .air-datepicker--pointer {
+                display: none;
+            }
+        }
+
+        form#filter-form {
+            margin-bottom: 10px;
         }
         .ts-wrapper {
             flex-direction: column!important;
@@ -162,9 +182,10 @@
         align-items: center;
         width: 100%;
         position: relative;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
         padding: 9px 6px;
         border: 2px solid black;
+        cursor: pointer;
 
         &:hover {
             background-color: var(--ausstello-highlight-color);
@@ -425,6 +446,7 @@
         --adp-border-color-inline: var(--ausstello-text-color);
 
         --adp-nav-height: 32px;
+        --adp-nav-action-size: 36px;
         --adp-nav-arrow-color: var(--adp-color-secondary);
         --adp-nav-color-secondary: var(--adp-color-secondary);
 
@@ -683,10 +705,11 @@
         &-row {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            margin-bottom: 25px;
-            gap: 10px;
+            margin-bottom: 40px;
+            gap: 16px;
             @media screen and (min-width: 992px) {
                 gap: 30px;
+                margin-bottom: 25px;
             }
         }
 
@@ -725,6 +748,7 @@
             &:hover {
                 background-color: var(--ausstello-highlight-color);
 
+                input,
                 .ausstello-list-search-input-btn {
                     background-color: var(--ausstello-highlight-color);
                 }
@@ -739,7 +763,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 27px;
+                width: 25px + 9px;
                 height: 25px;
                 margin: 7px 0 7px 9px;
                 background-color: #000;
@@ -748,7 +772,7 @@
             &-form {
                 display: block;
                 width: 100%;
-                padding: 0.25rem 0.25rem;
+                padding: 0.25rem 12px;
                 border: none;
 
 
@@ -761,6 +785,7 @@
                 background-color: white;
                 padding: 0.3rem 14px;
                 border: none;
+                cursor: pointer;
             }
         }
 
@@ -1559,10 +1584,11 @@ input:focus-visible {
 .ausstello-filter-reset {
     color: inherit;
     display: block;
-    padding-top: 25px;
+    padding-top: 60px;
     width: fit-content;
 
     @media (min-width: 992px) {
+        padding-top: 25px;
         margin-left: auto;
     }
 }

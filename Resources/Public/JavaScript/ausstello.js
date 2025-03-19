@@ -7550,7 +7550,10 @@ const setupDatePicker = () => {
     dateInput.closest('.ausstello-form-date').classList.add('active');
   }
   dateInput.parentElement.style.position = 'relative';
-  new AirDatepicker('#ausstello-form-date', {
+  const formDateElement = document.querySelector('.ausstello-form-date');
+  let isVisible;
+  const air = new AirDatepicker('#ausstello-form-date', {
+    // inline: true,
     container: dateInput.parentElement,
     locale: localeDe,
     dateFormat: 'dd.MM.yyyy',
@@ -7558,6 +7561,7 @@ const setupDatePicker = () => {
     maxDate: dateInput.dataset.max ?? null,
     startDate: currentDate,
     selectedDates: [currentDate],
+    autoClose: false,
     onSelect: function (_ref) {
       let {
         date,
@@ -7566,6 +7570,23 @@ const setupDatePicker = () => {
       dateInput.closest('.ausstello-form-date').classList.add('active');
       dateInput.value = datepicker.formatDate(date, 'yyyy-MM-dd');
       dateInput.form.requestSubmit();
+    },
+    onShow: function (isFinished) {
+      if (isFinished) {
+        isVisible = true;
+      }
+    },
+    onHide: function (isFinished) {
+      if (isFinished) {
+        isVisible = false;
+      }
+    }
+  });
+  formDateElement.addEventListener('click', event => {
+    if (!event.target.closest('.air-datepicker')) {
+      if (isVisible) {
+        air.hide();
+      }
     }
   });
 };
