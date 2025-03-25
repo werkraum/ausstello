@@ -1683,6 +1683,14 @@ input:focus-visible {
     justify-content: space-between;
 }
 
+.justify-content-start {
+    justify-content: flex-start;
+}
+
+.justify-content-end {
+    justify-content: flex-end;
+}
+
 .flex-wrap {
     flex-wrap: wrap;
 }

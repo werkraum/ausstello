@@ -28,7 +28,7 @@
             </div>
             <div class="ausstello-detail-time"><f:render partial="Event/Time" arguments="{startTime: event.startTime, endTime: event.endTime, format: 'H:i'}"/></div>
         </div>
-        <div class="ausstello-detail-column d-none d-lg-flex">
+        <div class="ausstello-detail-column d-none d-lg-flex justify-content-end">
             <div class="ausstello-detail-primary-category">
                 <f:if condition="{event.primaryCategory.0}">
                     <f:render partial="Event/CategoryIcon"
