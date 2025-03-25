@@ -152,13 +152,7 @@
 
         .air-datepicker {
             position: static!important;
-            width: auto;
             margin-top: 16px;
-            border-width: 2px;
-
-            .air-datepicker--pointer {
-                display: none;
-            }
         }
 
         form#filter-form {
@@ -415,7 +409,7 @@
     .air-datepicker {
         --adp-font-family: inherit;
         --adp-font-size: inherit;
-        --adp-width: 100%;
+        --adp-width: calc(100% - 4px);
         --adp-z-index: 100;
         --adp-padding: 4px;
 
@@ -480,6 +474,12 @@
         --adp-time-thumb-size: 12px;
         --adp-time-padding-inner: 10px;
         --adp-time-day-period-color: var(--adp-color-secondary);
+
+        border-width: 2px;
+
+        .air-datepicker--pointer {
+            display: none;
+        }
 
         .air-datepicker-cell.-selected- {
             color: var(--ausstello-text-color);
