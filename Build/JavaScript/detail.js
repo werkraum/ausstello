@@ -1,15 +1,9 @@
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+
 import Swiper from "swiper";
 import {Pagination} from "swiper/modules";
 
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin';
-
-import 'photoswipe/style.css';
-import 'photoswipe/photoswipe.css';
-import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css';
 
 import "../Scss/ausstello.scss";
 

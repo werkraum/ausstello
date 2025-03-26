@@ -2,13 +2,6 @@ import AirDatepicker from "air-datepicker";
 import localeDe from "air-datepicker/locale/de";
 import TomSelect from 'tom-select';
 
-import 'air-datepicker/air-datepicker.css';
-import "tom-select/dist/css/tom-select.bootstrap5.css";
-
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
 import "../Scss/ausstello.scss";
 
 const globalCounter = () => {

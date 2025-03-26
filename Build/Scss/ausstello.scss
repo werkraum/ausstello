@@ -1,3 +1,14 @@
+@use 'air-datepicker/air-datepicker.css';
+@use "tom-select/dist/css/tom-select.bootstrap5";
+
+@use 'swiper/css';
+@use 'swiper/css/navigation';
+@use 'swiper/css/pagination';
+
+@use 'photoswipe/style.css';
+@use 'photoswipe/photoswipe.css';
+@use 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin';
+
 :root {
     --ausstello-text-color: #000;
     --austello-event-titel-color: #000;
@@ -890,7 +901,7 @@
 
                 &-date {
                     color: var(--ausstello-date-color);
-                    font-size: var(--ausstello-font-size-text-base);
+                    font-size: var(--ausstello-font-size-base);
                     font-weight: bold;
                     text-transform: uppercase;
                 }
