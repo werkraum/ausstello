@@ -13,22 +13,22 @@
                     </div>
                     <div class="ausstello-detail-box-links">
                         <f:if condition="{item.link.url}">
-                            <a href="{item.link.url}" target="{item.link.target}" class="ausstello-detail-box-link">
+                            <a href="{f:uri.typolink(parameter: item.link.url)}" target="{item.link.target}" class="ausstello-detail-box-link">
                                 <f:image src="EXT:ausstello/Resources/Public/Icons/external_link.svg" width="15" height="15"/> Website
                             </a>
                         </f:if>
                         <f:if condition="{item.facebook}">
-                            <a href="{item.facebook}" target="_blank">
+                            <a href="{f:uri.typolink(parameter: item.facebook)}" target="_blank">
                                 <f:image src="EXT:ausstello/Resources/Public/Icons/facebook.svg" width="23" height="22"/>
                             </a>
                         </f:if>
                         <f:if condition="{item.instagram}">
-                            <a href="{item.instagram}" target="_blank">
+                            <a href="{f:uri.typolink(parameter: item.instagram)}" target="_blank">
                                 <f:image src="EXT:ausstello/Resources/Public/Icons/instagram.svg" width="23" height="22"/>
                             </a>
                         </f:if>
                         <f:if condition="{item.linkedin}">
-                            <a href="{item.linkedin}" target="_blank">
+                            <a href="{f:uri.typolink(parameter: item.linkedin)}" target="_blank">
                                 <f:image src="EXT:ausstello/Resources/Public/Icons/linkedin.svg" width="23" height="22"/>
                             </a>
                         </f:if>
@@ -50,7 +50,7 @@
             nur link und logo
         </f:else>
         <f:else if="{item.name} && {item.link.url} && !{item.images.0.file.publicUrl}">
-            <a href="{item.link.url}" target="{item.link.target}" class="ausstello-detail-box-only-link">
+            <a href="{f:uri.typolink(parameter: item.link.url)}" target="{item.link.target}" class="ausstello-detail-box-only-link">
                 {item.name -> f:format.htmlentitiesDecode()} <f:image src="EXT:ausstello/Resources/Public/Icons/external_link.svg" width="15" height="15"/>
             </a>
         </f:else>
@@ -71,7 +71,7 @@
             </div>
         </f:else>
         <f:else>
-            <f:debug>{_all}</f:debug>
+
         </f:else>
     </f:if>
 

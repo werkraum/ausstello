@@ -17,7 +17,7 @@
             </span>
             <span class="ausstello-detail-location-name">{location.name -> f:format.htmlentitiesDecode()}</span>
             <f:if condition="{location.link.url}">
-                <span class="ausstello-detail-location-area"> <a href="{location.link.url}" target="{location.link.target}">{location.link.label} <f:image src="EXT:ausstello/Resources/Public/Icons/pin_black.svg" width="12" height="17"/> </a></span>
+                <span class="ausstello-detail-location-area"> <a href="{f:uri.typolink(parameter: location.link.url)}" target="{location.link.target}">{location.link.label} <f:image src="EXT:ausstello/Resources/Public/Icons/pin_black.svg" width="12" height="17"/> </a></span>
             </f:if>
             <span class="ausstello-detail-location-opener"><f:image src="EXT:ausstello/Resources/Public/Icons/chevron_blue.svg" additionalAttributes="{width: 13, height: 21}"/></span>
         </div>
