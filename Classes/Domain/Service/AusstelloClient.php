@@ -74,6 +74,7 @@ class AusstelloClient implements AusstelloClientInterface
             ],
             'allow_redirects' => true,
             'verify' => false,
+            'timeout' => 15,
         ] + $additionalOptions;
 
         // Get a PSR-7-compliant response object
