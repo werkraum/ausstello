@@ -59,4 +59,9 @@ class EventRepository
         return $this->ausstelloClient->get('event/' . $event);
     }
 
+    public function getRoutingInfos(): array
+    {
+        return $this->ausstelloClient->get('slugs');
+    }
+
 }

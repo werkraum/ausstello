@@ -20,11 +20,14 @@ class StaticEventMapper implements \TYPO3\CMS\Core\Routing\Aspect\StaticMappable
 
     private EventRepository $eventRepository;
 
-    private static $cache = null;
+    private static ?array $cache = null;
 
     public function count(): int
     {
-        return count($this->eventRepository->findAllEvents());
+        if (self::$cache) {
+            return count(self::$cache);
+        }
+        return count($this->eventRepository->getRoutingInfos());
     }
 
     public function __construct(
@@ -66,9 +69,9 @@ class StaticEventMapper implements \TYPO3\CMS\Core\Routing\Aspect\StaticMappable
     private function buildValues(): array
     {
         if (self::$cache === null) {
-            $events = $this->eventRepository->findAllEvents();
+            $events = $this->eventRepository->getRoutingInfos();
             $values = [];
-            foreach ($events['pager']['items'] as $event) {
+            foreach ($events as $event) {
                 $values[$event['id']] = $event['slug'];
             }
             self::$cache = $values;
