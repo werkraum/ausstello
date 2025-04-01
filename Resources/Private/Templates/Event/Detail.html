@@ -21,8 +21,35 @@
             </a>
         </div>
     </div>
+    <f:if condition="{event.state} == 'canceled' || {event.state} == 'moved'">
+        <div class="ausstello-item-cancelled">
+            <div class="ausstello-item-cancelled-title">
+                <f:if condition="{event.state} == 'canceled'">
+                    <f:then>
+                        Veranstaltung entfällt
+                    </f:then>
+                    <f:else if="{event.state} == 'moved'">
+                        Veranstaltung verschoben
+                    </f:else>
+                </f:if>
+            </div>
+            <div class="ausstello-item-cancelled-content">
+                <f:if condition="{event.cancelReason}">
+                    <f:then>
+                        <f:format.raw>{event.cancelReason -> f:format.htmlentitiesDecode()}</f:format.raw>
+                    </f:then>
+                    <f:else if="{event.state} == 'canceled'">
+                        Keine weiteren Informationen bekannt.
+                    </f:else>
+                    <f:else if="{event.state} == 'moved'">
+                        Das Event wird nachgeholt, den Termin geben wir bekannt.
+                    </f:else>
+                </f:if>
+            </div>
+        </div>
+    </f:if>
     <div class="ausstello-detail-container d-flex flex-column flex-lg-row" style="margin-bottom: 15px;">
-        <div class="ausstello-detail-column">
+        <div class="ausstello-detail-column {f:if(condition: '{event.state} == \'canceled\' || {event.state} == \'moved\'', then: 'ausstello-event-canceled')}">
             <div class="ausstello-detail-date">
                 <f:format.date format="%A, %d. %B %Y">{event.startDate}</f:format.date>
             </div>

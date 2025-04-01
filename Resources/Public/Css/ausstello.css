@@ -3847,6 +3847,41 @@ div.pswp__img--placeholder,
   font-size: var(--ausstello-font-size-text-mini);
   line-height: 1;
 }
+.ausstello .ausstello-event-canceled * {
+  color: var(--ausstello-notification-color, #C0595F) !important;
+  text-decoration: line-through;
+}
+.ausstello-item-cancelled {
+  height: 259px;
+  margin-bottom: 40px;
+  background-color: var(--ausstello-notification-color, #C0595F);
+  opacity: 0.92;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.ausstello-list-teaser .ausstello-item-cancelled {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  margin-bottom: 0;
+}
+
+.ausstello-item-cancelled-title {
+  font-weight: bold;
+  font-size: var(--ausstello-font-size-event-titel-list);
+}
+.ausstello-item-cancelled-content {
+  font-weight: bold;
+  font-size: var(--ausstello-font-size-text-large);
+}
 
 .ausstello-teaser {
   display: flex;

@@ -1526,6 +1526,44 @@
         font-size: var(--ausstello-font-size-text-mini);
         line-height: 1;
     }
+
+    .ausstello-event-canceled * {
+        color: var(--ausstello-notification-color, #C0595F)!important;
+        text-decoration: line-through;
+    }
+
+    &-item-cancelled {
+        height: 259px;
+        margin-bottom: 40px;
+
+        @at-root .ausstello-list-teaser & {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 100%;
+            margin-bottom: 0;
+        }
+
+        background-color: var(--ausstello-notification-color, #C0595F);
+        opacity: 0.92;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        &-title {
+            font-weight: bold;
+            font-size: var(--ausstello-font-size-event-titel-list);
+        }
+        &-content {
+            font-weight: bold;
+            font-size: var(--ausstello-font-size-text-large);
+        }
+    }
 }
 
 .ausstello-teaser {
@@ -1578,6 +1616,7 @@
         height: 195px;
         flex: 0 0 195px;
     }
+
 }
 
 input::placeholder {
