@@ -1389,6 +1389,14 @@
                 font-weight: bold;
                 font-size: var(--ausstello-font-size-base);
                 align-self: start;
+
+                img {
+                    height: auto;
+                    max-width: 119px;
+                    @media screen and (min-width: 992px) {
+                        max-width: 142px;
+                    }
+                }
             }
 
             &-content {

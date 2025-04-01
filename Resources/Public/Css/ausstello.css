@@ -3719,6 +3719,15 @@ div.pswp__img--placeholder,
   font-size: var(--ausstello-font-size-base);
   align-self: start;
 }
+.ausstello-detail-box-only-image-name img {
+  height: auto;
+  max-width: 119px;
+}
+@media screen and (min-width: 992px) {
+  .ausstello-detail-box-only-image-name img {
+    max-width: 142px;
+  }
+}
 .ausstello-detail-box-content {
   display: flex;
   flex-direction: column;

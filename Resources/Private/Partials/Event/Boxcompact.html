@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:ausstello="http://typo3.org/ns/Werkraum/Ausstello/ViewHelper"
+      data-namespace-typo3-fluid="true"
+>
+<f:if condition="{item}">
+    <f:if condition="{item.images.0.file.publicUrl}">
+        <f:then>
+            <a href="{f:uri.typolink(parameter: item.link.url)}"
+               target="{item.link.target}"
+               class="ausstello-detail-box-only-image-name"
+               title="{item.name -> f:format.htmlentitiesDecode()}"
+            >
+                <ausstello:remote.image
+                    title="{item.name -> f:format.htmlentitiesDecode()}"
+                    alt="{item.images.0.alternative}"
+                    loading="lazy"
+                    width="284"
+                    src="{item.images.0.file.publicUrl}"
+                />
+            </a>
+        </f:then>
+        <f:else if="{item.link.url}">
+            <a href="{f:uri.typolink(parameter: item.link.url)}" target="{item.link.target}" class="ausstello-detail-box-only-link">
+                <f:if condition="{item.link.label}"><f:then>{item.link.label}</f:then><f:else>{item.name -> f:format.htmlentitiesDecode()}</f:else></f:if> <f:image src="EXT:ausstello/Resources/Public/Icons/external_link.svg" width="15" height="15"/>
+            </a>
+        </f:else>
+        <f:else if="!{item.link.url} && {item.images.0.file.publicUrl}">
+            <div class="ausstello-detail-box-only-image-name">
+                <ausstello:remote.image
+                    title="{item.name -> f:format.htmlentitiesDecode()}"
+                    alt="{item.images.0.alternative}"
+                    loading="lazy"
+                    width="284"
+                    src="{item.images.0.file.publicUrl}"
+                />
+            </div>
+        </f:else>
+        <f:else if="!{item.link.url} && !{item.images.0.file.publicUrl}">
+            <div class="ausstello-detail-box-only-title">
+                <f:if condition="{item.link.label}"><f:then>{item.link.label}</f:then><f:else>{item.name -> f:format.htmlentitiesDecode()}</f:else></f:if>
+            </div>
+        </f:else>
+        <f:else>
+
+        </f:else>
+    </f:if>
+
+</f:if>
+
+</html>

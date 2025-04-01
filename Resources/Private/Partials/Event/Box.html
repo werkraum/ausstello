@@ -14,7 +14,7 @@
                     <div class="ausstello-detail-box-links">
                         <f:if condition="{item.link.url}">
                             <a href="{f:uri.typolink(parameter: item.link.url)}" target="{item.link.target}" class="ausstello-detail-box-link">
-                                <f:image src="EXT:ausstello/Resources/Public/Icons/external_link.svg" width="15" height="15"/> Website
+                                <f:image src="EXT:ausstello/Resources/Public/Icons/external_link.svg" width="15" height="15"/> <f:if condition="{item.link.label}"><f:then>{item.link.label}</f:then><f:else>Webseite</f:else></f:if>
                             </a>
                         </f:if>
                         <f:if condition="{item.facebook}">
@@ -64,7 +64,7 @@
                 <ausstello:remote.image
                     alt="{item.images.0.alternative}"
                     loading="lazy"
-                    width="142"
+                    width="284"
                     src="{item.images.0.file.publicUrl}"
                 />
                 {item.name -> f:format.htmlentitiesDecode()}
