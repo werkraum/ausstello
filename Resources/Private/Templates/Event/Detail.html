@@ -225,14 +225,12 @@
     </f:if>
 
     <div class="ausstello-detail-description">
-        <div>{event.description ->
-            f:format.htmlentitiesDecode()}
-        </div>
+        <div>{event.description -> f:format.htmlentitiesDecode()}</div>
     </div>
     <f:if condition="{event.partner} || {event.sponsor}">
         <div class="ausstello-detail-partner-sponsor">
             <f:if condition="{event.partner}">
-                <div class="ausstello-detail-partner">
+                <div class="ausstello-detail-partner {meta.settings.style.other.boxTemplate}">
                     <h4 class="ausstello-detail-subheader">In Zusammenarbeit mit:</h4>
                     <f:for each="{event.partner}" as="p">
                         <f:render partial="Event/Box{meta.settings.style.other.boxTemplate}" arguments="{item: '{meta.partners.{p}}'}"/>
@@ -240,7 +238,7 @@
                 </div>
             </f:if>
             <f:if condition="{event.sponsor}">
-                <div class="ausstello-detail-sponsor">
+                <div class="ausstello-detail-sponsor {meta.settings.style.other.boxTemplate}">
                     <h4 class="ausstello-detail-subheader">Unterstützt durch:</h4>
                     <f:for each="{event.sponsor}" as="s">
                         <f:render partial="Event/Box{meta.settings.style.other.boxTemplate}" arguments="{item: '{meta.sponsors.{s}}'}"/>

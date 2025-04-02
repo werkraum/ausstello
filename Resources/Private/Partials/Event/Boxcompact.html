@@ -4,7 +4,7 @@
       data-namespace-typo3-fluid="true"
 >
 <f:if condition="{item}">
-    <f:if condition="{item.images.0.file.publicUrl}">
+    <f:if condition="{item.link.url} && {item.images.0.file.publicUrl}">
         <f:then>
             <a href="{f:uri.typolink(parameter: item.link.url)}"
                target="{item.link.target}"
@@ -20,7 +20,7 @@
                 />
             </a>
         </f:then>
-        <f:else if="{item.link.url}">
+        <f:else if="{item.link.url} && !{item.images.0.file.publicUrl}">
             <a href="{f:uri.typolink(parameter: item.link.url)}" target="{item.link.target}" class="ausstello-detail-box-only-link">
                 <f:if condition="{item.link.label}"><f:then>{item.link.label}</f:then><f:else>{item.name -> f:format.htmlentitiesDecode()}</f:else></f:if> <f:image src="EXT:ausstello/Resources/Public/Icons/external_link.svg" width="15" height="15"/>
             </a>
