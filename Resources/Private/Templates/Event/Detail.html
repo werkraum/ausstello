@@ -160,7 +160,7 @@
                                        target="_blank"
                                        style="display: block; text-decoration: none;"
                                     >
-                                        <div class="ausstello-slide-image ausstello-slide-image-{f:if(condition: '{image.file.width} < 262', then: 'contain', else: 'cover')}">
+                                        <div class="ausstello-slide-image ausstello-slide-image-{f:if(condition: '{image.file.width} < {image.file.height}', then: 'contain', else: 'cover')}">
                                             <ausstello:remote.image
                                                 alt="{image.alternative}"
                                                 loading="lazy"
