@@ -11,32 +11,26 @@
                    class="ausstello-form-location-icon"
                    prependOptionLabel=""
     >
-        <f:groupedFor as="items" groupKey="gk" groupBy="locationArea" each="{meta.locations}">
-
-            <f:for each="{items}" as="location">
+            <f:for each="{meta.locations}" as="location">
                 <f:if condition="{location.locationType} == 'main'">
-                    <f:then></f:then>
-                    <f:else>
-                        <f:variable name="parent">{meta.locations.{gk}}</f:variable>
-                        <f:if condition="{parent.locationType} == 'main'">
-                            <f:form.select.option value="{parent.id}">
-                                <f:if condition="{parent.locationNumber}">
-                                    <f:then>{parent.locationNumber} | {parent.name}</f:then>
-                                    <f:else>{parent.name}</f:else>
+                    <f:form.select.option value="{location.id}">
+                        <f:if condition="{location.locationNumber}">
+                            <f:then>{location.locationNumber} | {location.name}</f:then>
+                            <f:else>{location.name}</f:else>
+                        </f:if>
+                    </f:form.select.option>
+                    <f:for each="{meta.locations}" as="child">
+                        <f:if condition="{child.locationArea} == {location.id}">
+                            <f:form.select.option value="{child.id}"
+                                                  additionalAttributes="{data-area-id: location.id , data-area-name: location.name}">
+                                <f:if condition="{child.locationNumber}">
+                                    <f:then>{child.locationNumber} | {child.name}</f:then>
+                                    <f:else>{child.name}</f:else>
                                 </f:if>
                             </f:form.select.option>
                         </f:if>
-                        <f:form.select.option value="{location.id}"
-                                              additionalAttributes="{data-area-id: gk, data-area-name: '{meta.locations.{gk}.name}'}">
-                            <f:if condition="{location.locationNumber}">
-                                <f:then>{location.locationNumber} | {location.name}</f:then>
-                                <f:else>{location.name}</f:else>
-                            </f:if>
-                        </f:form.select.option>
-                    </f:else>
+                    </f:for>
                 </f:if>
-
             </f:for>
-        </f:groupedFor>
     </f:form.select>
 </div>
