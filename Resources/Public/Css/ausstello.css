@@ -3131,9 +3131,6 @@ div.pswp__img--placeholder,
   padding-left: 25px;
   font-size: var(--ausstello-font-size-subheading);
 }
-.ausstello-list-section-date:first-of-type {
-  display: none;
-}
 .ausstello-list-search-input {
   border: 2px solid #000000;
   position: relative;
@@ -3156,7 +3153,7 @@ div.pswp__img--placeholder,
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
+  width: 26px;
   height: 25px;
   margin: 7px 0 7px 9px;
   background-color: #000;
