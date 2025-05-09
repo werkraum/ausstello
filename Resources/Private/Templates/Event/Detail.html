@@ -93,7 +93,7 @@
                     <h3 class="ausstello-detail-location-header">Veranstaltungsort:</h3>
                     <div class="ausstello-detail-location-item">
                         <f:for each="{event.location}" as="l">
-                            <f:render partial="Event/Location" arguments="{location: '{meta.locations.{l}}'}"/>
+                            <f:render partial="Event/Location" arguments="{location: '{meta.locations.{l}}', settings: settings}"/>
                         </f:for>
                     </div>
                 </f:if>

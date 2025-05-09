@@ -25,10 +25,19 @@
             <div class="ausstello-list-teaser-locations">
                 <f:for each="{event.location}" as="l">
                     <div class="ausstello-list-teaser-location">
-                        <f:image src="EXT:ausstello/Resources/Public/Icons/pin.svg" width="10" height="14"/>
-                        <f:variable name="locationData" value="{meta.locations.{l}}" />
-                        <div title="{locationData.name -> f:format.stripTags()}">
-                            <span>{locationData.name -> f:format.htmlentitiesDecode()}</span>
+                        <f:variable name="location" value="{meta.locations.{l}}" />
+                        <f:if condition="{location.locationNumber} && {settings.list.location.showLocationNumber}">
+                            <f:then>
+                                <div class="ausstello-list-teaser-location-number {f:if(condition: '{location.locationNumber -> ausstello:strLength()} < 3', then: 'circle')}">
+                                    {location.locationNumber}
+                                </div>
+                            </f:then>
+                            <f:else>
+                                <f:image src="EXT:ausstello/Resources/Public/Icons/pin.svg" width="10" height="14"/>
+                            </f:else>
+                        </f:if>
+                        <div title="{location.name -> f:format.stripTags()}">
+                            <span>{location.name -> f:format.htmlentitiesDecode()}</span>
                         </div>
                     </div>
                 </f:for>

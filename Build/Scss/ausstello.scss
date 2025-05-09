@@ -871,8 +871,26 @@
 
             &-location {
                 display: flex;
+                align-items: center;
                 flex-wrap: nowrap;
                 gap: 10px;
+            }
+
+            &-location-number {
+                color: white;
+                background-color: var(--ausstello-location-color);
+                font-weight: bold;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 6px 10px;
+                &.circle {
+                    border-radius: 100%;
+                    width: 38px;
+                    height: 38px;
+                    padding: 0;
+                }
             }
 
             &-info {
@@ -1217,12 +1235,17 @@
                 background-color: var(--ausstello-location-color);
                 font-weight: bold;
                 font-size: var(--ausstello-font-size-text-large);
-                border-radius: 50%;
-                width: 38px;
-                height: 38px;
+                border-radius: 8px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                padding: 6px 10px;
+                &.circle {
+                    border-radius: 100%;
+                    width: 38px;
+                    height: 38px;
+                    padding: 0;
+                }
             }
 
             &-section {
