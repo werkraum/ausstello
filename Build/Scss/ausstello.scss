@@ -1684,6 +1684,13 @@ input:focus-visible {
     left: 0;
     bottom: 0;
 }
+.ausstello-slide-image-contain .image-copyright {
+    left: unset;
+    right: 0;
+}
+.ausstello-slide-image-contain ~ .ausstello-slide-caption {
+    text-align: right;
+}
 
 .pswp .image-copyright {
     position: relative;
