@@ -73,7 +73,6 @@ const setupSwiper = () => {
   setupSwiper();
   document.querySelectorAll('.ausstello-detail-location-name-wrapper')?.forEach(btn => {
     btn.addEventListener('click', (event) => {
-      event.preventDefault();
       btn.closest('.ausstello-detail-location-infos').classList.toggle('show');
     })
   })
