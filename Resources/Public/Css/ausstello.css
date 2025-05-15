@@ -3490,7 +3490,7 @@ div.pswp__img--placeholder,
 }
 .ausstello-detail-location-area {
   flex: 1 1 100%;
-  margin-left: 48px;
+  margin-top: 16px;
 }
 @media screen and (min-width: 992px) {
   .ausstello-detail-location-area {
@@ -3966,6 +3966,14 @@ input:focus-visible {
     display: none;
   }
 }
+.ausstello-detail-location-infos:not(.ausstello-detail-location-description):not(.ausstello-detail-location-image):not(.ausstello-detail-location-options) .ausstello-detail-location-opener {
+  display: none;
+}
+
+.ausstello-detail-location-name-wrapper:not(.ausstello-detail-location-description):not(.ausstello-detail-location-image):not(.ausstello-detail-location-options) {
+  cursor: unset;
+}
+
 .ausstello-list-inline-text,
 .ausstello-detail-inline-text {
   margin: 40px 0 24px;
