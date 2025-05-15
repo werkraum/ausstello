@@ -14,7 +14,7 @@
             <f:for each="{meta.locations}" as="location">
                 <f:if condition="{location.locationType} == 'main'">
                     <f:form.select.option value="{location.id}">
-                        <f:if condition="{location.locationNumber} && {settings.search.location.showLocationNumber}">
+                        <f:if condition="{location.locationNumber} && {meta.settings.publish.displayLocationNumberInSearch}">
                             <f:then>{location.locationNumber} | {location.name}</f:then>
                             <f:else>{location.name}</f:else>
                         </f:if>
@@ -23,7 +23,7 @@
                         <f:if condition="{child.locationArea} == {location.id}">
                             <f:form.select.option value="{child.id}"
                                                   additionalAttributes="{data-area-id: location.id , data-area-name: location.name}">
-                                <f:if condition="{child.locationNumber} && {settings.search.location.showLocationNumber}">
+                                <f:if condition="{child.locationNumber} && {meta.settings.publish.displayLocationNumberInSearch}">
                                     <f:then>{child.locationNumber} | {child.name}</f:then>
                                     <f:else>{child.name}</f:else>
                                 </f:if>

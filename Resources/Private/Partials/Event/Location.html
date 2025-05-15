@@ -7,7 +7,7 @@
     <div class="ausstello-detail-location-infos" >
         <div class="ausstello-detail-location-name-wrapper">
             <span class="ausstello-detail-location-number {f:if(condition: '{location.locationNumber -> ausstello:strLength()} < 3', then: 'circle')}">
-                <f:if condition="{location.locationNumber} && {settings.detail.location.showLocationNumber}">
+                <f:if condition="{location.locationNumber} && {meta.settings.publish.displayLocationNumberInDetail}">
                     <f:then>{location.locationNumber}</f:then>
                     <f:else>
                         <f:image src="EXT:ausstello/Resources/Public/Icons/pin_white.svg" width="12" height="17"/>

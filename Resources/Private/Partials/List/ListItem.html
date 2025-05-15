@@ -26,7 +26,7 @@
                 <f:for each="{event.location}" as="l">
                     <div class="ausstello-list-teaser-location">
                         <f:variable name="location" value="{meta.locations.{l}}" />
-                        <f:if condition="{location.locationNumber} && {settings.list.location.showLocationNumber}">
+                        <f:if condition="{location.locationNumber} && {meta.settings.publish.displayLocationNumberInList}">
                             <f:then>
                                 <div class="ausstello-list-teaser-location-number {f:if(condition: '{location.locationNumber -> ausstello:strLength()} < 3', then: 'circle')}">
                                     {location.locationNumber}

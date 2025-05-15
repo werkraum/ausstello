@@ -26,21 +26,6 @@ plugin.tx_ausstello {
       itemsPerPage = 10
     }
 
-    search {
-      location {
-        showLocationNumber = 0
-      }
-    }
-    list {
-      location {
-        showLocationNumber = 0
-      }
-    }
-    detail {
-      location {
-        showLocationNumber = 1
-      }
-    }
   }
 
 }
