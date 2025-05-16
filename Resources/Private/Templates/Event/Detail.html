@@ -91,11 +91,11 @@
                 </f:if>
                 <f:if condition="{event.location -> f:count()} > 0">
                     <h3 class="ausstello-detail-location-header">Veranstaltungsort:</h3>
-                    <div class="ausstello-detail-location-item">
                         <f:for each="{event.location}" as="l">
-                            <f:render partial="Event/Location" arguments="{location: '{meta.locations.{l}}', settings: settings, meta: meta}"/>
+                            <div class="ausstello-detail-location-item">
+                                <f:render partial="Event/Location" arguments="{location: '{meta.locations.{l}}', settings: settings, meta: meta}"/>
+                            </div>
                         </f:for>
-                    </div>
                 </f:if>
             </div>
         </div>
@@ -205,7 +205,6 @@
                 <h3 class="ausstello-detail-location-header">Veranstaltungsort:</h3>
                 <f:for each="{event.location}" as="l">
                     <div class="ausstello-detail-location-item">
-                        <i class="bi bi-geo-alt-fill"></i>
                         <f:render partial="Event/Location" arguments="{location: '{meta.locations.{l}}', meta: meta}"/>
                     </div>
                 </f:for>

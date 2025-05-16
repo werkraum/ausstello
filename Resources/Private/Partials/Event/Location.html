@@ -6,7 +6,8 @@
 <div title="{location.name -> f:format.stripTags()}" class="ausstello-detail-location-section">
     <div class="ausstello-detail-location-infos" >
         <div class="ausstello-detail-location-name-wrapper">
-            <span class="ausstello-detail-location-number {f:if(condition: '{location.locationNumber -> ausstello:strLength()} < 3', then: 'circle')}">
+            <div class="d-flex flex-nowrap align-items-center" style="gap: 7px;">
+                <span class="flex-shrink-0 ausstello-detail-location-number {f:if(condition: '{location.locationNumber -> ausstello:strLength()} < 3', then: 'circle')}">
                 <f:if condition="{location.locationNumber} && {meta.settings.publish.displayLocationNumberInDetail}">
                     <f:then>{location.locationNumber}</f:then>
                     <f:else>
@@ -14,7 +15,8 @@
                     </f:else>
                 </f:if>
             </span>
-            <span class="ausstello-detail-location-name">{location.name -> f:format.htmlentitiesDecode()}</span>
+                <span class="ausstello-detail-location-name">{location.name -> f:format.htmlentitiesDecode()}</span>
+            </div>
             <f:if condition="{location.link.url}">
                 <span class="ausstello-detail-location-area"> <a href="{f:uri.typolink(parameter: location.link.url)}" target="{location.link.target}">{location.link.label} <f:image src="EXT:ausstello/Resources/Public/Icons/pin_black.svg" width="12" height="17"/> </a></span>
             </f:if>

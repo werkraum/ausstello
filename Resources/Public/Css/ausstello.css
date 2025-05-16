@@ -3500,7 +3500,6 @@ div.pswp__img--placeholder,
 }
 .ausstello-detail-location-options {
   grid-area: options;
-  margin-left: 48px;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -3556,7 +3555,7 @@ div.pswp__img--placeholder,
 }
 @media screen and (min-width: 992px) {
   .ausstello-detail-location-infos {
-    grid-template-areas: "head head" "text image" "options options";
+    grid-template-areas: "head head" "text image" "options image";
   }
 }
 .ausstello-detail-location-infos:has(> :last-child:nth-child(1)) {
@@ -3598,7 +3597,6 @@ div.pswp__img--placeholder,
 }
 .ausstello-detail-location-description {
   grid-area: text;
-  margin-left: 48px;
 }
 @media screen and (min-width: 992px) {
   .ausstello-detail-location-description {
@@ -3607,12 +3605,12 @@ div.pswp__img--placeholder,
 }
 .ausstello-detail-location-image {
   grid-area: image;
-  margin-left: 48px;
 }
 @media screen and (min-width: 992px) {
   .ausstello-detail-location-image {
     margin-left: 18px;
     width: 176px;
+    justify-self: end;
   }
 }
 .ausstello-detail-location-image img {
@@ -3966,12 +3964,20 @@ input:focus-visible {
     display: none;
   }
 }
-.ausstello-detail-location-infos:not(.ausstello-detail-location-description):not(.ausstello-detail-location-image):not(.ausstello-detail-location-options) .ausstello-detail-location-opener {
+.ausstello-detail-location-infos:not(:has(.ausstello-detail-location-description, .ausstello-detail-location-image, .ausstello-detail-location-options)) .ausstello-detail-location-opener {
   display: none;
 }
 
-.ausstello-detail-location-name-wrapper:not(.ausstello-detail-location-description):not(.ausstello-detail-location-image):not(.ausstello-detail-location-options) {
+.ausstello-detail-location-infos:not(:has(.ausstello-detail-location-description, .ausstello-detail-location-image, .ausstello-detail-location-options)) .ausstello-detail-location-name-wrapper {
   cursor: unset;
+}
+
+.ausstello-detail-location-item ~ .ausstello-detail-location-item {
+  margin-top: 20px;
+}
+
+.ausstello-detail-info-mobile .ausstello-detail-location-infos:not(.show) {
+  gap: 0;
 }
 
 .ausstello-list-inline-text,
@@ -4095,6 +4101,22 @@ input:focus-visible {
 
 .d-none {
   display: none;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+.flex-shrink-1 {
+  flex-shrink: 1;
+}
+
+.flex-grow-0 {
+  flex-grow: 0;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
 }
 
 @media screen and (min-width: 992px) {
