@@ -7545,7 +7545,27 @@ const setupDatePicker = () => {
   if (!dateInput) {
     return;
   }
-  const currentDate = dateInput.value != "" ? dateInput.value : dateInput.dataset.min ? dateInput.dataset.min : Date.now();
+  const inputValue = dateInput.value;
+  const inputDateMin = dateInput.dataset.min;
+  const inputDateMax = dateInput.dataset.max;
+  const dateNow = Date.now();
+  let currentDate = dateNow;
+  if (inputValue) {
+    currentDate = inputValue;
+  } else {
+    if (inputDateMin) {
+      const dateMin = new Date(inputDateMin);
+      if (dateMin > dateNow) {
+        currentDate = dateMin;
+      }
+    }
+    if (inputDateMax) {
+      const dateMax = new Date(inputDateMax);
+      if (dateMax < currentDate) {
+        currentDate = dateMax;
+      }
+    }
+  }
   if (dateInput.value != "") {
     dateInput.closest('.ausstello-form-date').classList.add('active');
   }
