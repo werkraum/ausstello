@@ -50,3 +50,16 @@ page.includeJSFooter.ausstello.disableCompression = 1
 [request && traverse(request.getQueryParams(), 'tx_ausstello_event/event') > 0]
   page.includeJSFooter.ausstello = EXT:ausstello/Resources/Public/JavaScript/detail.js
 [end]
+
+[{$plugin.tx_ausstello.settings.remoteAssets} == 1]
+  page.includeCSS.ausstello = {$plugin.tx_ausstello.settings.remoteAssetsHost}/assets/ausstello.css
+  page.includeCSS.ausstello.external = 1
+  page.includeCSS.ausstello.excludeFromConcatenation = 1
+  page.includeCSS.ausstello.disableCompression = 1
+
+  page.includeJSFooter.ausstello = {$plugin.tx_ausstello.settings.remoteAssetsHost}/assets/ausstello.js
+  page.includeJSFooter.ausstello.external = 1
+  page.includeJSFooter.ausstello.type = module
+  page.includeJSFooter.ausstello.excludeFromConcatenation = 1
+  page.includeJSFooter.ausstello.disableCompression = 1
+[end]
