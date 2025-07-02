@@ -26,26 +26,29 @@ const setupDatePicker = () => {
   }
 
   const inputValue = dateInput.value;
-  const inputDateMin = dateInput.dataset.min;
-  const inputDateMax = dateInput.dataset.max;
+  let inputDateMin = dateInput.dataset.min;
+  let inputDateMax = dateInput.dataset.max;
   const dateNow = Date.now();
 
   let currentDate = dateNow;
+
+  if (inputDateMin) {
+    const dateMin = new Date(inputDateMin);
+    if (dateMin > dateNow) {
+      currentDate = dateMin;
+    } else {
+      inputDateMin = dateNow;
+    }
+  }
+  if (inputDateMax) {
+    const dateMax = new Date(inputDateMax);
+    if (dateMax < currentDate) {
+      currentDate = dateMax;
+    }
+  }
+
   if (inputValue) {
     currentDate = inputValue;
-  } else {
-    if (inputDateMin) {
-      const dateMin = new Date(inputDateMin);
-      if (dateMin > dateNow) {
-        currentDate = dateMin;
-      }
-    }
-    if (inputDateMax) {
-      const dateMax = new Date(inputDateMax);
-      if (dateMax < currentDate) {
-        currentDate = dateMax;
-      }
-    }
   }
 
   if (dateInput.value != "") {
@@ -61,8 +64,8 @@ const setupDatePicker = () => {
     container: dateInput.parentElement,
     locale: localeDe,
     dateFormat: 'dd.MM.yyyy',
-    minDate: dateInput.dataset.min ?? null,
-    maxDate: dateInput.dataset.max ?? null,
+    minDate: inputDateMin ?? null,
+    maxDate: inputDateMax ?? null,
     startDate: currentDate,
     selectedDates: [currentDate],
     autoClose: false,
