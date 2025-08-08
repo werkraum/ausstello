@@ -63,3 +63,7 @@ page.includeJSFooter.ausstello.disableCompression = 1
   page.includeJSFooter.ausstello.excludeFromConcatenation = 1
   page.includeJSFooter.ausstello.disableCompression = 1
 [end]
+
+[request && traverse(request.getQueryParams(), 'tx_ausstello_event/event') > 0 && {$plugin.tx_ausstello.settings.remoteAssets} == 1]
+  page.includeJSFooter.ausstello = {$plugin.tx_ausstello.settings.remoteAssetsHost}/assets/detail.js
+[end]
