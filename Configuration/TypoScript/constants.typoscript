@@ -5,7 +5,7 @@ plugin.tx_ausstello {
     # cat=plugin.tx_ausstello; type=int; label=Default List Pid
     listPid =
     # cat=plugin.tx_ausstello; type=int; label=Use Remote Assets
-    remoteAssets = 0
+    remoteAssets = 1
     # cat=plugin.tx_ausstello; type=string; label=Remote Assets Host. Example: https://mein.ausstello.de
     remoteAssetsHost = https://talx.ausstello.de
   }
