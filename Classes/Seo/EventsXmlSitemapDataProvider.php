@@ -41,7 +41,7 @@ class EventsXmlSitemapDataProvider extends AbstractXmlSitemapDataProvider
             $modifiedAt = date_create_from_format(\DateTimeInterface::W3C, $modifiedAt);
             $this->items[] = [
                 'data' => $item,
-                'lastMod' => $modifiedAt->format('U'),
+                'lastMod' => $modifiedAt !== false ? $modifiedAt->format('U') : 0,
             ];
         }
     }
